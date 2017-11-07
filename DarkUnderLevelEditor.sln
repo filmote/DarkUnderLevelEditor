@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkUnderLevelEditor", "DarkUnderLevelEditor\DarkUnderLevelEditor.csproj", "{A9B8CD4D-531E-4CB5-9D65-8EF55551B982}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{3D3EE4A1-0B75-49FC-9C29-F07A505C6BE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9B8CD4D-531E-4CB5-9D65-8EF55551B982}.Debug|x86.ActiveCfg = Debug|x86
+		{A9B8CD4D-531E-4CB5-9D65-8EF55551B982}.Debug|x86.Build.0 = Debug|x86
+		{A9B8CD4D-531E-4CB5-9D65-8EF55551B982}.Release|x86.ActiveCfg = Release|x86
+		{A9B8CD4D-531E-4CB5-9D65-8EF55551B982}.Release|x86.Build.0 = Release|x86
+		{3D3EE4A1-0B75-49FC-9C29-F07A505C6BE3}.Debug|x86.ActiveCfg = Debug
+		{3D3EE4A1-0B75-49FC-9C29-F07A505C6BE3}.Release|x86.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
