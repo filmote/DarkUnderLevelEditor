@@ -147,7 +147,7 @@ namespace DarkUnderLevelEditor {
             Tile newTile = new Tile();
             newTile.Title = "Tile " + (tileCount < 10 ? "0" : "") + tileCount;
             newTile.Click += new EventHandler(tile_Click);
-            newTile.Parent = tabPage1;
+            newTile.Parent = tabPageTileEditor;
             newTile.Location = new Point(410 + ((tileCount % 5) * 91), 6 + (((Byte)tileCount / 5) * 110));
             newTile.Index = tileCount;
             tiles.Add(newTile);
@@ -347,14 +347,18 @@ namespace DarkUnderLevelEditor {
                 selectedCol = 0;
                 selectedRow = 0;
                 tvwLevels.Nodes.Clear();
+                clearLevel();
+                clearTile();
 
                 String[] lines = System.IO.File.ReadAllLines(dgOpenMapData.FileName);
                 tileCount = 0;
 
-                foreach (Control con in tabPage1.Controls) {
-                    if (con.GetType() == typeof(Tile)) {
-                        tabPage1.Controls.Remove(con);
+                for (int i = tabPageTileEditor.Controls.Count - 1; i >= 0; --i) {
+
+                    if (tabPageTileEditor.Controls[i].GetType() == typeof(Tile)) {
+                        tabPageTileEditor.Controls.RemoveAt(i);
                     }
+
                 }
 
                 mnuAddTiles.DropDownItems.Clear();
@@ -413,7 +417,13 @@ namespace DarkUnderLevelEditor {
 
                         String newLine = line.Replace(",", "");
                         numberOfDoors = int.Parse(newLine.Trim());
-                        counter++;
+
+                        if (numberOfDoors == 0) {
+                            counter += 2;
+                        }
+                        else {
+                            counter++;
+                        }
 
                     }
                     if (counter == 10) { // items
@@ -441,7 +451,13 @@ namespace DarkUnderLevelEditor {
 
                         String newLine = line.Replace(",", "");
                         numberOfItems = int.Parse(newLine.Trim());
-                        counter++;
+
+                        if (numberOfItems == 0) {
+                            counter += 2;
+                        }
+                        else {
+                            counter++;
+                        }
 
                     }
 
@@ -470,7 +486,13 @@ namespace DarkUnderLevelEditor {
 
                         String newLine = line.Replace(",", "");
                         numberOfEnemies = int.Parse(newLine.Trim());
-                        counter++;
+
+                        if (numberOfEnemies == 0) {
+                            counter += 2;
+                        }
+                        else {
+                            counter++;
+                        }
 
                     }
 
@@ -540,7 +562,7 @@ namespace DarkUnderLevelEditor {
                         newTile = new Tile();
                         newTile.Title = "Tile " + (tileCount < 10 ? "0" : "") + tileCount;
                         newTile.Click += new EventHandler(tile_Click);
-                        newTile.Parent = tabPage1;
+                        newTile.Parent = tabPageTileEditor;
                         newTile.Location = new Point(410 + ((tileCount % 5) * 91), 6 + (((Byte)tileCount / 5) * 110));
                         newTile.Index = tileCount;
                         tiles.Add(newTile);
@@ -1246,7 +1268,7 @@ namespace DarkUnderLevelEditor {
             int tileIndex = selectedTile.Index;
 
             tiles.Remove(selectedTile);
-            tabPage1.Controls.Remove(selectedTile);
+            tabPageTileEditor.Controls.Remove(selectedTile);
 
 
             foreach (Tile tile in tiles) {
@@ -1284,7 +1306,7 @@ namespace DarkUnderLevelEditor {
 
             if (dgOpenMapData.FileName != "") {
 
-                saveMapData(dgOpenMapData.InitialDirectory + dgOpenMapData.FileName);
+                saveMapData(dgOpenMapData.FileName);
             
             }
             else {
@@ -1452,7 +1474,7 @@ namespace DarkUnderLevelEditor {
 
                         for (int y = 0; y < level.levelDimensionY; y++) {
 
-                            file.Write("{0}, ", level.tileData[y, x]);
+                            file.Write("{0}, ", level.tileData[x, y]);
                         }
 
                     }
