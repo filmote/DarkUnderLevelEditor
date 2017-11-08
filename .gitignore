@@ -1,0 +1,5 @@
+.vs/**
+DarkUnderLevelEditor/bin/**
+DarkUnderLevelEditor/obj/**
+Setup/Debug/**
+Setup/Release/**
