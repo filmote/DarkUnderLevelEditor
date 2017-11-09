@@ -1665,10 +1665,59 @@ namespace DarkUnderLevelEditor {
 
         private void tvwLevels_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e) {
 
+            mnuTreeViewDeleteEnemy.Enabled = (e.Node.Tag != null && e.Node.Tag.GetType() == typeof(LevelEnemy));
+            mnuTreeViewDeleteItem.Enabled = (e.Node.Tag != null && e.Node.Tag.GetType() == typeof(LevelItem));
+            mnuTreeViewDeleteDoor.Enabled = (e.Node.Tag != null && e.Node.Tag.GetType() == typeof(LevelDoor));
+
+            if (e.Button == MouseButtons.Right) {
+                mnuTreeViewContext.Show(Cursor.Position);
+            }
+
             populateLevelEditor(e.Node);
 
         }
 
+        private void mnuTreeViewDeleteEnemy_Click(object sender, EventArgs e) {
+
+            LevelEnemy levelEnemy = (LevelEnemy)tvwLevels.SelectedNode.Tag;
+            TreeNode rootNode = Utils.getRootNode(tvwLevels.SelectedNode);
+            TreeNode parentNode = tvwLevels.SelectedNode.Parent;
+            selectedLevel.enemies.Remove(levelEnemy);
+            tvwLevels.Nodes.Remove(tvwLevels.SelectedNode);
+            tvwLevels.SelectedNode = parentNode;
+            populateLevelEditor(rootNode);
+
+            validateDungeons();
+
+        }
+
+        private void mnuTreeViewDeleteItem_Click(object sender, EventArgs e) {
+
+            LevelItem levelItem = (LevelItem)tvwLevels.SelectedNode.Tag;
+            TreeNode rootNode = Utils.getRootNode(tvwLevels.SelectedNode);
+            TreeNode parentNode = tvwLevels.SelectedNode.Parent;
+            selectedLevel.items.Remove(levelItem);
+            tvwLevels.Nodes.Remove(tvwLevels.SelectedNode);
+            tvwLevels.SelectedNode = parentNode;
+            populateLevelEditor(rootNode);
+
+            validateDungeons();
+
+        }
+
+        private void mnuTreeViewDeleteDoor_Click(object sender, EventArgs e) {
+
+            LevelDoor levelDoor = (LevelDoor)tvwLevels.SelectedNode.Tag;
+            TreeNode rootNode = Utils.getRootNode(tvwLevels.SelectedNode);
+            TreeNode parentNode = tvwLevels.SelectedNode.Parent;
+            selectedLevel.doors.Remove(levelDoor);
+            tvwLevels.Nodes.Remove(tvwLevels.SelectedNode);
+            tvwLevels.SelectedNode = parentNode;
+            populateLevelEditor(rootNode);
+
+            validateDungeons();
+
+        }
 
     }
 
