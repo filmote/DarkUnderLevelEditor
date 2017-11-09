@@ -5,11 +5,9 @@ using System.Text;
 
 namespace DarkUnderLevelEditor {
 
-    class LevelItem {
+    class LevelItem : LevelBase {
 
-        public Utils.ItemType itemType;
-        public int startPosX;
-        public int startPosY;
+        public ItemType itemType;
 
     }
 

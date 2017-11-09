@@ -9,7 +9,8 @@ using System.Windows.Forms;
 
 namespace DarkUnderLevelEditor {
 
-    public partial class frmDarkUnder : Form {
+    public partial class frmDarkUnder : Form
+    {
 
         private const int NUMBER_OF_ENEMIES = 30;
         private const int NUMBER_OF_ITEMS = 30;
@@ -27,13 +28,14 @@ namespace DarkUnderLevelEditor {
         private List<Tile> tiles = new List<Tile>();
         private List<Level> levels = new List<Level>();
         private Boolean mouseDown = false;
+        private Color cellDragColour; 
 
         public frmDarkUnder() {
             InitializeComponent();
         }
-        
+
         private void Form1_Load(object sender, EventArgs e) {
-            
+
             for (int i = 0; i < 15; i++) {
                 tileEditor.Rows.Add("");
             }
@@ -55,12 +57,32 @@ namespace DarkUnderLevelEditor {
             dgSaveMapData.Filter = "MapData (*.h)|*.h";
             dgSaveMapData.FilterIndex = 0;
             dgSaveMapData.RestoreDirectory = false;
-            
+
         }
 
         private void cmdSave_Click(object sender, EventArgs e) {
 
-            selectedTile.Data = tileData;
+            selectedTile.Data = (Byte[])tileData.Clone();
+
+            if (selectedLevel != null) {
+
+                for (int x = 0; x < selectedLevel.levelDimensionX; x++) {
+
+                    for (int y = 0; y < selectedLevel.levelDimensionY; y++) {
+
+                        if (selectedLevel.tileData[y, x] == selectedTile.Index) {
+
+                            populateLevelEditor(selectedLevelNode);
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            validateDungeons();
 
         }
 
@@ -92,9 +114,7 @@ namespace DarkUnderLevelEditor {
 
         }
 
-        void populateLevelEditor(Byte[] data, int col, int row) {
-
-            tileData = data;
+        void mapTileToLevel(Byte[] data, int col, int row) {
 
             for (Byte y = 0; y < 15; y++) {
 
@@ -123,7 +143,7 @@ namespace DarkUnderLevelEditor {
             if (selectedTile != null) { selectedTile.BackColor = SystemColors.Window; }
             selectedTile = (Tile)sender;
             selectedTile.BackColor = SystemColors.ControlLight;
-            populateTileEditor(selectedTile.Data);
+            populateTileEditor((Byte[])selectedTile.Data.Clone());
             tileEditor.Enabled = true;
 
             cmdTileDelete.Enabled = true;
@@ -157,7 +177,7 @@ namespace DarkUnderLevelEditor {
             menuItem.Click += new EventHandler(mnuAddTile_Click);
             menuItem.Tag = newTile;
             mnuAddTiles.DropDownItems.Add(menuItem);
-            
+
             tileCount++;
 
             if (tileCount == NUMBER_OF_TILES) {
@@ -196,92 +216,96 @@ namespace DarkUnderLevelEditor {
 
             // Highlight the enemy in the treeview if one is selected ..
 
-            if (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.Red) {
+            if (selectedCol >= 0 && selectedRow >= 0) {
 
-                foreach (TreeNode node in selectedLevelNode.Nodes[0].Nodes) {
+                if (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.Red) {
 
-                    LevelEnemy enemy = (LevelEnemy)node.Tag;
+                    foreach (TreeNode node in selectedLevelNode.Nodes[0].Nodes) {
 
-                    if ((enemy.startPosX == selectedCol) && (enemy.startPosY == selectedRow)) {
+                        LevelEnemy enemy = (LevelEnemy)node.Tag;
 
-                        node.EnsureVisible();
-                        tvwLevels.SelectedNode = node;
-                        break;
+                        if ((enemy.startPosX == selectedCol) && (enemy.startPosY == selectedRow)) {
+
+                            node.EnsureVisible();
+                            tvwLevels.SelectedNode = node;
+                            break;
+                        }
+
                     }
 
                 }
 
-            }
 
+                // Highlight the item in the treeview if one is selected ..
 
-            // Highlight the item in the treeview if one is selected ..
+                if (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.Green) {
 
-            if (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.Green) {
+                    foreach (TreeNode node in selectedLevelNode.Nodes[1].Nodes) {
 
-                foreach (TreeNode node in selectedLevelNode.Nodes[1].Nodes) {
+                        LevelItem item = (LevelItem)node.Tag;
 
-                    LevelItem item = (LevelItem)node.Tag;
+                        if ((item.startPosX == selectedCol) && (item.startPosY == selectedRow)) {
 
-                    if ((item.startPosX == selectedCol) && (item.startPosY == selectedRow)) {
+                            node.EnsureVisible();
+                            tvwLevels.SelectedNode = node;
+                            break;
+                        }
 
-                        node.EnsureVisible();
-                        tvwLevels.SelectedNode = node;
-                        break;
                     }
 
                 }
 
-            }
 
+                // Highlight the door in the treeview if one is selected ..
 
-            // Highlight the door in the treeview if one is selected ..
+                if (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.Yellow) {
 
-            if (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.Yellow) {
+                    foreach (TreeNode node in selectedLevelNode.Nodes[2].Nodes) {
 
-                foreach (TreeNode node in selectedLevelNode.Nodes[2].Nodes) {
+                        LevelDoor door = (LevelDoor)node.Tag;
 
-                    LevelDoor door = (LevelDoor)node.Tag;
+                        if ((door.startPosX == selectedCol) && (door.startPosY == selectedRow)) {
 
-                    if ((door.startPosX == selectedCol) && (door.startPosY == selectedRow)) {
+                            node.EnsureVisible();
+                            tvwLevels.SelectedNode = node;
+                            break;
+                        }
 
-                        node.EnsureVisible();
-                        tvwLevels.SelectedNode = node;
-                        break;
                     }
 
                 }
 
-            }
 
+                if (e.Button == MouseButtons.Right) {
 
-            if (e.Button == MouseButtons.Right) {
+                    mnuAddTiles.Enabled = (selectedCol % 15 == 0 && selectedRow % 15 == 0);
 
-                mnuAddTiles.Enabled = (selectedCol % 15 == 0 && selectedRow % 15 == 0);
+                    if (selectedLevel != null) {
 
-                if (selectedLevel != null) {
+                        mnuEnemyAddBase.Enabled = (selectedLevel.enemies.Count < NUMBER_OF_ENEMIES && levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.White);
+                        mnuEnemyDelete.Enabled = (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.Red);
+                        mnuItemAddBase.Enabled = (selectedLevel.items.Count < NUMBER_OF_ITEMS && levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.White);
+                        mnuItemDelete.Enabled = (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.Green);
+                        mnuDoorAddBase.Enabled = (selectedLevel.doors.Count < NUMBER_OF_DOORS && levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.White);
+                        mnuDoorDelete.Enabled = (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.Yellow);
+                        mnuPlacePlayer.Enabled = (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.White);
 
-                    mnuEnemyAddBase.Enabled = (selectedLevel.enemies.Count < NUMBER_OF_ENEMIES && levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.White);
-                    mnuEnemyDelete.Enabled = (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.Red);
-                    mnuItemAddBase.Enabled = (selectedLevel.items.Count < NUMBER_OF_ITEMS && levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.White);
-                    mnuItemDelete.Enabled = (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.Green);
-                    mnuDoorAddBase.Enabled = (selectedLevel.doors.Count < NUMBER_OF_DOORS && levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.White);
-                    mnuDoorDelete.Enabled = (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.Green);
-                    mnuPlacePlayer.Enabled = (levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor == Color.White);
+                    }
+                    else {
+
+                        mnuEnemyAddBase.Enabled = false;
+                        mnuEnemyDelete.Enabled = false;
+                        mnuItemAddBase.Enabled = false;
+                        mnuItemDelete.Enabled = false;
+                        mnuDoorAddBase.Enabled = false;
+                        mnuDoorDelete.Enabled = false;
+                        mnuPlacePlayer.Enabled = false;
+
+                    }
+
+                    mnuContext.Show(Cursor.Position);
 
                 }
-                else {
-
-                    mnuEnemyAddBase.Enabled = false;
-                    mnuEnemyDelete.Enabled = false;
-                    mnuItemAddBase.Enabled = false;
-                    mnuItemDelete.Enabled = false;
-                    mnuDoorAddBase.Enabled = false;
-                    mnuDoorDelete.Enabled = false;
-                    mnuPlacePlayer.Enabled = false;
-
-                }
-
-                mnuContext.Show(Cursor.Position);
 
             }
 
@@ -290,7 +314,7 @@ namespace DarkUnderLevelEditor {
         private void mnuAddTile_Click(object sender, EventArgs e) {
 
             Tile tile = (Tile)((ToolStripMenuItem)sender).Tag;
-            populateLevelEditor(tile.Data, selectedCol, selectedRow);
+            mapTileToLevel(tile.Data, selectedCol, selectedRow);
 
             selectedLevel.tileData[selectedRow / 15, selectedCol / 15] = (byte)tile.Index;
 
@@ -298,6 +322,7 @@ namespace DarkUnderLevelEditor {
             if ((selectedRow / 15) + 1 > selectedLevel.levelDimensionY) { selectedLevel.levelDimensionY = selectedLevel.levelDimensionY + 1; }
 
             if (tile == selectedTile) cmdTileDelete.Enabled = false;
+            validateDungeons();
 
         }
 
@@ -317,7 +342,18 @@ namespace DarkUnderLevelEditor {
                     );
                 e.Handled = true;
             }
+
         }
+
+        //private void levelEditor_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+
+        //    if (selectedLevel != null && (selectedLevel.levelDimensionX * 15) > e.ColumnIndex && (selectedLevel.levelDimensionY * 15) > e.RowIndex)
+        //        return;
+
+        //    e.CellStyle.BackColor = Color.FromArgb(245, 245, 245);
+        //    levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.FromArgb(245, 245, 245);
+
+        //}
 
         private void mnuOpenMapData_Click(object sender, EventArgs e) {
 
@@ -367,7 +403,7 @@ namespace DarkUnderLevelEditor {
 
                     if (counter == 13) {
 
-                        Byte[,] tileDataSet = new Byte[17,17];
+                        Byte[,] tileDataSet = new Byte[17, 17];
                         String newLine = line.Replace(" ", "");
                         String[] data = newLine.Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -376,7 +412,7 @@ namespace DarkUnderLevelEditor {
 
                         for (int i = 0; i < 11; i++) {
                             if (i == data.Length) break;
-                            tileDataSet[y1,x1] = Byte.Parse(data[i]);
+                            tileDataSet[y1, x1] = Byte.Parse(data[i]);
 
                             x1++;
                             if (x1 == newLevel.levelDimensionX) {
@@ -399,14 +435,16 @@ namespace DarkUnderLevelEditor {
                         String[] data = newLine.Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 
                         LevelDoor door = new LevelDoor();
-                        door.doorType = (Utils.ItemType)int.Parse(data[0]);
+                        door.doorType = (ItemType)int.Parse(data[0]);
                         door.startPosX = int.Parse(data[1]);
                         door.startPosY = int.Parse(data[2]);
                         newLevel.doors.Add(door);
-                        TreeNode node = treeNodeDoors.Nodes.Add(Utils.getDoorTypeDescription((Utils.ItemType)door.doorType));
-                        node.ImageIndex = (int)Utils.Images.Door;
-                        node.SelectedImageIndex = (int)Utils.Images.Door;
+
+                        TreeNode node = treeNodeDoors.Nodes.Add(Utils.getDoorTypeDescription((ItemType)door.doorType));
+                        node.ImageIndex = (int)Images.Door;
+                        node.SelectedImageIndex = (int)Images.Door;
                         node.Tag = door;
+                        door.node = node;
 
                         numberOfDoors--;
                         if (numberOfDoors == 0) { counter++; }
@@ -432,15 +470,16 @@ namespace DarkUnderLevelEditor {
                         String[] data = newLine.Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 
                         LevelItem item = new LevelItem();
-                        item.itemType = (Utils.ItemType)int.Parse(data[0]);
+                        item.itemType = (ItemType)int.Parse(data[0]);
                         item.startPosX = int.Parse(data[1]);
                         item.startPosY = int.Parse(data[2]);
                         newLevel.items.Add(item);
 
-                        TreeNode node = treeNodeItems.Nodes.Add(Utils.getItemTypeDescription((Utils.ItemType)item.itemType));
-                        node.ImageIndex = (int)Utils.Images.Item;
-                        node.SelectedImageIndex = (int)Utils.Images.Item;
+                        TreeNode node = treeNodeItems.Nodes.Add(Utils.getItemTypeDescription((ItemType)item.itemType));
+                        node.ImageIndex = (int)Images.Item;
+                        node.SelectedImageIndex = (int)Images.Item;
                         node.Tag = item;
+                        item.node = node;
 
                         numberOfItems--;
                         if (numberOfItems == 0) { counter++; }
@@ -467,15 +506,16 @@ namespace DarkUnderLevelEditor {
                         String[] data = newLine.Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 
                         LevelEnemy enemy = new LevelEnemy();
-                        enemy.enemyType = (Utils.EnemyType)int.Parse(data[0]);
+                        enemy.enemyType = (EnemyType)int.Parse(data[0]);
                         enemy.startPosX = int.Parse(data[1]);
                         enemy.startPosY = int.Parse(data[2]);
                         newLevel.enemies.Add(enemy);
 
-                        TreeNode node = treeNodeEnemies.Nodes.Add(Utils.getEnemyTypeDescription((Utils.EnemyType)enemy.enemyType));
-                        node.ImageIndex = (int)Utils.Images.Enemy;
-                        node.SelectedImageIndex = (int)Utils.Images.Enemy;
+                        TreeNode node = treeNodeEnemies.Nodes.Add(Utils.getEnemyTypeDescription((EnemyType)enemy.enemyType));
+                        node.ImageIndex = (int)Images.Enemy;
+                        node.SelectedImageIndex = (int)Images.Enemy;
                         node.Tag = enemy;
+                        enemy.node = node;
 
                         numberOfEnemies--;
                         if (numberOfEnemies == 0) { counter++; }
@@ -572,7 +612,7 @@ namespace DarkUnderLevelEditor {
                         menuItem.Click += new EventHandler(mnuAddTile_Click);
                         menuItem.Tag = newTile;
                         mnuAddTiles.DropDownItems.Add(menuItem);
-            
+
                         tileCount++;
                         counter++;
 
@@ -586,20 +626,21 @@ namespace DarkUnderLevelEditor {
 
                         treeNode = tvwLevels.Nodes.Add("Level " + (levels.Count - 1 < 10 ? "0" : "") + (levels.Count - 1));
                         treeNode.Tag = newLevel;
-                        treeNode.ImageIndex = (int)Utils.Images.Level;
-                        treeNode.SelectedImageIndex = (int)Utils.Images.Level;
+                        treeNode.ImageIndex = (int)Images.Level;
+                        treeNode.SelectedImageIndex = (int)Images.Level;
 
                         treeNodeEnemies = treeNode.Nodes.Add("Enemies");
-                        treeNodeEnemies.ImageIndex = (int)Utils.Images.EnemyRoot;
-                        treeNodeEnemies.SelectedImageIndex = (int)Utils.Images.EnemyRoot;
+                        treeNodeEnemies.ImageIndex = (int)Images.EnemyRoot;
+                        treeNodeEnemies.SelectedImageIndex = (int)Images.EnemyRoot;
 
                         treeNodeItems = treeNode.Nodes.Add("Items");
-                        treeNodeItems.ImageIndex = (int)Utils.Images.ItemRoot;
-                        treeNodeItems.SelectedImageIndex = (int)Utils.Images.ItemRoot;
+                        treeNodeItems.ImageIndex = (int)Images.ItemRoot;
+                        treeNodeItems.SelectedImageIndex = (int)Images.ItemRoot;
 
                         treeNodeDoors = treeNode.Nodes.Add("Doors");
-                        treeNodeDoors.ImageIndex = (int)Utils.Images.DoorRoot;
-                        treeNodeDoors.SelectedImageIndex = (int)Utils.Images.DoorRoot;
+                        treeNodeDoors.ImageIndex = (int)Images.DoorRoot;
+                        treeNodeDoors.SelectedImageIndex = (int)Images.DoorRoot;
+                        newLevel.node = treeNode;
 
                     }
 
@@ -607,40 +648,40 @@ namespace DarkUnderLevelEditor {
 
                         String newLine = line.Trim();
 
-                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_HP"))    { udBeholder_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_AP"))    { udBeholder_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_XP"))    { udBeholder_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_MV"))    { chkBeholder_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
+                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_HP")) { udBeholder_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_AP")) { udBeholder_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_XP")) { udBeholder_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_MV")) { chkBeholder_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
 
-                        if (newLine.StartsWith("#define ENEMY_SKELETON_HP"))    { udSkeleton_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_SKELETON_AP"))    { udSkeleton_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_SKELETON_XP"))    { udSkeleton_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_SKELETON_MV"))    { chkSkeleton_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
+                        if (newLine.StartsWith("#define ENEMY_SKELETON_HP")) { udSkeleton_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_SKELETON_AP")) { udSkeleton_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_SKELETON_XP")) { udSkeleton_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_SKELETON_MV")) { chkSkeleton_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
 
-                        if (newLine.StartsWith("#define ENEMY_DISPLACER_HP"))   { udDisplacer_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_DISPLACER_AP"))   { udDisplacer_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_DISPLACER_XP"))   { udDisplacer_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_DISPLACER_MV"))   { chkDisplacer_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
+                        if (newLine.StartsWith("#define ENEMY_DISPLACER_HP")) { udDisplacer_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_DISPLACER_AP")) { udDisplacer_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_DISPLACER_XP")) { udDisplacer_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_DISPLACER_MV")) { chkDisplacer_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
 
-                        if (newLine.StartsWith("#define ENEMY_WRAITH_HP"))      { udWraith_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_WRAITH_AP"))      { udWraith_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_WRAITH_XP"))      { udWraith_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_WRAITH_MV"))      { chkWraith_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
+                        if (newLine.StartsWith("#define ENEMY_WRAITH_HP")) { udWraith_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_WRAITH_AP")) { udWraith_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_WRAITH_XP")) { udWraith_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_WRAITH_MV")) { chkWraith_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
 
-                        if (newLine.StartsWith("#define ENEMY_DRAGON_HP"))      { udDragon_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_DRAGON_AP"))      { udDragon_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_DRAGON_XP"))      { udDragon_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_DRAGON_MV"))      { chkDragon_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
+                        if (newLine.StartsWith("#define ENEMY_DRAGON_HP")) { udDragon_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_DRAGON_AP")) { udDragon_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_DRAGON_XP")) { udDragon_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_DRAGON_MV")) { chkDragon_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
 
-                        if (newLine.StartsWith("#define ENEMY_RAT_HP"))         { udRat_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_RAT_AP"))         { udRat_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_RAT_XP"))         { udRat_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_RAT_MV"))         { chkRat_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
+                        if (newLine.StartsWith("#define ENEMY_RAT_HP")) { udRat_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_RAT_AP")) { udRat_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_RAT_XP")) { udRat_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_RAT_MV")) { chkRat_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
 
-                        if (newLine.StartsWith("#define ENEMY_SLIME_HP"))       { udSlime_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_SLIME_AP"))       { udSlime_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_SLIME_XP"))       { udSlime_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_SLIME_MV"))       { chkSlime_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
+                        if (newLine.StartsWith("#define ENEMY_SLIME_HP")) { udSlime_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_SLIME_AP")) { udSlime_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_SLIME_XP")) { udSlime_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_SLIME_MV")) { chkSlime_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
 
                     }
 
@@ -654,10 +695,16 @@ namespace DarkUnderLevelEditor {
 
         private void tvwLevels_AfterSelect(object sender, TreeViewEventArgs e) {
 
-            if ((e.Node.Tag != null) && (e.Node.Tag.GetType() == typeof(Level))) {
+            populateLevelEditor(e.Node);
 
-                Level level = (Level)e.Node.Tag;
+        }
 
+        private void populateLevelEditor(TreeNode levelNode) {
+        
+            if ((levelNode.Tag != null) && (levelNode.Tag.GetType() == typeof(Level))) {
+
+                Level level = (Level)levelNode.Tag;
+                levelEditor.SuspendLayout();
                 clearLevel();
 
                 if (level.levelDimensionX > 0 && level.levelDimensionY > 0) {
@@ -668,29 +715,29 @@ namespace DarkUnderLevelEditor {
 
                             int tileNumber = level.tileData[y, x];
                             Tile tile = tiles[tileNumber];
-                            populateLevelEditor(tile.Data, x * 15, y * 15);
+                            mapTileToLevel(tile.Data, x * 15, y * 15);
 
                         }
 
                     }
 
                 }
-                            
-                foreach (TreeNode node in e.Node.Nodes[0].Nodes) {
+
+                foreach (TreeNode node in levelNode.Nodes[0].Nodes) {
 
                     LevelEnemy enemy = (LevelEnemy)node.Tag;
                     levelEditor.Rows[enemy.startPosY].Cells[enemy.startPosX].Style.BackColor = Color.Red;
 
                 }
 
-                foreach (TreeNode node in e.Node.Nodes[1].Nodes) {
+                foreach (TreeNode node in levelNode.Nodes[1].Nodes) {
 
                     LevelItem item = (LevelItem)node.Tag;
                     levelEditor.Rows[item.startPosY].Cells[item.startPosX].Style.BackColor = Color.Green;
 
                 }
 
-                foreach (TreeNode node in e.Node.Nodes[2].Nodes) {
+                foreach (TreeNode node in levelNode.Nodes[2].Nodes) {
 
                     LevelDoor door = (LevelDoor)node.Tag;
                     levelEditor.Rows[door.startPosY].Cells[door.startPosX].Style.BackColor = Color.Yellow;
@@ -699,17 +746,21 @@ namespace DarkUnderLevelEditor {
 
                 foreach (TreeNode node in tvwLevels.Nodes) {
 
-                    if (node != e.Node) {
+                    if (node != levelNode) {
                         node.Collapse();
                     }
                 }
 
-                levelEditor.Rows[level.startPosY].Cells[level.startPosX].Style.BackColor = Color.Turquoise;
+                if (level.startPosX > 0 && level.startPosY > 0) {
 
-                e.Node.Expand();
+                    levelEditor.Rows[level.startPosY].Cells[level.startPosX].Style.BackColor = Color.Turquoise;
+
+                }
+
+                levelNode.Expand();
 
                 selectedLevel = level;
-                selectedLevelNode = e.Node;
+                selectedLevelNode = levelNode;
                 levelEditor.Enabled = true;
 
                 pnlLevelDetails.Visible = true;
@@ -721,19 +772,21 @@ namespace DarkUnderLevelEditor {
                 txtLevelHeading1.Text = level.line1;
                 txtLevelHeading2.Text = level.line2;
                 cboLevelDirection.SelectedIndex = level.direction;
-                txtLevelPositionX.Text = level.startPosX.ToString();
-                txtLevelPositionY.Text = level.startPosY.ToString();
+                txtLevelPositionX.Text = (level.startPosX >= 0 ? level.startPosX.ToString() : "");
+                txtLevelPositionY.Text = (level.startPosY >= 0 ? level.startPosY.ToString() : "");
 
                 cmdLevelDelete.Enabled = true;
 
-                cmdLevelDown.Enabled = (tvwLevels.Nodes.Count > 1 && e.Node != tvwLevels.Nodes[tvwLevels.Nodes.Count - 1]);
-                cmdLevelUp.Enabled = (tvwLevels.Nodes.Count > 1 && e.Node != tvwLevels.Nodes[0]);
+                cmdLevelDown.Enabled = (tvwLevels.Nodes.Count > 1 && levelNode != tvwLevels.Nodes[tvwLevels.Nodes.Count - 1]);
+                cmdLevelUp.Enabled = (tvwLevels.Nodes.Count > 1 && levelNode != tvwLevels.Nodes[0]);
+
+                levelEditor.ResumeLayout();
 
             }
 
-            if ((e.Node.Tag != null) && (e.Node.Tag.GetType() == typeof(LevelEnemy))) {
+            if ((levelNode.Tag != null) && (levelNode.Tag.GetType() == typeof(LevelEnemy))) {
 
-                LevelEnemy enemy = (LevelEnemy)e.Node.Tag;
+                LevelEnemy enemy = (LevelEnemy)levelNode.Tag;
                 levelEditor.CurrentCell = levelEditor.Rows[enemy.startPosY].Cells[enemy.startPosX];
 
                 if (!levelEditor.Rows[enemy.startPosY].Visible) { levelEditor.FirstDisplayedScrollingRowIndex = enemy.startPosY; }
@@ -753,9 +806,9 @@ namespace DarkUnderLevelEditor {
 
             }
 
-            if ((e.Node.Tag != null) && (e.Node.Tag.GetType() == typeof(LevelItem))) {
+            if ((levelNode.Tag != null) && (levelNode.Tag.GetType() == typeof(LevelItem))) {
 
-                LevelItem item = (LevelItem)e.Node.Tag;
+                LevelItem item = (LevelItem)levelNode.Tag;
                 levelEditor.CurrentCell = levelEditor.Rows[item.startPosY].Cells[item.startPosX];
 
                 if (!levelEditor.Rows[item.startPosY].Visible) { levelEditor.FirstDisplayedScrollingRowIndex = item.startPosY; }
@@ -775,9 +828,9 @@ namespace DarkUnderLevelEditor {
 
             }
 
-            if ((e.Node.Tag != null) && (e.Node.Tag.GetType() == typeof(LevelDoor))) {
+            if ((levelNode.Tag != null) && (levelNode.Tag.GetType() == typeof(LevelDoor))) {
 
-                LevelDoor door = (LevelDoor)e.Node.Tag;
+                LevelDoor door = (LevelDoor)levelNode.Tag;
                 levelEditor.CurrentCell = levelEditor.Rows[door.startPosY].Cells[door.startPosX];
 
                 if (!levelEditor.Rows[door.startPosY].Visible) { levelEditor.FirstDisplayedScrollingRowIndex = door.startPosY; }
@@ -802,15 +855,17 @@ namespace DarkUnderLevelEditor {
 
         private void clearLevel() {
 
+            levelEditor.SuspendLayout();
             for (int y = 0; y < 255; y++) {
 
                 for (int x = 0; x < 255; x++) {
 
-                    levelEditor.Rows[y].Cells[x].Style.BackColor = Color.White;
+                    levelEditor.Rows[y].Cells[x].Style.BackColor = levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.FromArgb(245, 245, 245); ;
 
                 }
 
             }
+            levelEditor.ResumeLayout();
 
         }
 
@@ -829,34 +884,34 @@ namespace DarkUnderLevelEditor {
         }
 
         private void mnuEnemyAddSlime_Click(object sender, EventArgs e) {
-            mnuEnemyAdd(Utils.EnemyType.Slime);
+            mnuEnemyAdd(EnemyType.Slime);
         }
 
         private void mnuEnemyAddBeholder_Click(object sender, EventArgs e) {
-            mnuEnemyAdd(Utils.EnemyType.Beholder);
+            mnuEnemyAdd(EnemyType.Beholder);
         }
 
         private void mnuEnemyAddSkeleton_Click(object sender, EventArgs e) {
-            mnuEnemyAdd(Utils.EnemyType.Skeleton);
+            mnuEnemyAdd(EnemyType.Skeleton);
         }
 
         private void mnuEnemyAddDisplacer_Click(object sender, EventArgs e) {
-            mnuEnemyAdd(Utils.EnemyType.Displacer);
+            mnuEnemyAdd(EnemyType.Displacer);
         }
 
         private void mnuEnemyAddWraith_Click(object sender, EventArgs e) {
-            mnuEnemyAdd(Utils.EnemyType.Wraith);
+            mnuEnemyAdd(EnemyType.Wraith);
         }
 
         private void mnuEnemyAddDragon_Click(object sender, EventArgs e) {
-            mnuEnemyAdd(Utils.EnemyType.Dragon);
+            mnuEnemyAdd(EnemyType.Dragon);
         }
 
         private void mnuEnemyAddRat_Click(object sender, EventArgs e) {
-            mnuEnemyAdd(Utils.EnemyType.Rat);
+            mnuEnemyAdd(EnemyType.Rat);
         }
 
-        private void mnuEnemyAdd(Utils.EnemyType enemyType) {
+        private void mnuEnemyAdd(EnemyType enemyType) {
 
             LevelEnemy enemy = new LevelEnemy();
             enemy.enemyType = enemyType;
@@ -866,10 +921,12 @@ namespace DarkUnderLevelEditor {
             levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.Red;
             selectedLevel.enemies.Add(enemy);
 
-            TreeNode node = selectedLevelNode.Nodes[0].Nodes.Add(Utils.getEnemyTypeDescription((Utils.EnemyType)enemy.enemyType));
-            node.ImageIndex = (int)Utils.Images.Enemy;
-            node.SelectedImageIndex = (int)Utils.Images.Enemy;
+            TreeNode node = selectedLevelNode.Nodes[0].Nodes.Add(Utils.getEnemyTypeDescription((EnemyType)enemy.enemyType));
+            node.ImageIndex = (int)Images.Enemy;
+            node.SelectedImageIndex = (int)Images.Enemy;
             node.Tag = enemy;
+            enemy.node = node;
+            validateDungeons();
 
         }
 
@@ -890,22 +947,23 @@ namespace DarkUnderLevelEditor {
             }
 
             levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.White;
+            validateDungeons();
 
         }
 
         private void mnuItemAddPotion_Click(object sender, EventArgs e) {
-            mnuItemAdd(Utils.ItemType.Potion);
+            mnuItemAdd(ItemType.Potion);
         }
 
         private void mnuItemAddKey_Click(object sender, EventArgs e) {
-            mnuItemAdd(Utils.ItemType.Key);
+            mnuItemAdd(ItemType.Key);
         }
 
         private void mnuItemAddScroll_Click(object sender, EventArgs e) {
-            mnuItemAdd(Utils.ItemType.Scroll);
+            mnuItemAdd(ItemType.Scroll);
         }
-        
-        private void mnuItemAdd(Utils.ItemType itemType) {
+
+        private void mnuItemAdd(ItemType itemType) {
 
             LevelItem item = new LevelItem();
             item.itemType = itemType;
@@ -915,10 +973,12 @@ namespace DarkUnderLevelEditor {
             levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.Green;
             selectedLevel.items.Add(item);
 
-            TreeNode node = selectedLevelNode.Nodes[1].Nodes.Add(Utils.getItemTypeDescription((Utils.ItemType)item.itemType));
-            node.ImageIndex = (int)Utils.Images.Item;
-            node.SelectedImageIndex = (int)Utils.Images.Item;
+            TreeNode node = selectedLevelNode.Nodes[1].Nodes.Add(Utils.getItemTypeDescription((ItemType)item.itemType));
+            node.ImageIndex = (int)Images.Item;
+            node.SelectedImageIndex = (int)Images.Item;
             node.Tag = item;
+            item.node = node;
+            validateDungeons();
 
         }
 
@@ -939,17 +999,19 @@ namespace DarkUnderLevelEditor {
             }
 
             levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.White;
+            validateDungeons();
+
         }
 
         private void mnuDoorAddLevel_Click(object sender, EventArgs e) {
-            mnuDoorAdd(Utils.ItemType.LockedDoor);
+            mnuDoorAdd(ItemType.LockedDoor);
         }
 
         private void mnuDoorAddGate_Click(object sender, EventArgs e) {
-            mnuDoorAdd(Utils.ItemType.LockedGate);
+            mnuDoorAdd(ItemType.LockedGate);
         }
 
-        private void mnuDoorAdd(Utils.ItemType doorType) {
+        private void mnuDoorAdd(ItemType doorType) {
 
             LevelDoor door = new LevelDoor();
             door.doorType = doorType;
@@ -959,10 +1021,12 @@ namespace DarkUnderLevelEditor {
             levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.Yellow;
             selectedLevel.doors.Add(door);
 
-            TreeNode node = selectedLevelNode.Nodes[2].Nodes.Add(Utils.getItemTypeDescription((Utils.ItemType)door.doorType));
-            node.ImageIndex = (int)Utils.Images.Door;
-            node.SelectedImageIndex = (int)Utils.Images.Door;
+            TreeNode node = selectedLevelNode.Nodes[2].Nodes.Add(Utils.getDoorTypeDescription((ItemType)door.doorType));
+            node.ImageIndex = (int)Images.Door;
+            node.SelectedImageIndex = (int)Images.Door;
             node.Tag = door;
+            door.node = node;
+            validateDungeons();
 
         }
 
@@ -983,6 +1047,8 @@ namespace DarkUnderLevelEditor {
             }
 
             levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.White;
+            validateDungeons();
+
         }
 
         private void cmdLevelAdd_Click(object sender, EventArgs e) {
@@ -995,20 +1061,21 @@ namespace DarkUnderLevelEditor {
 
             TreeNode treeNode = tvwLevels.Nodes.Add("Level " + (levels.Count - 1 < 10 ? "0" : "") + (levels.Count - 1));
             treeNode.Tag = newLevel;
-            treeNode.ImageIndex = (int)Utils.Images.Level;
-            treeNode.SelectedImageIndex = (int)Utils.Images.Level;
+            treeNode.ImageIndex = (int)Images.Level;
+            treeNode.SelectedImageIndex = (int)Images.Level;
+            newLevel.node = treeNode;
 
             TreeNode treeNodeEnemies = treeNode.Nodes.Add("Enemies");
-            treeNodeEnemies.ImageIndex = (int)Utils.Images.EnemyRoot;
-            treeNodeEnemies.SelectedImageIndex = (int)Utils.Images.EnemyRoot;
+            treeNodeEnemies.ImageIndex = (int)Images.EnemyRoot;
+            treeNodeEnemies.SelectedImageIndex = (int)Images.EnemyRoot;
 
             TreeNode treeNodeItems = treeNode.Nodes.Add("Items");
-            treeNodeItems.ImageIndex = (int)Utils.Images.ItemRoot;
-            treeNodeItems.SelectedImageIndex = (int)Utils.Images.ItemRoot;
+            treeNodeItems.ImageIndex = (int)Images.ItemRoot;
+            treeNodeItems.SelectedImageIndex = (int)Images.ItemRoot;
 
             TreeNode treeNodeDoors = treeNode.Nodes.Add("Doors");
-            treeNodeDoors.ImageIndex = (int)Utils.Images.DoorRoot;
-            treeNodeDoors.SelectedImageIndex = (int)Utils.Images.DoorRoot;
+            treeNodeDoors.ImageIndex = (int)Images.DoorRoot;
+            treeNodeDoors.SelectedImageIndex = (int)Images.DoorRoot;
 
             tvwLevels.CollapseAll();
             tvwLevels.SelectedNode = treeNode;
@@ -1019,6 +1086,8 @@ namespace DarkUnderLevelEditor {
                 cmdLevelAdd.Enabled = false;
 
             }
+
+            validateDungeons();
 
         }
 
@@ -1069,19 +1138,8 @@ namespace DarkUnderLevelEditor {
         private void tvwLevels_BeforeCollapse(object sender, TreeViewCancelEventArgs e) {
 
             if ((e.Node.Tag != null) && (e.Node.Tag.GetType() == typeof(Level))) {
-                if (getRootNode(e.Node) == selectedLevelNode) { e.Cancel = true; }
+                if (Utils.getRootNode(e.Node) == selectedLevelNode) { e.Cancel = true; }
             }
-
-        }
-
-
-        private TreeNode getRootNode(TreeNode node) {
-
-            while (node.Parent != null) {
-                node = node.Parent;
-            }
-
-            return node;
 
         }
 
@@ -1110,6 +1168,8 @@ namespace DarkUnderLevelEditor {
                 cmdLevelDelete.Enabled = false;
 
             }
+
+            validateDungeons();
 
         }
 
@@ -1152,6 +1212,7 @@ namespace DarkUnderLevelEditor {
             txtLevelPositionY.Text = selectedLevel.startPosY.ToString();
 
             levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.Turquoise;
+            validateDungeons();
 
         }
 
@@ -1202,14 +1263,14 @@ namespace DarkUnderLevelEditor {
             }
 
         }
-        
+
         private void tileEditor_CellMouseEnter(object sender, DataGridViewCellEventArgs e) {
 
             if (mouseDown) {
 
                 int index = e.ColumnIndex + ((Byte)(e.RowIndex / 8) * 15);
 
-                if (tileEditor.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Gray) {
+                if (cellDragColour == Color.White) {
                     tileEditor.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
                     tileData[index] = (Byte)(tileData[index] & ~(Byte)(1 << (e.RowIndex % 8)));
                 }
@@ -1218,7 +1279,7 @@ namespace DarkUnderLevelEditor {
                     tileData[index] = (Byte)(tileData[index] | (Byte)(1 << (e.RowIndex % 8)));
                 }
             }
-            
+
         }
 
         private void tileEditor_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
@@ -1231,12 +1292,15 @@ namespace DarkUnderLevelEditor {
 
             if (tileEditor.Rows[y].Cells[x].Style.BackColor == Color.Gray) {
 
+                cellDragColour = Color.White;
                 tileEditor.Rows[y].Cells[x].Style.BackColor = Color.White;
                 tileData[index] = (Byte)(tileData[index] & ~(Byte)(1 << (y % 8)));
+
 
             }
             else {
 
+                cellDragColour = Color.Gray;
                 tileEditor.Rows[y].Cells[x].Style.BackColor = Color.Gray;
                 tileData[index] = (Byte)(tileData[index] | (Byte)(1 << (y % 8)));
 
@@ -1285,7 +1349,7 @@ namespace DarkUnderLevelEditor {
 
                     for (int y = 0; y < 17; y++) {
 
-                        if (level.tileData[y,x] > tileIndex) {
+                        if (level.tileData[y, x] > tileIndex) {
                             level.tileData[y, x] = (Byte)(level.tileData[y, x] - 1);
                         }
 
@@ -1304,14 +1368,25 @@ namespace DarkUnderLevelEditor {
 
         private void mnuSaveMapData_Click(object sender, EventArgs e) {
 
-            if (dgOpenMapData.FileName != "") {
+            validateDungeons();
 
-                saveMapData(dgOpenMapData.FileName);
-            
+            if (tvwErrors.Nodes.Count > 0) {
+
+                MessageBox.Show(this, "One or more errors exist and must be corrected.", "Validation Errors", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
             else {
-            
-                mnuSaveMapDataAs_Click(sender, e);
+
+                if (dgOpenMapData.FileName != "") {
+
+                    saveMapData(dgOpenMapData.FileName);
+
+                }
+                else {
+
+                    mnuSaveMapDataAs_Click(sender, e);
+
+                }
 
             }
 
@@ -1319,22 +1394,33 @@ namespace DarkUnderLevelEditor {
 
         private void mnuSaveMapDataAs_Click(object sender, EventArgs e) {
 
-            if (dgSaveMapData.ShowDialog() == DialogResult.OK) {
+            validateDungeons();
 
-                dgOpenMapData.FileName = dgSaveMapData.FileName;
-                saveMapData(dgOpenMapData.FileName);
+            if (tvwErrors.Nodes.Count > 0) {
+
+                MessageBox.Show(this, "One or more errors exist and must be corrected.", "Validation Errors", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else {
+
+                if (dgSaveMapData.ShowDialog() == DialogResult.OK) {
+
+                    dgOpenMapData.FileName = dgSaveMapData.FileName;
+                    saveMapData(dgOpenMapData.FileName);
+
+                }
 
             }
 
         }
-        
+
         private void saveMapData(String fileName) {
 
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName)) {
 
                 file.WriteLine("#pragma once");
                 file.WriteLine("");
-              
+
                 file.WriteLine("#define MAX_LEVEL_COUNT {0}", levels.Count);
                 file.WriteLine("");
                 file.WriteLine("#define ENEMY_BEHOLDER_HP {0}", udBeholder_HP.Value);
@@ -1422,7 +1508,7 @@ namespace DarkUnderLevelEditor {
                         tokenCount++;
                     }
                     for (int i = tokenCount; i < 11; i++) {
-                        file.Write("32, ");                        
+                        file.Write("32, ");
                     }
                     file.WriteLine("");
 
@@ -1501,6 +1587,89 @@ namespace DarkUnderLevelEditor {
 
         }
 
-     }
+        private void validateDungeons() {
+
+            int count = 0;
+            tvwErrors.Nodes.Clear();
+            lblStatusError.Text = "";
+
+            foreach (Level level in levels) {
+
+                List<LevelError> errors = Utils.validateLevel(level, tiles);
+
+                if (errors.Count > 0) {
+
+                    TreeNode node = tvwErrors.Nodes.Add("Level " + (count - 1 < 10 ? "0" : "") + count);
+                    node.SelectedImageIndex = (int)Images.Level;
+                    node.ImageIndex = (int)Images.Level;
+
+                    foreach (LevelError levelError in errors) {
+
+                        TreeNode child = node.Nodes.Add(levelError.error);
+                        child.Tag = levelError;
+                        child.SelectedImageIndex = (int)Images.Error;
+                        child.ImageIndex = (int)Images.Error;
+
+                    }
+
+                }
+
+                count++;
+
+            }
+
+            if (tvwErrors.Nodes.Count > 0) {
+                tabErrors.Text = "Errors (" + tvwErrors.Nodes.Count + ")";
+                tabErrors.ImageIndex = (int)Images.Error;
+            }
+            else {
+                tabErrors.Text = "Errors";
+                tabErrors.ImageIndex = -1;
+            }
+
+            tvwErrors.ExpandAll();
+
+        }
+
+        private void tvwErrors_AfterSelect(object sender, TreeViewEventArgs e) {
+
+            if (e.Node.Tag != null) {
+
+                tabs.SelectedTab = tabLevelEdito;
+
+                LevelError levelError = (LevelError)e.Node.Tag;
+
+                if (levelError.node.Tag.GetType() == typeof(Level)) {
+
+                    tvwLevels.SelectedNode = levelError.node;
+                    levelError.node.EnsureVisible();
+                    lblStatusError.Text = levelError.error;
+
+                }
+
+                if (levelError.node.Tag.GetType() != typeof(Level)) {
+
+                    if (selectedLevelNode == null && selectedLevelNode != Utils.getRootNode(levelError.node)) {
+                        tvwLevels.SelectedNode = Utils.getRootNode(levelError.node);
+                    }
+
+                    levelError.node.EnsureVisible();
+                    tvwLevels.SelectedNode = levelError.node;
+                    lblStatusError.Text = levelError.error;
+
+                }
+
+            }
+
+        }
+
+        private void tvwLevels_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e) {
+
+            populateLevelEditor(e.Node);
+
+        }
+
+
+    }
 
 }

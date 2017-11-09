@@ -5,11 +5,9 @@ using System.Text;
 
 namespace DarkUnderLevelEditor {
 
-    class LevelDoor {
+    class LevelDoor : LevelBase {
 
-        public Utils.ItemType doorType;
-        public int startPosX;
-        public int startPosY;
+        public ItemType doorType;
 
     }
 
