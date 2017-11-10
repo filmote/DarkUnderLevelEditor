@@ -14,7 +14,8 @@ namespace DarkUnderLevelEditor {
         ItemRoot,
         DoorRoot,
         Level,
-        Error
+        Error,
+        File
     };
 
     public enum MapElement {
@@ -209,7 +210,7 @@ namespace DarkUnderLevelEditor {
 
                 }
 
-                if (level.startPosX == -1 || level.startPosY == 1) {
+                if (level.startPosX == -1 || level.startPosY == -1) {
 
                     LevelError levelError = new LevelError();
                     levelError.level = level;

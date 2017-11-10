@@ -34,7 +34,7 @@ namespace DarkUnderLevelEditor {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
+        private void Form_Load(object sender, EventArgs e) {
 
             for (int i = 0; i < 15; i++) {
                 tileEditor.Rows.Add("");
@@ -46,17 +46,43 @@ namespace DarkUnderLevelEditor {
                 levelEditor.Rows.Add("");
             }
 
-            dgOpenMapData.InitialDirectory = "C:\\Temp\\";
+            dgOpenMapData.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             dgOpenMapData.FileName = "";
             dgOpenMapData.Filter = "MapData (*.h)|*.h";
             dgOpenMapData.FilterIndex = 0;
             dgOpenMapData.RestoreDirectory = false;
 
-            dgSaveMapData.InitialDirectory = "C:\\Temp\\";
+            dgSaveMapData.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             dgSaveMapData.FileName = "";
             dgSaveMapData.Filter = "MapData (*.h)|*.h";
             dgSaveMapData.FilterIndex = 0;
             dgSaveMapData.RestoreDirectory = false;
+
+        }
+
+        private void clearLevels() {
+
+            tiles = new List<Tile>();
+            levels = new List<Level>();
+            selectedLevel = null;
+            selectedLevelNode = null;
+            selectedTile = null;
+            selectedCol = 0;
+            selectedRow = 0;
+            tvwLevels.Nodes.Clear();
+            clearLevel();
+            clearTile();
+            tileCount = 0;
+
+            for (int i = tabPageTileEditor.Controls.Count - 1; i >= 0; --i) {
+
+                if (tabPageTileEditor.Controls[i].GetType() == typeof(Tile)) {
+                    tabPageTileEditor.Controls.RemoveAt(i);
+                }
+
+            }
+
+            mnuAddTiles.DropDownItems.Clear();
 
         }
 
@@ -140,8 +166,14 @@ namespace DarkUnderLevelEditor {
 
         private void tile_Click(object sender, EventArgs e) {
 
+            selectTile((Tile)sender);
+
+        }
+
+        private void selectTile(Tile tile) {
+
             if (selectedTile != null) { selectedTile.BackColor = SystemColors.Window; }
-            selectedTile = (Tile)sender;
+            selectedTile = tile;
             selectedTile.BackColor = SystemColors.ControlLight;
             populateTileEditor((Byte[])selectedTile.Data.Clone());
             tileEditor.Enabled = true;
@@ -182,6 +214,10 @@ namespace DarkUnderLevelEditor {
 
             if (tileCount == NUMBER_OF_TILES) {
                 cmdTileAdd.Enabled = false;
+            }
+
+            if (selectedTile == null) {
+                selectTile(newTile);
             }
 
         }
@@ -345,16 +381,6 @@ namespace DarkUnderLevelEditor {
 
         }
 
-        //private void levelEditor_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-
-        //    if (selectedLevel != null && (selectedLevel.levelDimensionX * 15) > e.ColumnIndex && (selectedLevel.levelDimensionY * 15) > e.RowIndex)
-        //        return;
-
-        //    e.CellStyle.BackColor = Color.FromArgb(245, 245, 245);
-        //    levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.FromArgb(245, 245, 245);
-
-        //}
-
         private void mnuOpenMapData_Click(object sender, EventArgs e) {
 
             Tile newTile = null;
@@ -373,31 +399,12 @@ namespace DarkUnderLevelEditor {
 
             if (dgOpenMapData.ShowDialog() == DialogResult.OK) {
 
+                clearLevels();
                 dgSaveMapData.FileName = dgOpenMapData.FileName;
-
-                tiles = new List<Tile>();
-                levels = new List<Level>();
-                selectedLevel = null;
-                selectedLevelNode = null;
-                selectedTile = null;
-                selectedCol = 0;
-                selectedRow = 0;
-                tvwLevels.Nodes.Clear();
-                clearLevel();
-                clearTile();
+                lblFileName.Text = dgOpenMapData.FileName;
+                lblFileName.Visible = true;
 
                 String[] lines = System.IO.File.ReadAllLines(dgOpenMapData.FileName);
-                tileCount = 0;
-
-                for (int i = tabPageTileEditor.Controls.Count - 1; i >= 0; --i) {
-
-                    if (tabPageTileEditor.Controls[i].GetType() == typeof(Tile)) {
-                        tabPageTileEditor.Controls.RemoveAt(i);
-                    }
-
-                }
-
-                mnuAddTiles.DropDownItems.Clear();
 
                 foreach (String line in lines) {
 
@@ -614,7 +621,7 @@ namespace DarkUnderLevelEditor {
                         mnuAddTiles.DropDownItems.Add(menuItem);
 
                         tileCount++;
-                        counter++;
+                        counter = 1;
 
                     }
 
@@ -690,6 +697,23 @@ namespace DarkUnderLevelEditor {
             }
 
             cmdTileAdd.Enabled = (tileCount != NUMBER_OF_TILES);
+
+
+            // Pre-select the first tile and level if they exist ..
+
+            if (tiles.Count> 0) {
+
+                tiles[0].Select();
+                selectTile(tiles[0]);
+
+            }
+
+            if (levels.Count > 0) {
+
+                tvwLevels.SelectedNode = tvwLevels.Nodes[0];
+//                populateLevelEditor(tvwLevels.Nodes[0]);
+
+            }
 
         }
 
@@ -1418,6 +1442,9 @@ namespace DarkUnderLevelEditor {
 
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName)) {
 
+                lblFileName.Text = fileName;
+                lblFileName.Visible = true;
+
                 file.WriteLine("#pragma once");
                 file.WriteLine("");
 
@@ -1716,6 +1743,22 @@ namespace DarkUnderLevelEditor {
             populateLevelEditor(rootNode);
 
             validateDungeons();
+
+        }
+
+        private void mnuClearMapData_Click(object sender, EventArgs e) {
+
+            if (MessageBox.Show(this, "Clear exsiting map data?", "Confirm Map Clear", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK) {
+
+                clearLevels();
+                clearTile();
+                clearLevel();
+
+                lblFileName.Visible = false;
+                dgSaveMapData.FileName = "";
+                dgOpenMapData.FileName = "";
+
+            }
 
         }
 
