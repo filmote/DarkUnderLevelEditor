@@ -48,75 +48,46 @@ namespace DarkUnderLevelEditor {
         UnlockedDoor,
     };
 
-    class Utils {
+    static class Utils {
 
+        private static readonly Dictionary<ItemType, string> itemTypeDictionary = CreateEnumDictionary<ItemType>();
+        private static readonly Dictionary<EnemyType, string> enemyTypeDictionary = CreateEnumDictionary<EnemyType>();
+        
+        private static Dictionary<T, string> CreateEnumDictionary<T>() {
+            return GetEnumValues<T>().ToDictionary(type => type, type => Enum.GetName(typeof(T), type));
+        }
+        
+        // Handy Type-safe wrapper
+        private static IEnumerable<T> GetEnumValues<T>() {
+            var values = Enum.GetValues(typeof(T));
+            // If value isn't a T this will throw an exception
+            foreach(T value in values) {
+                yield return value;
+            }
+        }
 
         public static String getDoorTypeDescription(ItemType itemType) {
 
-            switch (itemType) {
-
-                case (ItemType.LockedGate):
-                    return "Locked Gate";
-
-                case (ItemType.LockedDoor):
-                    return "Locked Door";
-
-                default:
-                    return "Ahhhh!";
-
+            if((int)itemType < (int)ItemType.LockedGate) {
+                throw new ArgumentOutOfRangeException("itemType was not a door");
             }
+            return itemTypeDictionary[itemType];
 
         }
 
         public static String getItemTypeDescription(ItemType itemType) {
 
-            switch (itemType) {
 
-                case (ItemType.Key):
-                    return "Key";
-
-                case (ItemType.Potion):
-                    return "Potion";
-
-                case (ItemType.Scroll):
-                    return "Scroll";
-
-                default:
-                    return "Ahhhh!";
-
+            if ((int)itemType >= (int)ItemType.LockedGate) {
+                throw new ArgumentOutOfRangeException("itemType was not an item");
             }
+            return itemTypeDictionary[itemType];
 
         }
 
         public static String getEnemyTypeDescription(EnemyType enemyType) {
 
-            switch (enemyType) {
-
-                case EnemyType.Beholder:
-                    return "Beholder";
-
-                case EnemyType.Skeleton:
-                    return "Skeleton";
-
-                case EnemyType.Displacer:
-                    return "Displacer";
-
-                case EnemyType.Wraith:
-                    return "Wraith";
-
-                case EnemyType.Dragon:
-                    return "Dragon";
-
-                case EnemyType.Rat:
-                    return "Rat";
-
-                case EnemyType.Slime:
-                    return "Slime";
-
-                default:
-                    return "Ahhh!";
-
-            }
+            return enemyTypeDictionary[enemyType];
 
         }
 
