@@ -1696,9 +1696,9 @@ namespace DarkUnderLevelEditor {
 
         private void tvwLevels_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e) {
 
-            mnuTreeViewDeleteEnemy.Enabled = (e.Node.Tag != null && e.Node.Tag.GetType() == typeof(LevelEnemy));
-            mnuTreeViewDeleteItem.Enabled = (e.Node.Tag != null && e.Node.Tag.GetType() == typeof(LevelItem));
-            mnuTreeViewDeleteDoor.Enabled = (e.Node.Tag != null && e.Node.Tag.GetType() == typeof(LevelDoor));
+            mnuTreeViewDeleteEnemy.Enabled = (e.Node.Tag != null && e.Node.Tag is LevelEnemy);
+            mnuTreeViewDeleteItem.Enabled = (e.Node.Tag != null && e.Node.Tag is LevelItem);
+            mnuTreeViewDeleteDoor.Enabled = (e.Node.Tag != null && e.Node.Tag is LevelDoor);
 
             if (e.Button == MouseButtons.Right) {
                 mnuTreeViewContext.Show(Cursor.Position);
