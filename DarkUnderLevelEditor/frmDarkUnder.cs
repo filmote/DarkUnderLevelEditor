@@ -198,7 +198,7 @@ namespace DarkUnderLevelEditor {
 
             Tile newTile = new Tile();
             newTile.Title = string.Format("Tile {0:D2}", tileCount);
-            newTile.Click += new EventHandler(tile_Click);
+            newTile.Click += tile_Click;
             newTile.Parent = tabPageTileEditor;
             newTile.Location = new Point(410 + ((tileCount % 5) * 91), 6 + (((Byte)tileCount / 5) * 110));
             newTile.Index = tileCount;
@@ -206,7 +206,7 @@ namespace DarkUnderLevelEditor {
 
             ToolStripMenuItem menuItem = new ToolStripMenuItem();
             menuItem.Text = newTile.Title;
-            menuItem.Click += new EventHandler(mnuAddTile_Click);
+            menuItem.Click += mnuAddTile_Click;
             menuItem.Tag = newTile;
             mnuAddTiles.DropDownItems.Add(menuItem);
 
@@ -1353,13 +1353,16 @@ namespace DarkUnderLevelEditor {
 
         private void cmdTileDelete_Click(object sender, EventArgs e) {
 
-            int count = 0;
             int tileIndex = selectedTile.Index;
 
             tiles.Remove(selectedTile);
             tabPageTileEditor.Controls.Remove(selectedTile);
 
+            selectedTile.Click -= tile_Click; // prevent memory leak
+            selectedTile.Dispose(); // release resources as soon as possible
+            selectedTile = null; // nullify
 
+            int count = 0;
             foreach (Tile tile in tiles) {
 
                 tile.Location = new Point(410 + ((count % 5) * 91), 6 + (((Byte)count / 5) * 110));
