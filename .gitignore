@@ -3,3 +3,5 @@ DarkUnderLevelEditor/bin/**
 DarkUnderLevelEditor/obj/**
 Setup/Debug/**
 Setup/Release/**
+*.cache
+DarkUnderLevelEditor/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache

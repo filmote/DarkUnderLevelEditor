@@ -1762,6 +1762,16 @@ namespace DarkUnderLevelEditor {
 
         }
 
+        private void tvwLevels_MouseClick(object sender, MouseEventArgs e) {
+
+            TreeViewHitTestInfo info = tvwLevels.HitTest(e.X, e.Y);
+
+            if (info.Node != null) {
+                tvwLevels.SelectedNode = info.Node;
+            }
+
+        }
+
     }
 
 }
