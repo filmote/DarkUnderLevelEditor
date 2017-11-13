@@ -46,24 +46,15 @@ namespace DarkUnderLevelEditor {
                 levelEditor.Rows.Add("");
             }
 
-            dgOpenMapData.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            dgOpenMapData.FileName = "";
-            dgOpenMapData.Filter = "MapData (*.h)|*.h";
-            dgOpenMapData.FilterIndex = 0;
-            dgOpenMapData.RestoreDirectory = false;
-
-            dgSaveMapData.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            dgSaveMapData.FileName = "";
-            dgSaveMapData.Filter = "MapData (*.h)|*.h";
-            dgSaveMapData.FilterIndex = 0;
-            dgSaveMapData.RestoreDirectory = false;
+            dgOpenMapData.InitialDirectory = Environment.CurrentDirectory;
+            dgSaveMapData.InitialDirectory = Environment.CurrentDirectory;
 
         }
 
         private void clearLevels() {
 
-            tiles = new List<Tile>();
-            levels = new List<Level>();
+            tiles.Clear();
+            levels.Clear();
             selectedLevel = null;
             selectedLevelNode = null;
             selectedTile = null;
@@ -76,7 +67,7 @@ namespace DarkUnderLevelEditor {
 
             for (int i = tabPageTileEditor.Controls.Count - 1; i >= 0; --i) {
 
-                if (tabPageTileEditor.Controls[i].GetType() == typeof(Tile)) {
+                if (tabPageTileEditor.Controls[i] is Tile) {
                     tabPageTileEditor.Controls.RemoveAt(i);
                 }
 
@@ -197,8 +188,8 @@ namespace DarkUnderLevelEditor {
         private void cmdTileAdd_Click(object sender, EventArgs e) {
 
             Tile newTile = new Tile();
-            newTile.Title = "Tile " + (tileCount < 10 ? "0" : "") + tileCount;
-            newTile.Click += new EventHandler(tile_Click);
+            newTile.Title = string.Format("Tile {0:D2}", tileCount);
+            newTile.Click += tile_Click;
             newTile.Parent = tabPageTileEditor;
             newTile.Location = new Point(410 + ((tileCount % 5) * 91), 6 + (((Byte)tileCount / 5) * 110));
             newTile.Index = tileCount;
@@ -206,7 +197,7 @@ namespace DarkUnderLevelEditor {
 
             ToolStripMenuItem menuItem = new ToolStripMenuItem();
             menuItem.Text = newTile.Title;
-            menuItem.Click += new EventHandler(mnuAddTile_Click);
+            menuItem.Click += mnuAddTile_Click;
             menuItem.Tag = newTile;
             mnuAddTiles.DropDownItems.Add(menuItem);
 
@@ -1084,7 +1075,7 @@ namespace DarkUnderLevelEditor {
             newLevel.line2 = "";
             levels.Add(newLevel);
 
-            TreeNode treeNode = tvwLevels.Nodes.Add("Level " + (levels.Count - 1 < 10 ? "0" : "") + (levels.Count - 1));
+            TreeNode treeNode = tvwLevels.Nodes.Add(string.Format("Level {0:D2}", levels.Count - 1));
             treeNode.Tag = newLevel;
             treeNode.ImageIndex = (int)Images.Level;
             treeNode.SelectedImageIndex = (int)Images.Level;
@@ -1177,7 +1168,7 @@ namespace DarkUnderLevelEditor {
 
             foreach (TreeNode node in tvwLevels.Nodes) {
 
-                node.Text = "Level " + (count < 10 ? "0" : "") + count;
+                node.Text = string.Format("Level {0:D2}", count);
                 count++;
             }
 
@@ -1259,7 +1250,7 @@ namespace DarkUnderLevelEditor {
 
             foreach (TreeNode node in tvwLevels.Nodes) {
 
-                node.Text = "Level " + (count < 10 ? "0" : "") + count;
+                node.Text = string.Format("Level {0:D2}", count);
                 count++;
             }
 
@@ -1283,7 +1274,7 @@ namespace DarkUnderLevelEditor {
 
             foreach (TreeNode node in tvwLevels.Nodes) {
 
-                node.Text = "Level " + (count < 10 ? "0" : "") + count;
+                node.Text = string.Format("Level {0:D2}", count);
                 count++;
             }
 
@@ -1353,17 +1344,20 @@ namespace DarkUnderLevelEditor {
 
         private void cmdTileDelete_Click(object sender, EventArgs e) {
 
-            int count = 0;
             int tileIndex = selectedTile.Index;
 
             tiles.Remove(selectedTile);
             tabPageTileEditor.Controls.Remove(selectedTile);
 
+            selectedTile.Click -= tile_Click; // prevent memory leak
+            selectedTile.Dispose(); // release resources as soon as possible
+            selectedTile = null; // nullify
 
+            int count = 0;
             foreach (Tile tile in tiles) {
 
                 tile.Location = new Point(410 + ((count % 5) * 91), 6 + (((Byte)count / 5) * 110));
-                tile.Title = "Tile " + (count < 10 ? "0" : "") + count;
+                tile.Title = string.Format("Tile {0:D2}", count);
                 count++;
 
             }
@@ -1447,164 +1441,153 @@ namespace DarkUnderLevelEditor {
                 lblFileName.Visible = true;
 
                 file.WriteLine("#pragma once");
-                file.WriteLine("");
+                file.WriteLine();
 
                 file.WriteLine("#define MAX_LEVEL_COUNT {0}", levels.Count);
-                file.WriteLine("");
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_BEHOLDER_HP {0}", udBeholder_HP.Value);
                 file.WriteLine("#define ENEMY_BEHOLDER_AP {0}", udBeholder_AP.Value);
                 file.WriteLine("#define ENEMY_BEHOLDER_XP {0}", udBeholder_XP.Value);
-                file.WriteLine("#define ENEMY_BEHOLDER_MV {0}", (!chkBeholder_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine("#define ENEMY_BEHOLDER_MV {0}", Utils.ToString(!chkBeholder_MV.Checked));
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_SKELETON_HP {0}", udSkeleton_HP.Value);
                 file.WriteLine("#define ENEMY_SKELETON_AP {0}", udSkeleton_AP.Value);
                 file.WriteLine("#define ENEMY_SKELETON_XP {0}", udSkeleton_XP.Value);
-                file.WriteLine("#define ENEMY_SKELETON_MV {0}", (!chkSkeleton_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine("#define ENEMY_SKELETON_MV {0}", Utils.ToString(!chkSkeleton_MV.Checked));
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_DISPLACER_HP {0}", udDisplacer_HP.Value);
                 file.WriteLine("#define ENEMY_DISPLACER_AP {0}", udDisplacer_AP.Value);
                 file.WriteLine("#define ENEMY_DISPLACER_XP {0}", udDisplacer_XP.Value);
-                file.WriteLine("#define ENEMY_DISPLACER_MV {0}", (!chkDisplacer_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine("#define ENEMY_DISPLACER_MV {0}", Utils.ToString(!chkDisplacer_MV.Checked));
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_WRAITH_HP {0}", udWraith_HP.Value);
                 file.WriteLine("#define ENEMY_WRAITH_AP {0}", udWraith_AP.Value);
                 file.WriteLine("#define ENEMY_WRAITH_XP {0}", udWraith_XP.Value);
-                file.WriteLine("#define ENEMY_WRAITH_MV {0}", (!chkWraith_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine("#define ENEMY_WRAITH_MV {0}", Utils.ToString(!chkWraith_MV.Checked));
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_DRAGON_HP {0}", udDragon_HP.Value);
                 file.WriteLine("#define ENEMY_DRAGON_AP {0}", udDragon_AP.Value);
                 file.WriteLine("#define ENEMY_DRAGON_XP {0}", udDragon_XP.Value);
-                file.WriteLine("#define ENEMY_DRAGON_MV {0}", (!chkDragon_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine("#define ENEMY_DRAGON_MV {0}", Utils.ToString(!chkDragon_MV.Checked));
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_RAT_HP {0}", udRat_HP.Value);
                 file.WriteLine("#define ENEMY_RAT_AP {0}", udRat_AP.Value);
                 file.WriteLine("#define ENEMY_RAT_XP {0}", udRat_XP.Value);
-                file.WriteLine("#define ENEMY_RAT_MV {0}", (!chkRat_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine("#define ENEMY_RAT_MV {0}", Utils.ToString(!chkRat_MV.Checked));
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_SLIME_HP {0}", udSlime_HP.Value);
                 file.WriteLine("#define ENEMY_SLIME_AP {0}", udSlime_AP.Value);
                 file.WriteLine("#define ENEMY_SLIME_XP {0}", udSlime_XP.Value);
-                file.WriteLine("#define ENEMY_SLIME_MV {0}", (!chkSlime_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine("#define ENEMY_SLIME_MV {0}", Utils.ToString(!chkSlime_MV.Checked));
+                file.WriteLine();
 
                 // Tiles
-                int count = 0;
-                foreach (Tile tile in tiles) {
-                    file.WriteLine("const uint8_t PROGMEM tile_{0}[] = {{", count.ToString("D2"));
-                    for (int i = 0; i < 30; i++) {
-                        file.Write("0x{0}, ", tile.Data[i].ToString("x"));
+                for(int i = 0; i < NUMBER_OF_TILES; ++i)
+                {
+                    if(i < tiles.Count)
+                    {
+                        file.WriteLine("const uint8_t PROGMEM tile_{0:D2}[] = {{", i);
+                        for (int j = 0; j < 30; ++j)
+                        {
+                            file.Write("0x{0:X2}, ", tiles[i].Data[j]);
+                        }
+                        file.WriteLine("\n};");
                     }
-                    file.WriteLine("\n};");
-                    count++;
+                    else
+                    {
+                        file.WriteLine("const uint8_t PROGMEM tile_{0:D2}[] = {{}};", i);
+                    }
                 }
-
-                for (int i = count; i < NUMBER_OF_TILES; i++) {
-                    file.WriteLine("const uint8_t PROGMEM tile_{0}[] = {{}};", count.ToString("D2"));
-                    count++;
-                }
-
-                file.WriteLine("");
+                file.WriteLine();
 
 
                 // Levels
+                
+                for (int i = 0; i < NUMBER_OF_LEVELS; ++i)
+                {
+                    if(i < levels.Count)
+                    {
+                        Level level = levels[i];
+                        file.WriteLine("const uint8_t PROGMEM level_{0:D2}[] = {{", i);
 
-                count = 0;
-                foreach (Level level in levels) {
-                    file.WriteLine("const uint8_t PROGMEM level_{0}[] = {{", count.ToString("D2"));
+                        // Line 1
+                        if (level.line1 == null) level.line1 = "";
+                        for (int j = 0; j < 11; j++)
+                        {
+                            if (j < level.line1.Length)
+                            {
+                                file.Write("{0}, ", (int)level.line1[j]);
+                            }
+                            else
+                            {
+                                file.Write("32, "); // 32 = ' '
+                            }
+                        }
+                        file.WriteLine();
 
+                        // Line 2
+                        if (level.line2 == null) level.line2 = "";
+                        for (int j = 0; j < 11; j++)
+                        {
+                            if (j < level.line2.Length)
+                                file.Write("{0}, ", (int)level.line2[j]);
+                            else
+                                file.Write("32, "); // 32 = ' '
+                        }
+                        file.WriteLine();
 
-                    // Line 1
+                        // Player position
 
-                    int tokenCount = 0;
-                    if (level.line1 == null) level.line1 = "";
-                    for (int i = 0; i < level.line1.Length; i++) {
-                        file.Write("{0}, ", Convert.ToInt32(Convert.ToChar(level.line1.Substring(i, 1))));
-                        tokenCount++;
-                    }
-                    for (int i = tokenCount; i < 11; i++) {
-                        file.Write("32, ");
-                    }
-                    file.WriteLine("");
-
-
-                    // Line 2
-
-                    tokenCount = 0;
-                    if (level.line2 == null) level.line2 = "";
-                    for (int i = 0; i < level.line2.Length; i++) {
-                        file.Write("{0}, ", Convert.ToInt32(Convert.ToChar(level.line2.Substring(i, 1))));
-                        tokenCount++;
-                    }
-                    for (int i = tokenCount; i < 11; i++) {
-                        file.Write("32, ");
-                    }
-                    file.WriteLine("");
-
-
-                    // Player position ..
-
-                    file.WriteLine("{0}, {1},", level.startPosX, level.startPosY);
-                    file.WriteLine("{0},", level.direction);
-
-
-                    // Level Dimensions ..
-
-                    file.WriteLine("{0}, {1},", level.levelDimensionX, level.levelDimensionY);
+                        file.WriteLine("{0}, {1},", level.startPosX, level.startPosY);
+                        file.WriteLine("{0},", level.direction);
+                        
+                        // Level Dimensions
+                        file.WriteLine("{0}, {1},", level.levelDimensionX, level.levelDimensionY);
 
 
-                    // Enemies ..
-
-                    file.WriteLine("{0},", level.enemies.Count);
-                    foreach (LevelEnemy enemy in level.enemies) {
-
-                        file.WriteLine("{0}, {1}, {2},", (int)enemy.enemyType, enemy.startPosX, enemy.startPosY);
-
-                    }
-
-
-                    // Items ..
-
-                    file.WriteLine("{0},", level.items.Count);
-                    foreach (LevelItem item in level.items) {
-
-                        file.WriteLine("{0}, {1}, {2},", (int)item.itemType, item.startPosX, item.startPosY);
-
-                    }
-
-
-                    // Doors ..
-
-                    file.WriteLine("{0},", level.doors.Count);
-                    foreach (LevelDoor door in level.doors) {
-
-                        file.WriteLine("{0}, {1}, {2},", (int)door.doorType, door.startPosX, door.startPosY);
-
-                    }
-
-
-                    // Tile info ..
-
-                    for (int x = 0; x < level.levelDimensionX; x++) {
-
-                        for (int y = 0; y < level.levelDimensionY; y++) {
-
-                            file.Write("{0}, ", level.tileData[y, x]);
+                        // Enemies
+                        file.WriteLine("{0},", level.enemies.Count);
+                        foreach (LevelEnemy enemy in level.enemies)
+                        {
+                            file.WriteLine("{0}, {1}, {2},", (int)enemy.enemyType, enemy.startPosX, enemy.startPosY);
                         }
 
+
+                        // Items
+                        file.WriteLine("{0},", level.items.Count);
+                        foreach (LevelItem item in level.items)
+                        {
+                            file.WriteLine("{0}, {1}, {2},", (int)item.itemType, item.startPosX, item.startPosY);
+                        }
+
+
+                        // Doors
+                        file.WriteLine("{0},", level.doors.Count);
+                        foreach (LevelDoor door in level.doors)
+                        {
+                            file.WriteLine("{0}, {1}, {2},", (int)door.doorType, door.startPosX, door.startPosY);
+                        }
+
+
+                        // Tile info ..
+
+                        for (int x = 0; x < level.levelDimensionX; x++)
+                        {
+                            for (int y = 0; y < level.levelDimensionY; y++)
+                            {
+                                file.Write("{0}, ", level.tileData[y, x]);
+                            }
+                        }
+
+                        file.WriteLine("\n};");
+                    }
+                    else
+                    {
+                        file.WriteLine("const uint8_t PROGMEM level_{0:D2}[] = {{}};", i);
                     }
 
-                    file.WriteLine("\n};");
-                    count++;
-
+                    file.WriteLine();
                 }
-
-                for (int i = count; i < NUMBER_OF_LEVELS; i++) {
-                    file.WriteLine("const uint8_t PROGMEM level_{0}[] = {{}};", count.ToString("D2")); ;
-                    count++;
-                }
-
-                file.WriteLine("");
-
             }
 
         }
@@ -1670,7 +1653,7 @@ namespace DarkUnderLevelEditor {
 
                 LevelError levelError = (LevelError)e.Node.Tag;
 
-                if (levelError.node.Tag.GetType() == typeof(Level)) {
+                if (levelError.node.Tag is Level) {
 
                     tvwLevels.SelectedNode = levelError.node;
                     levelError.node.EnsureVisible();
@@ -1678,7 +1661,7 @@ namespace DarkUnderLevelEditor {
 
                 }
 
-                if (levelError.node.Tag.GetType() != typeof(Level)) {
+                else {
 
                     if (selectedLevelNode == null && selectedLevelNode != Utils.getRootNode(levelError.node)) {
                         tvwLevels.SelectedNode = Utils.getRootNode(levelError.node);
@@ -1696,9 +1679,9 @@ namespace DarkUnderLevelEditor {
 
         private void tvwLevels_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e) {
 
-            mnuTreeViewDeleteEnemy.Enabled = (e.Node.Tag != null && e.Node.Tag.GetType() == typeof(LevelEnemy));
-            mnuTreeViewDeleteItem.Enabled = (e.Node.Tag != null && e.Node.Tag.GetType() == typeof(LevelItem));
-            mnuTreeViewDeleteDoor.Enabled = (e.Node.Tag != null && e.Node.Tag.GetType() == typeof(LevelDoor));
+            mnuTreeViewDeleteEnemy.Enabled = (e.Node.Tag != null && e.Node.Tag is LevelEnemy);
+            mnuTreeViewDeleteItem.Enabled = (e.Node.Tag != null && e.Node.Tag is LevelItem);
+            mnuTreeViewDeleteDoor.Enabled = (e.Node.Tag != null && e.Node.Tag is LevelDoor);
 
             if (e.Button == MouseButtons.Right) {
                 mnuTreeViewContext.Show(Cursor.Position);
