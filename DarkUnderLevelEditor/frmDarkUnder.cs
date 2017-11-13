@@ -1447,98 +1447,104 @@ namespace DarkUnderLevelEditor {
                 lblFileName.Visible = true;
 
                 file.WriteLine("#pragma once");
-                file.WriteLine("");
+                file.WriteLine();
 
                 file.WriteLine("#define MAX_LEVEL_COUNT {0}", levels.Count);
-                file.WriteLine("");
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_BEHOLDER_HP {0}", udBeholder_HP.Value);
                 file.WriteLine("#define ENEMY_BEHOLDER_AP {0}", udBeholder_AP.Value);
                 file.WriteLine("#define ENEMY_BEHOLDER_XP {0}", udBeholder_XP.Value);
                 file.WriteLine("#define ENEMY_BEHOLDER_MV {0}", (!chkBeholder_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_SKELETON_HP {0}", udSkeleton_HP.Value);
                 file.WriteLine("#define ENEMY_SKELETON_AP {0}", udSkeleton_AP.Value);
                 file.WriteLine("#define ENEMY_SKELETON_XP {0}", udSkeleton_XP.Value);
                 file.WriteLine("#define ENEMY_SKELETON_MV {0}", (!chkSkeleton_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_DISPLACER_HP {0}", udDisplacer_HP.Value);
                 file.WriteLine("#define ENEMY_DISPLACER_AP {0}", udDisplacer_AP.Value);
                 file.WriteLine("#define ENEMY_DISPLACER_XP {0}", udDisplacer_XP.Value);
                 file.WriteLine("#define ENEMY_DISPLACER_MV {0}", (!chkDisplacer_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_WRAITH_HP {0}", udWraith_HP.Value);
                 file.WriteLine("#define ENEMY_WRAITH_AP {0}", udWraith_AP.Value);
                 file.WriteLine("#define ENEMY_WRAITH_XP {0}", udWraith_XP.Value);
                 file.WriteLine("#define ENEMY_WRAITH_MV {0}", (!chkWraith_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_DRAGON_HP {0}", udDragon_HP.Value);
                 file.WriteLine("#define ENEMY_DRAGON_AP {0}", udDragon_AP.Value);
                 file.WriteLine("#define ENEMY_DRAGON_XP {0}", udDragon_XP.Value);
                 file.WriteLine("#define ENEMY_DRAGON_MV {0}", (!chkDragon_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_RAT_HP {0}", udRat_HP.Value);
                 file.WriteLine("#define ENEMY_RAT_AP {0}", udRat_AP.Value);
                 file.WriteLine("#define ENEMY_RAT_XP {0}", udRat_XP.Value);
                 file.WriteLine("#define ENEMY_RAT_MV {0}", (!chkRat_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine();
                 file.WriteLine("#define ENEMY_SLIME_HP {0}", udSlime_HP.Value);
                 file.WriteLine("#define ENEMY_SLIME_AP {0}", udSlime_AP.Value);
                 file.WriteLine("#define ENEMY_SLIME_XP {0}", udSlime_XP.Value);
                 file.WriteLine("#define ENEMY_SLIME_MV {0}", (!chkSlime_MV.Checked).ToString().ToLower());
-                file.WriteLine("");
+                file.WriteLine();
 
                 // Tiles
                 int count = 0;
                 foreach (Tile tile in tiles) {
-                    file.WriteLine("const uint8_t PROGMEM tile_{0}[] = {{", count.ToString("D2"));
+                    file.WriteLine("const uint8_t PROGMEM tile_{0:D2}[] = {{", count);
                     for (int i = 0; i < 30; i++) {
-                        file.Write("0x{0}, ", tile.Data[i].ToString("x"));
+                        file.Write("0x{0:X2}, ", tile.Data[i]);
                     }
                     file.WriteLine("\n};");
                     count++;
                 }
 
                 for (int i = count; i < NUMBER_OF_TILES; i++) {
-                    file.WriteLine("const uint8_t PROGMEM tile_{0}[] = {{}};", count.ToString("D2"));
+                    file.WriteLine("const uint8_t PROGMEM tile_{0:D2}[] = {{}};", count);
                     count++;
                 }
 
-                file.WriteLine("");
+                file.WriteLine();
 
 
                 // Levels
 
                 count = 0;
                 foreach (Level level in levels) {
-                    file.WriteLine("const uint8_t PROGMEM level_{0}[] = {{", count.ToString("D2"));
+                    file.WriteLine("const uint8_t PROGMEM level_{0:D2}[] = {{", count);
 
 
                     // Line 1
-
-                    int tokenCount = 0;
-                    if (level.line1 == null) level.line1 = "";
-                    for (int i = 0; i < level.line1.Length; i++) {
-                        file.Write("{0}, ", Convert.ToInt32(Convert.ToChar(level.line1.Substring(i, 1))));
-                        tokenCount++;
+                    {
+                        int tokenCount = 0;
+                        if (level.line1 == null) level.line1 = "";
+                        for (int i = 0; i < level.line1.Length; i++)
+                        {
+                            file.Write("{0}, ", (int)level.line1[i]);
+                            tokenCount++;
+                        }
+                        for (int i = tokenCount; i < 11; i++)
+                        {
+                            file.Write("32, "); // 32 = ' '
+                        }
+                        file.WriteLine();
                     }
-                    for (int i = tokenCount; i < 11; i++) {
-                        file.Write("32, ");
-                    }
-                    file.WriteLine("");
 
 
                     // Line 2
-
-                    tokenCount = 0;
-                    if (level.line2 == null) level.line2 = "";
-                    for (int i = 0; i < level.line2.Length; i++) {
-                        file.Write("{0}, ", Convert.ToInt32(Convert.ToChar(level.line2.Substring(i, 1))));
-                        tokenCount++;
+                    {
+                        int tokenCount = 0;
+                        if (level.line2 == null) level.line2 = "";
+                        for (int i = 0; i < level.line2.Length; i++)
+                        {
+                            file.Write("{0}, ", (int)level.line2[i]);
+                            tokenCount++;
+                        }
+                        for (int i = tokenCount; i < 11; i++)
+                        {
+                            file.Write("32, "); // 32 = ' '
+                        }
+                        file.WriteLine();
                     }
-                    for (int i = tokenCount; i < 11; i++) {
-                        file.Write("32, ");
-                    }
-                    file.WriteLine("");
 
 
                     // Player position ..
@@ -1599,11 +1605,11 @@ namespace DarkUnderLevelEditor {
                 }
 
                 for (int i = count; i < NUMBER_OF_LEVELS; i++) {
-                    file.WriteLine("const uint8_t PROGMEM level_{0}[] = {{}};", count.ToString("D2")); ;
+                    file.WriteLine("const uint8_t PROGMEM level_{0:D2}[] = {{}};", count);
                     count++;
                 }
 
-                file.WriteLine("");
+                file.WriteLine();
 
             }
 
