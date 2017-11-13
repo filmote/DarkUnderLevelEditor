@@ -62,8 +62,8 @@ namespace DarkUnderLevelEditor {
 
         private void clearLevels() {
 
-            tiles = new List<Tile>();
-            levels = new List<Level>();
+            tiles.Clear();
+            levels.Clear();
             selectedLevel = null;
             selectedLevelNode = null;
             selectedTile = null;
