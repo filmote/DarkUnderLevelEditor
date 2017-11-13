@@ -1670,7 +1670,7 @@ namespace DarkUnderLevelEditor {
 
                 LevelError levelError = (LevelError)e.Node.Tag;
 
-                if (levelError.node.Tag.GetType() == typeof(Level)) {
+                if (levelError.node.Tag is Level) {
 
                     tvwLevels.SelectedNode = levelError.node;
                     levelError.node.EnsureVisible();
@@ -1678,7 +1678,7 @@ namespace DarkUnderLevelEditor {
 
                 }
 
-                if (levelError.node.Tag.GetType() != typeof(Level)) {
+                else {
 
                     if (selectedLevelNode == null && selectedLevelNode != Utils.getRootNode(levelError.node)) {
                         tvwLevels.SelectedNode = Utils.getRootNode(levelError.node);
