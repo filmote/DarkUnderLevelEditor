@@ -50,6 +50,11 @@ namespace DarkUnderLevelEditor {
 
     static class Utils {
 
+        public static string ToString(bool value)
+        {
+            return value ? "true" : "false";
+        }
+
         private static readonly Dictionary<ItemType, string> itemTypeDictionary = CreateEnumDictionary<ItemType>();
         private static readonly Dictionary<EnemyType, string> enemyTypeDictionary = CreateEnumDictionary<EnemyType>();
         
