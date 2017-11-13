@@ -46,8 +46,8 @@ namespace DarkUnderLevelEditor {
                 levelEditor.Rows.Add("");
             }
 
-            dgOpenMapData.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            dgSaveMapData.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            dgOpenMapData.InitialDirectory = Environment.CurrentDirectory;
+            dgSaveMapData.InitialDirectory = Environment.CurrentDirectory;
 
         }
 
