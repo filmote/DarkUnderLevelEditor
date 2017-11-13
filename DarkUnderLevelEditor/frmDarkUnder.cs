@@ -197,7 +197,7 @@ namespace DarkUnderLevelEditor {
         private void cmdTileAdd_Click(object sender, EventArgs e) {
 
             Tile newTile = new Tile();
-            newTile.Title = "Tile " + (tileCount < 10 ? "0" : "") + tileCount;
+            newTile.Title = string.Format("Tile {0:D2}", tileCount);
             newTile.Click += new EventHandler(tile_Click);
             newTile.Parent = tabPageTileEditor;
             newTile.Location = new Point(410 + ((tileCount % 5) * 91), 6 + (((Byte)tileCount / 5) * 110));
