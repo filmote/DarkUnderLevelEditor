@@ -76,7 +76,7 @@ namespace DarkUnderLevelEditor {
 
             for (int i = tabPageTileEditor.Controls.Count - 1; i >= 0; --i) {
 
-                if (tabPageTileEditor.Controls[i].GetType() == typeof(Tile)) {
+                if (tabPageTileEditor.Controls[i] is Tile) {
                     tabPageTileEditor.Controls.RemoveAt(i);
                 }
 
