@@ -359,6 +359,7 @@ namespace DarkUnderLevelEditor {
 
             if (tile == selectedTile) cmdTileDelete.Enabled = false;
             validateDungeons();
+            populateLevelEditor(Utils.getRootNode(selectedLevelNode));
 
         }
 
@@ -884,7 +885,7 @@ namespace DarkUnderLevelEditor {
 
                 for (int x = 0; x < 255; x++) {
 
-                    levelEditor.Rows[y].Cells[x].Style.BackColor = levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.FromArgb(245, 245, 245); ;
+                    levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.FromArgb(245, 245, 245); ;
 
                 }
 
@@ -1587,7 +1588,7 @@ namespace DarkUnderLevelEditor {
 
                         for (int y = 0; y < level.levelDimensionY; y++) {
 
-                            file.Write("{0}, ", level.tileData[x, y]);
+                            file.Write("{0}, ", level.tileData[y, x]);
                         }
 
                     }
@@ -1617,6 +1618,7 @@ namespace DarkUnderLevelEditor {
         private void validateDungeons() {
 
             int count = 0;
+            int errorCount = 0;
             tvwErrors.Nodes.Clear();
             lblStatusError.Text = "";
 
@@ -1639,6 +1641,8 @@ namespace DarkUnderLevelEditor {
 
                     }
 
+                    errorCount = errorCount + errors.Count;
+
                 }
 
                 count++;
@@ -1646,7 +1650,7 @@ namespace DarkUnderLevelEditor {
             }
 
             if (tvwErrors.Nodes.Count > 0) {
-                tabErrors.Text = "Errors (" + tvwErrors.Nodes.Count + ")";
+                tabErrors.Text = "Errors (" + errorCount + ")";
                 tabErrors.ImageIndex = (int)Images.Error;
             }
             else {
@@ -1769,6 +1773,12 @@ namespace DarkUnderLevelEditor {
             if (info.Node != null) {
                 tvwLevels.SelectedNode = info.Node;
             }
+
+        }
+
+        private void mnuValidate_Click(object sender, EventArgs e) {
+
+            validateDungeons();
 
         }
 
