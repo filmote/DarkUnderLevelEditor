@@ -1488,129 +1488,112 @@ namespace DarkUnderLevelEditor {
                 file.WriteLine();
 
                 // Tiles
-                int count = 0;
-                foreach (Tile tile in tiles) {
-                    file.WriteLine("const uint8_t PROGMEM tile_{0:D2}[] = {{", count);
-                    for (int i = 0; i < 30; i++) {
-                        file.Write("0x{0:X2}, ", tile.Data[i]);
+                for(int i = 0; i < NUMBER_OF_TILES; ++i)
+                {
+                    if(i < tiles.Count)
+                    {
+                        file.WriteLine("const uint8_t PROGMEM tile_{0:D2}[] = {{", i);
+                        for (int j = 0; j < 30; ++j)
+                        {
+                            file.Write("0x{0:X2}, ", tiles[i].Data[j]);
+                        }
+                        file.WriteLine("\n};");
                     }
-                    file.WriteLine("\n};");
-                    count++;
+                    else
+                    {
+                        file.WriteLine("const uint8_t PROGMEM tile_{0:D2}[] = {{}};", i);
+                    }
                 }
-
-                for (int i = count; i < NUMBER_OF_TILES; i++) {
-                    file.WriteLine("const uint8_t PROGMEM tile_{0:D2}[] = {{}};", count);
-                    count++;
-                }
-
                 file.WriteLine();
 
 
                 // Levels
-
-                count = 0;
-                foreach (Level level in levels) {
-                    file.WriteLine("const uint8_t PROGMEM level_{0:D2}[] = {{", count);
-
-
-                    // Line 1
+                
+                for (int i = 0; i < NUMBER_OF_LEVELS; ++i)
+                {
+                    if(i < levels.Count)
                     {
-                        int tokenCount = 0;
+                        Level level = levels[i];
+                        file.WriteLine("const uint8_t PROGMEM level_{0:D2}[] = {{", i);
+
+                        // Line 1
                         if (level.line1 == null) level.line1 = "";
-                        for (int i = 0; i < level.line1.Length; i++)
+                        for (int j = 0; j < 11; j++)
                         {
-                            file.Write("{0}, ", (int)level.line1[i]);
-                            tokenCount++;
-                        }
-                        for (int i = tokenCount; i < 11; i++)
-                        {
-                            file.Write("32, "); // 32 = ' '
+                            if (j < level.line1.Length)
+                            {
+                                file.Write("{0}, ", (int)level.line1[j]);
+                            }
+                            else
+                            {
+                                file.Write("32, "); // 32 = ' '
+                            }
                         }
                         file.WriteLine();
-                    }
 
-
-                    // Line 2
-                    {
-                        int tokenCount = 0;
+                        // Line 2
                         if (level.line2 == null) level.line2 = "";
-                        for (int i = 0; i < level.line2.Length; i++)
+                        for (int j = 0; j < 11; j++)
                         {
-                            file.Write("{0}, ", (int)level.line2[i]);
-                            tokenCount++;
-                        }
-                        for (int i = tokenCount; i < 11; i++)
-                        {
-                            file.Write("32, "); // 32 = ' '
+                            if (j < level.line2.Length)
+                                file.Write("{0}, ", (int)level.line2[j]);
+                            else
+                                file.Write("32, "); // 32 = ' '
                         }
                         file.WriteLine();
-                    }
+
+                        // Player position
+
+                        file.WriteLine("{0}, {1},", level.startPosX, level.startPosY);
+                        file.WriteLine("{0},", level.direction);
+                        
+                        // Level Dimensions
+                        file.WriteLine("{0}, {1},", level.levelDimensionX, level.levelDimensionY);
 
 
-                    // Player position ..
-
-                    file.WriteLine("{0}, {1},", level.startPosX, level.startPosY);
-                    file.WriteLine("{0},", level.direction);
-
-
-                    // Level Dimensions ..
-
-                    file.WriteLine("{0}, {1},", level.levelDimensionX, level.levelDimensionY);
-
-
-                    // Enemies ..
-
-                    file.WriteLine("{0},", level.enemies.Count);
-                    foreach (LevelEnemy enemy in level.enemies) {
-
-                        file.WriteLine("{0}, {1}, {2},", (int)enemy.enemyType, enemy.startPosX, enemy.startPosY);
-
-                    }
-
-
-                    // Items ..
-
-                    file.WriteLine("{0},", level.items.Count);
-                    foreach (LevelItem item in level.items) {
-
-                        file.WriteLine("{0}, {1}, {2},", (int)item.itemType, item.startPosX, item.startPosY);
-
-                    }
-
-
-                    // Doors ..
-
-                    file.WriteLine("{0},", level.doors.Count);
-                    foreach (LevelDoor door in level.doors) {
-
-                        file.WriteLine("{0}, {1}, {2},", (int)door.doorType, door.startPosX, door.startPosY);
-
-                    }
-
-
-                    // Tile info ..
-
-                    for (int x = 0; x < level.levelDimensionX; x++) {
-
-                        for (int y = 0; y < level.levelDimensionY; y++) {
-
-                            file.Write("{0}, ", level.tileData[y, x]);
+                        // Enemies
+                        file.WriteLine("{0},", level.enemies.Count);
+                        foreach (LevelEnemy enemy in level.enemies)
+                        {
+                            file.WriteLine("{0}, {1}, {2},", (int)enemy.enemyType, enemy.startPosX, enemy.startPosY);
                         }
 
+
+                        // Items
+                        file.WriteLine("{0},", level.items.Count);
+                        foreach (LevelItem item in level.items)
+                        {
+                            file.WriteLine("{0}, {1}, {2},", (int)item.itemType, item.startPosX, item.startPosY);
+                        }
+
+
+                        // Doors
+                        file.WriteLine("{0},", level.doors.Count);
+                        foreach (LevelDoor door in level.doors)
+                        {
+                            file.WriteLine("{0}, {1}, {2},", (int)door.doorType, door.startPosX, door.startPosY);
+                        }
+
+
+                        // Tile info ..
+
+                        for (int x = 0; x < level.levelDimensionX; x++)
+                        {
+                            for (int y = 0; y < level.levelDimensionY; y++)
+                            {
+                                file.Write("{0}, ", level.tileData[y, x]);
+                            }
+                        }
+
+                        file.WriteLine("\n};");
+                    }
+                    else
+                    {
+                        file.WriteLine("const uint8_t PROGMEM level_{0:D2}[] = {{}};", i);
                     }
 
-                    file.WriteLine("\n};");
-                    count++;
-
+                    file.WriteLine();
                 }
-
-                for (int i = count; i < NUMBER_OF_LEVELS; i++) {
-                    file.WriteLine("const uint8_t PROGMEM level_{0:D2}[] = {{}};", count);
-                    count++;
-                }
-
-                file.WriteLine();
-
             }
 
         }
