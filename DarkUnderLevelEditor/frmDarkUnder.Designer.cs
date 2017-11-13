@@ -49,11 +49,15 @@
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
             this.cmdTileDelete = new System.Windows.Forms.Button();
             this.cmdTileAdd = new System.Windows.Forms.Button();
             this.cmdReset = new System.Windows.Forms.Button();
             this.cmdSave = new System.Windows.Forms.Button();
             this.cmdClear = new System.Windows.Forms.Button();
+            this.label41 = new System.Windows.Forms.Label();
             this.tabLevelEdito = new System.Windows.Forms.TabPage();
             this.cmdLevelDown = new System.Windows.Forms.Button();
             this.cmdLevelUp = new System.Windows.Forms.Button();
@@ -455,6 +459,7 @@
             this.mnuClearMapData = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuValidate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.dgOpenMapData = new System.Windows.Forms.OpenFileDialog();
             this.dgSaveMapData = new System.Windows.Forms.SaveFileDialog();
@@ -465,11 +470,6 @@
             this.mnuTreeViewDeleteEnemy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTreeViewDeleteItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTreeViewDeleteDoor = new System.Windows.Forms.ToolStripMenuItem();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.mnuValidate = new System.Windows.Forms.ToolStripMenuItem();
             this.tabs.SuspendLayout();
             this.tabPageTileEditor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tileEditor)).BeginInit();
@@ -729,6 +729,39 @@
             this.Column15.ReadOnly = true;
             this.Column15.Width = 25;
             // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label44.Location = new System.Drawing.Point(0, 212);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(16, 13);
+            this.label44.TabIndex = 134;
+            this.label44.Text = "►";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label43.Location = new System.Drawing.Point(391, 212);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(16, 13);
+            this.label43.TabIndex = 133;
+            this.label43.Text = "◄";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label42.Location = new System.Drawing.Point(196, 16);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(16, 13);
+            this.label42.TabIndex = 132;
+            this.label42.Text = "▼";
+            // 
             // cmdTileDelete
             // 
             this.cmdTileDelete.Enabled = false;
@@ -779,6 +812,17 @@
             this.cmdClear.Text = "&Clear";
             this.cmdClear.UseVisualStyleBackColor = true;
             this.cmdClear.Click += new System.EventHandler(this.cmdClear_Click);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label41.Location = new System.Drawing.Point(196, 406);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(16, 13);
+            this.label41.TabIndex = 131;
+            this.label41.Text = "▲";
             // 
             // tabLevelEdito
             // 
@@ -3620,12 +3664,12 @@
             this.mnuDoorAddBase,
             this.mnuDoorDelete});
             this.mnuContext.Name = "mnuContext";
-            this.mnuContext.Size = new System.Drawing.Size(153, 226);
+            this.mnuContext.Size = new System.Drawing.Size(147, 204);
             // 
             // mnuAddTiles
             // 
             this.mnuAddTiles.Name = "mnuAddTiles";
-            this.mnuAddTiles.Size = new System.Drawing.Size(152, 22);
+            this.mnuAddTiles.Size = new System.Drawing.Size(146, 22);
             this.mnuAddTiles.Text = "Add Tile";
             // 
             // toolStripMenuItem4
@@ -3874,6 +3918,13 @@
             this.mnuExit.Text = "E&xit";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
+            // mnuValidate
+            // 
+            this.mnuValidate.Name = "mnuValidate";
+            this.mnuValidate.Size = new System.Drawing.Size(61, 20);
+            this.mnuValidate.Text = "&Validate";
+            this.mnuValidate.Click += new System.EventHandler(this.mnuValidate_Click);
+            // 
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
@@ -3883,7 +3934,11 @@
             // 
             // dgOpenMapData
             // 
-            this.dgOpenMapData.FileName = "openFileDialog1";
+            this.dgOpenMapData.Filter = "\"MapData (*.h)|*.h\"";
+            // 
+            // dgSaveMapData
+            // 
+            this.dgSaveMapData.Filter = "\"MapData (*.h)|*.h\"";
             // 
             // sbStatus
             // 
@@ -3941,57 +3996,6 @@
             this.mnuTreeViewDeleteDoor.Size = new System.Drawing.Size(146, 22);
             this.mnuTreeViewDeleteDoor.Text = "Delete &Door";
             this.mnuTreeViewDeleteDoor.Click += new System.EventHandler(this.mnuTreeViewDeleteDoor_Click);
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Wingdings 3", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label41.Location = new System.Drawing.Point(196, 406);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(18, 14);
-            this.label41.TabIndex = 131;
-            this.label41.Text = "▲";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Wingdings 3", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label43.Location = new System.Drawing.Point(391, 212);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(18, 14);
-            this.label43.TabIndex = 133;
-            this.label43.Text = "◄";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Wingdings 3", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label42.Location = new System.Drawing.Point(196, 16);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(18, 14);
-            this.label42.TabIndex = 132;
-            this.label42.Text = "▼";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Wingdings 3", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label44.Location = new System.Drawing.Point(0, 212);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(18, 14);
-            this.label44.TabIndex = 134;
-            this.label44.Text = "►";
-            // 
-            // mnuValidate
-            // 
-            this.mnuValidate.Name = "mnuValidate";
-            this.mnuValidate.Size = new System.Drawing.Size(61, 20);
-            this.mnuValidate.Text = "&Validate";
-            this.mnuValidate.Click += new System.EventHandler(this.mnuValidate_Click);
             // 
             // frmDarkUnder
             // 

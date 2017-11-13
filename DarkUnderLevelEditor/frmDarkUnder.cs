@@ -47,16 +47,7 @@ namespace DarkUnderLevelEditor {
             }
 
             dgOpenMapData.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            dgOpenMapData.FileName = "";
-            dgOpenMapData.Filter = "MapData (*.h)|*.h";
-            dgOpenMapData.FilterIndex = 0;
-            dgOpenMapData.RestoreDirectory = false;
-
             dgSaveMapData.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            dgSaveMapData.FileName = "";
-            dgSaveMapData.Filter = "MapData (*.h)|*.h";
-            dgSaveMapData.FilterIndex = 0;
-            dgSaveMapData.RestoreDirectory = false;
 
         }
 
