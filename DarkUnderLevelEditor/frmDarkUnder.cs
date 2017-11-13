@@ -1084,7 +1084,7 @@ namespace DarkUnderLevelEditor {
             newLevel.line2 = "";
             levels.Add(newLevel);
 
-            TreeNode treeNode = tvwLevels.Nodes.Add("Level " + (levels.Count - 1 < 10 ? "0" : "") + (levels.Count - 1));
+            TreeNode treeNode = tvwLevels.Nodes.Add(string.Format("Level {0:D2}", levels.Count - 1));
             treeNode.Tag = newLevel;
             treeNode.ImageIndex = (int)Images.Level;
             treeNode.SelectedImageIndex = (int)Images.Level;
@@ -1177,7 +1177,7 @@ namespace DarkUnderLevelEditor {
 
             foreach (TreeNode node in tvwLevels.Nodes) {
 
-                node.Text = "Level " + (count < 10 ? "0" : "") + count;
+                node.Text = string.Format("Level {0:D2}", count);
                 count++;
             }
 
@@ -1259,7 +1259,7 @@ namespace DarkUnderLevelEditor {
 
             foreach (TreeNode node in tvwLevels.Nodes) {
 
-                node.Text = "Level " + (count < 10 ? "0" : "") + count;
+                node.Text = string.Format("Level {0:D2}", count);
                 count++;
             }
 
@@ -1283,7 +1283,7 @@ namespace DarkUnderLevelEditor {
 
             foreach (TreeNode node in tvwLevels.Nodes) {
 
-                node.Text = "Level " + (count < 10 ? "0" : "") + count;
+                node.Text = string.Format("Level {0:D2}", count);
                 count++;
             }
 
@@ -1363,7 +1363,7 @@ namespace DarkUnderLevelEditor {
             foreach (Tile tile in tiles) {
 
                 tile.Location = new Point(410 + ((count % 5) * 91), 6 + (((Byte)count / 5) * 110));
-                tile.Title = "Tile " + (count < 10 ? "0" : "") + count;
+                tile.Title = string.Format("Tile {0:D2}", count);
                 count++;
 
             }
