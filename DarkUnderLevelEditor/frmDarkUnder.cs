@@ -196,7 +196,6 @@ namespace DarkUnderLevelEditor {
             tiles.Add(newTile);
 
             ToolStripMenuItem menuItem = new ToolStripMenuItem();
-            menuItem.Name = newTile.Title;
             menuItem.Text = newTile.Title;
             menuItem.Click += mnuAddTile_Click;
             menuItem.Tag = newTile;
@@ -1350,18 +1349,32 @@ namespace DarkUnderLevelEditor {
             tiles.Remove(selectedTile);
             tabPageTileEditor.Controls.Remove(selectedTile);
 
+            {
+                int index = 0;
+                for (int i = 0; i < mnuAddTiles.DropDownItems.Count; ++i)
+                {
+                    ToolStripItem item = mnuAddTiles.DropDownItems[i];
+                    if (item.Tag == selectedTile)
+                    {
+                        mnuAddTiles.DropDownItems.Remove(item); // remove from list
+                        item.Click -= mnuAddTile_Click; // prevent memory leak
+                        item = null;
+
+                        index = i;
+                        break;
+                    }
+                }
+
+                // Only rename the items that need renaming
+                for (int i = index; i < mnuAddTiles.DropDownItems.Count; ++i)
+                {
+                    mnuAddTiles.DropDownItems[i].Text = string.Format("Tile {0:D2}", i);
+                }
+            }
+
             selectedTile.Click -= tile_Click; // prevent memory leak
             selectedTile.Dispose(); // release resources as soon as possible
             selectedTile = null; // nullify
-
-            string key = selectedTile.Title;
-            if(mnuAddTiles.DropDownItems.ContainsKey(key))
-            {
-                ToolStripItem toolStripItem = mnuAddTiles.DropDownItems[key];
-                mnuAddTiles.DropDownItems.RemoveByKey(key); // remove from list
-                toolStripItem.Click -= mnuAddTile_Click; // prevent memory leak
-                toolStripItem = null;
-            }
 
             int count = 0;
             foreach (Tile tile in tiles) {
