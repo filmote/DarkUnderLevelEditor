@@ -196,6 +196,7 @@ namespace DarkUnderLevelEditor {
             tiles.Add(newTile);
 
             ToolStripMenuItem menuItem = new ToolStripMenuItem();
+            menuItem.Name = newTile.Title;
             menuItem.Text = newTile.Title;
             menuItem.Click += mnuAddTile_Click;
             menuItem.Tag = newTile;
@@ -1343,7 +1344,7 @@ namespace DarkUnderLevelEditor {
         }
 
         private void cmdTileDelete_Click(object sender, EventArgs e) {
-
+            
             int tileIndex = selectedTile.Index;
 
             tiles.Remove(selectedTile);
@@ -1352,6 +1353,15 @@ namespace DarkUnderLevelEditor {
             selectedTile.Click -= tile_Click; // prevent memory leak
             selectedTile.Dispose(); // release resources as soon as possible
             selectedTile = null; // nullify
+
+            string key = selectedTile.Title;
+            if(mnuAddTiles.DropDownItems.ContainsKey(key))
+            {
+                ToolStripItem toolStripItem = mnuAddTiles.DropDownItems[key];
+                mnuAddTiles.DropDownItems.RemoveByKey(key); // remove from list
+                toolStripItem.Click -= mnuAddTile_Click; // prevent memory leak
+                toolStripItem = null;
+            }
 
             int count = 0;
             foreach (Tile tile in tiles) {
