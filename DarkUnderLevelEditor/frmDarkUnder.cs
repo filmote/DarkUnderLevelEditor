@@ -979,6 +979,14 @@ namespace DarkUnderLevelEditor {
             mnuItemAdd(ItemType.Scroll);
         }
 
+        private void mnuItemAddSword_Click(object sender, EventArgs e) {
+            mnuItemAdd(ItemType.Sword);
+        }
+
+        private void mnuItemAddShield_Click(object sender, EventArgs e) {
+            mnuItemAdd(ItemType.Shield);
+        }
+
         private void mnuItemAdd(ItemType itemType) {
 
             LevelItem item = new LevelItem();
@@ -1787,7 +1795,6 @@ namespace DarkUnderLevelEditor {
             validateDungeons();
 
         }
-
     }
 
 }
