@@ -389,6 +389,13 @@ namespace DarkUnderLevelEditor {
             TreeNode treeNodeItems = null;
             TreeNode treeNodeDoors = null;
 
+            udStarting_HP.Value = 15;
+            udStarting_AP.Value = 2;
+            udStarting_DF.Value = 2;
+            udLevelUpLimit.Value = 50;
+            udMaximum_HP.Value = 50;
+            chkAllowSaveGame.Checked = false;
+
             if (dgOpenMapData.ShowDialog() == DialogResult.OK) {
 
                 clearLevels();
@@ -640,6 +647,41 @@ namespace DarkUnderLevelEditor {
                         treeNodeDoors.ImageIndex = (int)Images.DoorRoot;
                         treeNodeDoors.SelectedImageIndex = (int)Images.DoorRoot;
                         newLevel.node = treeNode;
+
+                    }
+
+                    /*
+                    #define SAVE_GAME
+                    #define START_HP 15
+                    #define START_AP 2
+                    #define START_DF 2
+                    #define MAX_HP   50
+                    #define LEVEL_UP  50
+                    */
+
+                    if (line.Equals("#define SAVE_GAME")) { chkAllowSaveGame.Checked = true; }
+
+                    if (line.StartsWith("#define START_")) {
+
+                        String newLine = line.Trim();
+
+                        if (newLine.StartsWith("#define Start_HP")) { udStarting_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define Start_AP")) { udStarting_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define Start_DF")) { udStarting_DF.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+
+                    }
+
+                    if (line.StartsWith("#define MAX_HP")) {
+
+                        String newLine = line.Trim();
+                        udMaximum_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1));
+
+                    }
+
+                    if (line.StartsWith("#define LEVEL_UP")) {
+
+                        String newLine = line.Trim();
+                        udLevelUpLimit.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1));
 
                     }
 
@@ -1475,6 +1517,16 @@ namespace DarkUnderLevelEditor {
                 file.WriteLine();
 
                 file.WriteLine("#define MAX_LEVEL_COUNT {0}", levels.Count);
+
+                if (chkAllowSaveGame.Checked) {
+                    file.WriteLine("#define SAVE_GAME");
+                }
+
+                file.WriteLine("#define START_HP {0}", udStarting_HP.Value);
+                file.WriteLine("#define START_AP {0}", udStarting_AP.Value);
+                file.WriteLine("#define START_DF {0}", udStarting_DF.Value);
+                file.WriteLine("#define MAX_HP {0}", udMaximum_HP.Value);
+                file.WriteLine("#define LEVEL_UP {0}", udLevelUpLimit.Value);
                 file.WriteLine();
                 file.WriteLine("#define ENEMY_BEHOLDER_HP {0}", udBeholder_HP.Value);
                 file.WriteLine("#define ENEMY_BEHOLDER_AP {0}", udBeholder_AP.Value);
