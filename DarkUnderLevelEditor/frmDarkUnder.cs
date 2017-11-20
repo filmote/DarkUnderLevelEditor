@@ -918,7 +918,7 @@ namespace DarkUnderLevelEditor {
 
                 for (int x = 0; x < 255; x++) {
 
-                    levelEditor.Rows[selectedRow].Cells[selectedCol].Style.BackColor = Color.FromArgb(245, 245, 245); ;
+                    levelEditor.Rows[y].Cells[x].Style.BackColor = Color.FromArgb(245, 245, 245); ;
 
                 }
 
