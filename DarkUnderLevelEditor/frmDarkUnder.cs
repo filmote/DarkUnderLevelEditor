@@ -413,21 +413,18 @@ namespace DarkUnderLevelEditor {
                         String newLine = line.Replace(" ", "");
                         String[] data = newLine.Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 
-                        int x1 = 0;
-                        int y1 = 0;
+                        int i = 0;
 
-                        for (int i = 0; i < 11; i++) {
-                            if (i == data.Length) break;
-                            tileDataSet[y1, x1] = Byte.Parse(data[i]);
-
-                            x1++;
-                            if (x1 == newLevel.levelDimensionX) {
-                                x1 = 0;
-                                y1++;
-                                if (y1 == newLevel.levelDimensionY) {
-                                    break;
-                                }
+                        for (int x = 0; x < newLevel.levelDimensionX; x++)
+                        {
+                            for (int y = 0; y < newLevel.levelDimensionY; y++)
+                            {
+                                tileDataSet[y, x] = Byte.Parse(data[i]);
+                                ++i;
+                                if (i >= data.Length) break;
+                                //file.Write("{0}, ", level.tileData[y, x]);
                             }
+                            if (i >= data.Length) break;
                         }
 
                         newLevel.tileData = tileDataSet;
@@ -1161,7 +1158,7 @@ namespace DarkUnderLevelEditor {
 
             if (e.KeyChar != (Char)Keys.Back) {
 
-                if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9^A-Z^\.^\!^ ]")) {
+                if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9^A-Z^a-z^\.^\!^ ]")) {
                     e.Handled = true;
                 }
 
@@ -1173,7 +1170,7 @@ namespace DarkUnderLevelEditor {
 
             if (e.KeyChar != (Char)Keys.Back) {
 
-                if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9^A-Z^\.^\!^ ]")) {
+                if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9^A-Z^a-z^\.^\!^ ]")) {
                     e.Handled = true;
                 }
 
@@ -1241,11 +1238,24 @@ namespace DarkUnderLevelEditor {
 
         private void txtLevelHeading1_TextChanged(object sender, EventArgs e) {
 
+            if(txtLevelHeading1.Text.Any(char.IsLower)) {
+                var selected = txtLevelHeading1.SelectionStart;
+                txtLevelHeading1.Text = txtLevelHeading1.Text.ToUpper();
+                txtLevelHeading1.SelectionStart = selected;
+            }
+
             selectedLevel.line1 = txtLevelHeading1.Text;
 
         }
 
         private void txtLevelHeading2_TextChanged(object sender, EventArgs e) {
+
+            if (txtLevelHeading2.Text.Any(char.IsLower))
+            {
+                var selected = txtLevelHeading2.SelectionStart;
+                txtLevelHeading2.Text = txtLevelHeading2.Text.ToUpper();
+                txtLevelHeading2.SelectionStart = selected;
+            }
 
             selectedLevel.line2 = txtLevelHeading2.Text;
 
@@ -1653,7 +1663,7 @@ namespace DarkUnderLevelEditor {
 
 
                         // Tile info ..
-
+                        
                         for (int x = 0; x < level.levelDimensionX; x++)
                         {
                             for (int y = 0; y < level.levelDimensionY; y++)
