@@ -824,8 +824,8 @@ namespace DarkUnderLevelEditor {
                 pnlItemDetails.Enabled = false;
                 pnlBlank.Visible = false;
 
-                txtLevelHeading1.Text = level.line1;
-                txtLevelHeading2.Text = level.line2;
+                txtLevelHeading1.Text = level.line1.Trim();
+                txtLevelHeading2.Text = level.line2.Trim();
                 cboLevelDirection.SelectedIndex = level.direction;
                 txtLevelPositionX.Text = (level.startPosX >= 0 ? level.startPosX.ToString() : "");
                 txtLevelPositionY.Text = (level.startPosY >= 0 ? level.startPosY.ToString() : "");
@@ -1244,7 +1244,7 @@ namespace DarkUnderLevelEditor {
                 txtLevelHeading1.SelectionStart = selected;
             }
 
-            selectedLevel.line1 = txtLevelHeading1.Text;
+            selectedLevel.line1 = txtLevelHeading1.Text.ToUpper();
 
         }
 
@@ -1857,6 +1857,29 @@ namespace DarkUnderLevelEditor {
             validateDungeons();
 
         }
+
+        private void txtLevelHeading1_Enter(object sender, EventArgs e) {
+
+            txtLevelHeading1.SelectionStart = 0;
+            txtLevelHeading1.SelectionLength = txtLevelHeading1.Text.Length;
+
+        }
+
+        private void txtLevelHeading1_Leave(object sender, EventArgs e) {
+            txtLevelHeading1.Text = txtLevelHeading1.Text.Trim();
+        }
+
+        private void txtLevelHeading2_Enter(object sender, EventArgs e) {
+
+            txtLevelHeading2.SelectionStart = 0;
+            txtLevelHeading2.SelectionLength = txtLevelHeading2.Text.Length;
+
+        }
+
+        private void txtLevelHeading2_Leave(object sender, EventArgs e) {
+            txtLevelHeading2.Text = txtLevelHeading2.Text.Trim();
+        }
+
     }
 
 }

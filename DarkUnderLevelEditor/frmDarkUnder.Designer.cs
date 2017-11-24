@@ -24,13 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDarkUnder));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabPageTileEditor = new System.Windows.Forms.TabPage();
             this.tileEditor = new System.Windows.Forms.DataGridView();
@@ -345,6 +345,21 @@
             this.Column254 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column255 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label53 = new System.Windows.Forms.Label();
+            this.udMaximum_HP = new System.Windows.Forms.NumericUpDown();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.udLevelUpLimit = new System.Windows.Forms.NumericUpDown();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.udStarting_DF = new System.Windows.Forms.NumericUpDown();
+            this.label46 = new System.Windows.Forms.Label();
+            this.udStarting_AP = new System.Windows.Forms.NumericUpDown();
+            this.label45 = new System.Windows.Forms.Label();
+            this.udStarting_HP = new System.Windows.Forms.NumericUpDown();
+            this.chkAllowSaveGame = new System.Windows.Forms.CheckBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.chkSkeleton_MV = new System.Windows.Forms.CheckBox();
@@ -443,6 +458,8 @@
             this.mnuItemAddKey = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemAddPotion = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemAddScroll = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuItemAddSword = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuItemAddShield = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuDoorAddBase = new System.Windows.Forms.ToolStripMenuItem();
@@ -470,23 +487,6 @@
             this.mnuTreeViewDeleteEnemy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTreeViewDeleteItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTreeViewDeleteDoor = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuItemAddSword = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuItemAddShield = new System.Windows.Forms.ToolStripMenuItem();
-            this.chkAllowSaveGame = new System.Windows.Forms.CheckBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.udStarting_HP = new System.Windows.Forms.NumericUpDown();
-            this.label46 = new System.Windows.Forms.Label();
-            this.udStarting_AP = new System.Windows.Forms.NumericUpDown();
-            this.label47 = new System.Windows.Forms.Label();
-            this.udStarting_DF = new System.Windows.Forms.NumericUpDown();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.udLevelUpLimit = new System.Windows.Forms.NumericUpDown();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.udMaximum_HP = new System.Windows.Forms.NumericUpDown();
             this.tabs.SuspendLayout();
             this.tabPageTileEditor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tileEditor)).BeginInit();
@@ -499,6 +499,11 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.levelEditor)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.udMaximum_HP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udLevelUpLimit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udStarting_DF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udStarting_AP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udStarting_HP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udSkeleton_XP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udSkeleton_AP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udSkeleton_HP)).BeginInit();
@@ -539,11 +544,6 @@
             this.menuStrip1.SuspendLayout();
             this.sbStatus.SuspendLayout();
             this.mnuTreeViewContext.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.udStarting_HP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udStarting_AP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udStarting_DF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udLevelUpLimit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udMaximum_HP)).BeginInit();
             this.SuspendLayout();
             // 
             // tabs
@@ -585,14 +585,14 @@
             this.tileEditor.AllowUserToDeleteRows = false;
             this.tileEditor.AllowUserToResizeColumns = false;
             this.tileEditor.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tileEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tileEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tileEditor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tileEditor.ColumnHeadersVisible = false;
             this.tileEditor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -611,27 +611,27 @@
             this.Column13,
             this.Column14,
             this.Column15});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tileEditor.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tileEditor.DefaultCellStyle = dataGridViewCellStyle2;
             this.tileEditor.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.tileEditor.Enabled = false;
             this.tileEditor.Location = new System.Drawing.Point(15, 29);
             this.tileEditor.MultiSelect = false;
             this.tileEditor.Name = "tileEditor";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tileEditor.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tileEditor.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.tileEditor.RowHeadersVisible = false;
             this.tileEditor.RowTemplate.Height = 25;
             this.tileEditor.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -640,7 +640,7 @@
             this.tileEditor.ShowEditingIcon = false;
             this.tileEditor.ShowRowErrors = false;
             this.tileEditor.Size = new System.Drawing.Size(378, 378);
-            this.tileEditor.TabIndex = 120;
+            this.tileEditor.TabIndex = 0;
             this.tileEditor.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.tileEditor_CellMouseDown);
             this.tileEditor.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.tileEditor_CellMouseEnter);
             this.tileEditor.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.tileEditor_CellMouseUp);
@@ -790,7 +790,7 @@
             this.cmdTileDelete.Location = new System.Drawing.Point(788, 451);
             this.cmdTileDelete.Name = "cmdTileDelete";
             this.cmdTileDelete.Size = new System.Drawing.Size(65, 21);
-            this.cmdTileDelete.TabIndex = 130;
+            this.cmdTileDelete.TabIndex = 5;
             this.cmdTileDelete.Text = "&Delete";
             this.cmdTileDelete.UseVisualStyleBackColor = true;
             this.cmdTileDelete.Click += new System.EventHandler(this.cmdTileDelete_Click);
@@ -800,7 +800,7 @@
             this.cmdTileAdd.Location = new System.Drawing.Point(720, 451);
             this.cmdTileAdd.Name = "cmdTileAdd";
             this.cmdTileAdd.Size = new System.Drawing.Size(65, 21);
-            this.cmdTileAdd.TabIndex = 129;
+            this.cmdTileAdd.TabIndex = 4;
             this.cmdTileAdd.Text = "&Add Tile";
             this.cmdTileAdd.UseVisualStyleBackColor = true;
             this.cmdTileAdd.Click += new System.EventHandler(this.cmdTileAdd_Click);
@@ -810,7 +810,7 @@
             this.cmdReset.Location = new System.Drawing.Point(80, 451);
             this.cmdReset.Name = "cmdReset";
             this.cmdReset.Size = new System.Drawing.Size(65, 21);
-            this.cmdReset.TabIndex = 126;
+            this.cmdReset.TabIndex = 2;
             this.cmdReset.Text = "&Reset";
             this.cmdReset.UseVisualStyleBackColor = true;
             this.cmdReset.Click += new System.EventHandler(this.cmdReset_Click);
@@ -820,7 +820,7 @@
             this.cmdSave.Location = new System.Drawing.Point(315, 451);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(74, 21);
-            this.cmdSave.TabIndex = 125;
+            this.cmdSave.TabIndex = 3;
             this.cmdSave.Text = "&Update Tile";
             this.cmdSave.UseVisualStyleBackColor = true;
             this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
@@ -830,7 +830,7 @@
             this.cmdClear.Location = new System.Drawing.Point(11, 451);
             this.cmdClear.Name = "cmdClear";
             this.cmdClear.Size = new System.Drawing.Size(65, 21);
-            this.cmdClear.TabIndex = 124;
+            this.cmdClear.TabIndex = 1;
             this.cmdClear.Text = "&Clear";
             this.cmdClear.UseVisualStyleBackColor = true;
             this.cmdClear.Click += new System.EventHandler(this.cmdClear_Click);
@@ -873,7 +873,7 @@
             this.cmdLevelDown.Location = new System.Drawing.Point(727, 300);
             this.cmdLevelDown.Name = "cmdLevelDown";
             this.cmdLevelDown.Size = new System.Drawing.Size(18, 21);
-            this.cmdLevelDown.TabIndex = 137;
+            this.cmdLevelDown.TabIndex = 3;
             this.cmdLevelDown.Text = "▼";
             this.cmdLevelDown.UseVisualStyleBackColor = true;
             this.cmdLevelDown.Click += new System.EventHandler(this.cmdLevelDown_Click);
@@ -886,7 +886,7 @@
             this.cmdLevelUp.Location = new System.Drawing.Point(709, 300);
             this.cmdLevelUp.Name = "cmdLevelUp";
             this.cmdLevelUp.Size = new System.Drawing.Size(18, 21);
-            this.cmdLevelUp.TabIndex = 136;
+            this.cmdLevelUp.TabIndex = 2;
             this.cmdLevelUp.Text = "▲";
             this.cmdLevelUp.UseVisualStyleBackColor = true;
             this.cmdLevelUp.Click += new System.EventHandler(this.cmdLevelUp_Click);
@@ -943,7 +943,7 @@
             this.txtItemDetails.Name = "txtItemDetails";
             this.txtItemDetails.ReadOnly = true;
             this.txtItemDetails.Size = new System.Drawing.Size(86, 20);
-            this.txtItemDetails.TabIndex = 10;
+            this.txtItemDetails.TabIndex = 1;
             // 
             // txtItemDetailsPositionY
             // 
@@ -952,7 +952,7 @@
             this.txtItemDetailsPositionY.Name = "txtItemDetailsPositionY";
             this.txtItemDetailsPositionY.ReadOnly = true;
             this.txtItemDetailsPositionY.Size = new System.Drawing.Size(36, 20);
-            this.txtItemDetailsPositionY.TabIndex = 9;
+            this.txtItemDetailsPositionY.TabIndex = 4;
             // 
             // txtItemDetailsPositionX
             // 
@@ -961,7 +961,7 @@
             this.txtItemDetailsPositionX.Name = "txtItemDetailsPositionX";
             this.txtItemDetailsPositionX.ReadOnly = true;
             this.txtItemDetailsPositionX.Size = new System.Drawing.Size(36, 20);
-            this.txtItemDetailsPositionX.TabIndex = 8;
+            this.txtItemDetailsPositionX.TabIndex = 3;
             // 
             // label3
             // 
@@ -969,7 +969,7 @@
             this.label3.Location = new System.Drawing.Point(5, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
-            this.label3.TabIndex = 7;
+            this.label3.TabIndex = 2;
             this.label3.Text = "Position";
             // 
             // label6
@@ -978,7 +978,7 @@
             this.label6.Location = new System.Drawing.Point(3, 34);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 13);
-            this.label6.TabIndex = 4;
+            this.label6.TabIndex = 0;
             this.label6.Text = "Type";
             // 
             // panel3
@@ -1028,7 +1028,7 @@
             this.txtLevelPositionY.Name = "txtLevelPositionY";
             this.txtLevelPositionY.ReadOnly = true;
             this.txtLevelPositionY.Size = new System.Drawing.Size(36, 20);
-            this.txtLevelPositionY.TabIndex = 9;
+            this.txtLevelPositionY.TabIndex = 6;
             // 
             // txtLevelPositionX
             // 
@@ -1037,7 +1037,7 @@
             this.txtLevelPositionX.Name = "txtLevelPositionX";
             this.txtLevelPositionX.ReadOnly = true;
             this.txtLevelPositionX.Size = new System.Drawing.Size(36, 20);
-            this.txtLevelPositionX.TabIndex = 8;
+            this.txtLevelPositionX.TabIndex = 5;
             // 
             // label2
             // 
@@ -1045,7 +1045,7 @@
             this.label2.Location = new System.Drawing.Point(3, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 7;
+            this.label2.TabIndex = 4;
             this.label2.Text = "Position";
             // 
             // lblDirection
@@ -1054,7 +1054,7 @@
             this.lblDirection.Location = new System.Drawing.Point(3, 109);
             this.lblDirection.Name = "lblDirection";
             this.lblDirection.Size = new System.Drawing.Size(49, 13);
-            this.lblDirection.TabIndex = 6;
+            this.lblDirection.TabIndex = 2;
             this.lblDirection.Text = "Direction";
             // 
             // lblLevelPlayer
@@ -1063,7 +1063,7 @@
             this.lblLevelPlayer.Location = new System.Drawing.Point(3, 85);
             this.lblLevelPlayer.Name = "lblLevelPlayer";
             this.lblLevelPlayer.Size = new System.Drawing.Size(36, 13);
-            this.lblLevelPlayer.TabIndex = 5;
+            this.lblLevelPlayer.TabIndex = 1;
             this.lblLevelPlayer.Text = "Player";
             // 
             // lblLevelDesc
@@ -1097,7 +1097,9 @@
             this.txtLevelHeading2.Size = new System.Drawing.Size(87, 20);
             this.txtLevelHeading2.TabIndex = 2;
             this.txtLevelHeading2.TextChanged += new System.EventHandler(this.txtLevelHeading2_TextChanged);
+            this.txtLevelHeading2.Enter += new System.EventHandler(this.txtLevelHeading2_Enter);
             this.txtLevelHeading2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLevelHeading2_KeyPress);
+            this.txtLevelHeading2.Leave += new System.EventHandler(this.txtLevelHeading2_Leave);
             // 
             // txtLevelHeading1
             // 
@@ -1105,9 +1107,11 @@
             this.txtLevelHeading1.MaxLength = 11;
             this.txtLevelHeading1.Name = "txtLevelHeading1";
             this.txtLevelHeading1.Size = new System.Drawing.Size(87, 20);
-            this.txtLevelHeading1.TabIndex = 1;
+            this.txtLevelHeading1.TabIndex = 0;
             this.txtLevelHeading1.TextChanged += new System.EventHandler(this.txtLevelHeading1_TextChanged);
+            this.txtLevelHeading1.Enter += new System.EventHandler(this.txtLevelHeading1_Enter);
             this.txtLevelHeading1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLevelHeading1_KeyPress);
+            this.txtLevelHeading1.Leave += new System.EventHandler(this.txtLevelHeading1_Leave);
             // 
             // panel1
             // 
@@ -1135,7 +1139,7 @@
             this.cmdLevelDelete.Location = new System.Drawing.Point(819, 300);
             this.cmdLevelDelete.Name = "cmdLevelDelete";
             this.cmdLevelDelete.Size = new System.Drawing.Size(56, 21);
-            this.cmdLevelDelete.TabIndex = 132;
+            this.cmdLevelDelete.TabIndex = 8;
             this.cmdLevelDelete.Text = "&Delete";
             this.cmdLevelDelete.UseVisualStyleBackColor = true;
             this.cmdLevelDelete.Click += new System.EventHandler(this.cmdLevelDelete_Click);
@@ -1145,7 +1149,7 @@
             this.cmdLevelAdd.Location = new System.Drawing.Point(753, 300);
             this.cmdLevelAdd.Name = "cmdLevelAdd";
             this.cmdLevelAdd.Size = new System.Drawing.Size(63, 21);
-            this.cmdLevelAdd.TabIndex = 131;
+            this.cmdLevelAdd.TabIndex = 7;
             this.cmdLevelAdd.Text = "&Add Level";
             this.cmdLevelAdd.UseVisualStyleBackColor = true;
             this.cmdLevelAdd.Click += new System.EventHandler(this.cmdLevelAdd_Click);
@@ -1159,7 +1163,7 @@
             this.tvwLevels.Name = "tvwLevels";
             this.tvwLevels.SelectedImageIndex = 0;
             this.tvwLevels.Size = new System.Drawing.Size(165, 288);
-            this.tvwLevels.TabIndex = 122;
+            this.tvwLevels.TabIndex = 1;
             this.tvwLevels.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvwLevels_BeforeCollapse);
             this.tvwLevels.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.tvwLevels_AfterExpand);
             this.tvwLevels.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvwLevels_AfterSelect);
@@ -1186,14 +1190,14 @@
             this.levelEditor.AllowUserToDeleteRows = false;
             this.levelEditor.AllowUserToResizeColumns = false;
             this.levelEditor.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.levelEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.levelEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.levelEditor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.levelEditor.ColumnHeadersVisible = false;
             this.levelEditor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1452,31 +1456,31 @@
             this.Column253,
             this.Column254,
             this.Column255});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.levelEditor.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.levelEditor.DefaultCellStyle = dataGridViewCellStyle5;
             this.levelEditor.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.levelEditor.Enabled = false;
             this.levelEditor.Location = new System.Drawing.Point(6, 6);
             this.levelEditor.Name = "levelEditor";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.levelEditor.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.levelEditor.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.levelEditor.RowHeadersVisible = false;
             this.levelEditor.RowTemplate.Height = 12;
             this.levelEditor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.levelEditor.Size = new System.Drawing.Size(698, 490);
-            this.levelEditor.TabIndex = 121;
+            this.levelEditor.TabIndex = 0;
             this.levelEditor.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.levelEditor_CellPainting);
             this.levelEditor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.levelEditor_MouseClick);
             // 
@@ -2865,6 +2869,186 @@
             this.tabPage3.Text = "Enemy Powers";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(538, 453);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(72, 13);
+            this.label53.TabIndex = 83;
+            this.label53.Text = "Maximum HP:";
+            // 
+            // udMaximum_HP
+            // 
+            this.udMaximum_HP.Location = new System.Drawing.Point(636, 450);
+            this.udMaximum_HP.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.udMaximum_HP.Name = "udMaximum_HP";
+            this.udMaximum_HP.Size = new System.Drawing.Size(53, 20);
+            this.udMaximum_HP.TabIndex = 84;
+            this.udMaximum_HP.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.Location = new System.Drawing.Point(538, 404);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(106, 13);
+            this.label52.TabIndex = 78;
+            this.label52.Text = "Game Parameters";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label51.Location = new System.Drawing.Point(538, 291);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(93, 13);
+            this.label51.TabIndex = 71;
+            this.label51.Text = "Starting Values";
+            // 
+            // label50
+            // 
+            this.label50.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label50.Location = new System.Drawing.Point(536, 266);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(291, 17);
+            this.label50.TabIndex = 70;
+            this.label50.Text = " Player Options";
+            this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(538, 427);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(63, 13);
+            this.label49.TabIndex = 79;
+            this.label49.Text = "Level up at:";
+            // 
+            // udLevelUpLimit
+            // 
+            this.udLevelUpLimit.Location = new System.Drawing.Point(636, 424);
+            this.udLevelUpLimit.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.udLevelUpLimit.Name = "udLevelUpLimit";
+            this.udLevelUpLimit.Size = new System.Drawing.Size(53, 20);
+            this.udLevelUpLimit.TabIndex = 80;
+            this.udLevelUpLimit.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(720, 427);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(91, 13);
+            this.label48.TabIndex = 81;
+            this.label48.Text = "Allow Save Game";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(538, 369);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(51, 13);
+            this.label47.TabIndex = 76;
+            this.label47.Text = "Defence:";
+            // 
+            // udStarting_DF
+            // 
+            this.udStarting_DF.Location = new System.Drawing.Point(636, 366);
+            this.udStarting_DF.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.udStarting_DF.Name = "udStarting_DF";
+            this.udStarting_DF.Size = new System.Drawing.Size(53, 20);
+            this.udStarting_DF.TabIndex = 77;
+            this.udStarting_DF.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(538, 343);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(74, 13);
+            this.label46.TabIndex = 74;
+            this.label46.Text = "Attack Power:";
+            // 
+            // udStarting_AP
+            // 
+            this.udStarting_AP.Location = new System.Drawing.Point(636, 340);
+            this.udStarting_AP.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.udStarting_AP.Name = "udStarting_AP";
+            this.udStarting_AP.Size = new System.Drawing.Size(53, 20);
+            this.udStarting_AP.TabIndex = 75;
+            this.udStarting_AP.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(538, 317);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(55, 13);
+            this.label45.TabIndex = 72;
+            this.label45.Text = "Hit Points:";
+            // 
+            // udStarting_HP
+            // 
+            this.udStarting_HP.Location = new System.Drawing.Point(636, 314);
+            this.udStarting_HP.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.udStarting_HP.Name = "udStarting_HP";
+            this.udStarting_HP.Size = new System.Drawing.Size(53, 20);
+            this.udStarting_HP.TabIndex = 73;
+            this.udStarting_HP.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            // 
+            // chkAllowSaveGame
+            // 
+            this.chkAllowSaveGame.AutoSize = true;
+            this.chkAllowSaveGame.Location = new System.Drawing.Point(819, 427);
+            this.chkAllowSaveGame.Name = "chkAllowSaveGame";
+            this.chkAllowSaveGame.Size = new System.Drawing.Size(15, 14);
+            this.chkAllowSaveGame.TabIndex = 82;
+            this.chkAllowSaveGame.UseVisualStyleBackColor = true;
+            // 
             // label36
             // 
             this.label36.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -2873,7 +3057,7 @@
             this.label36.Location = new System.Drawing.Point(214, 386);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(130, 17);
-            this.label36.TabIndex = 77;
+            this.label36.TabIndex = 61;
             this.label36.Text = " Skeleton";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -2883,7 +3067,7 @@
             this.label37.Location = new System.Drawing.Point(212, 480);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(57, 13);
-            this.label37.TabIndex = 76;
+            this.label37.TabIndex = 68;
             this.label37.Text = "Stationary:";
             // 
             // chkSkeleton_MV
@@ -2892,7 +3076,7 @@
             this.chkSkeleton_MV.Location = new System.Drawing.Point(291, 480);
             this.chkSkeleton_MV.Name = "chkSkeleton_MV";
             this.chkSkeleton_MV.Size = new System.Drawing.Size(15, 14);
-            this.chkSkeleton_MV.TabIndex = 75;
+            this.chkSkeleton_MV.TabIndex = 69;
             this.chkSkeleton_MV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkSkeleton_MV.UseVisualStyleBackColor = true;
             // 
@@ -2902,7 +3086,7 @@
             this.label38.Location = new System.Drawing.Point(212, 456);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(63, 13);
-            this.label38.TabIndex = 74;
+            this.label38.TabIndex = 66;
             this.label38.Text = "Experience:";
             // 
             // udSkeleton_XP
@@ -2915,7 +3099,7 @@
             0});
             this.udSkeleton_XP.Name = "udSkeleton_XP";
             this.udSkeleton_XP.Size = new System.Drawing.Size(53, 20);
-            this.udSkeleton_XP.TabIndex = 73;
+            this.udSkeleton_XP.TabIndex = 67;
             // 
             // label39
             // 
@@ -2923,7 +3107,7 @@
             this.label39.Location = new System.Drawing.Point(212, 433);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(74, 13);
-            this.label39.TabIndex = 72;
+            this.label39.TabIndex = 64;
             this.label39.Text = "Attack Power:";
             // 
             // udSkeleton_AP
@@ -2936,7 +3120,7 @@
             0});
             this.udSkeleton_AP.Name = "udSkeleton_AP";
             this.udSkeleton_AP.Size = new System.Drawing.Size(53, 20);
-            this.udSkeleton_AP.TabIndex = 71;
+            this.udSkeleton_AP.TabIndex = 65;
             // 
             // label40
             // 
@@ -2944,7 +3128,7 @@
             this.label40.Location = new System.Drawing.Point(212, 411);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(55, 13);
-            this.label40.TabIndex = 70;
+            this.label40.TabIndex = 62;
             this.label40.Text = "Hit Points:";
             // 
             // udSkeleton_HP
@@ -2957,7 +3141,7 @@
             0});
             this.udSkeleton_HP.Name = "udSkeleton_HP";
             this.udSkeleton_HP.Size = new System.Drawing.Size(53, 20);
-            this.udSkeleton_HP.TabIndex = 69;
+            this.udSkeleton_HP.TabIndex = 63;
             // 
             // label31
             // 
@@ -2967,7 +3151,7 @@
             this.label31.Location = new System.Drawing.Point(53, 386);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(130, 17);
-            this.label31.TabIndex = 68;
+            this.label31.TabIndex = 51;
             this.label31.Text = " Wraith";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -2977,7 +3161,7 @@
             this.label32.Location = new System.Drawing.Point(51, 480);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(57, 13);
-            this.label32.TabIndex = 67;
+            this.label32.TabIndex = 58;
             this.label32.Text = "Stationary:";
             // 
             // chkWraith_MV
@@ -2986,7 +3170,7 @@
             this.chkWraith_MV.Location = new System.Drawing.Point(130, 480);
             this.chkWraith_MV.Name = "chkWraith_MV";
             this.chkWraith_MV.Size = new System.Drawing.Size(15, 14);
-            this.chkWraith_MV.TabIndex = 66;
+            this.chkWraith_MV.TabIndex = 59;
             this.chkWraith_MV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkWraith_MV.UseVisualStyleBackColor = true;
             // 
@@ -2996,7 +3180,7 @@
             this.label33.Location = new System.Drawing.Point(51, 456);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(63, 13);
-            this.label33.TabIndex = 65;
+            this.label33.TabIndex = 56;
             this.label33.Text = "Experience:";
             // 
             // udWraith_XP
@@ -3009,7 +3193,7 @@
             0});
             this.udWraith_XP.Name = "udWraith_XP";
             this.udWraith_XP.Size = new System.Drawing.Size(53, 20);
-            this.udWraith_XP.TabIndex = 64;
+            this.udWraith_XP.TabIndex = 57;
             // 
             // label34
             // 
@@ -3017,7 +3201,7 @@
             this.label34.Location = new System.Drawing.Point(51, 433);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(74, 13);
-            this.label34.TabIndex = 63;
+            this.label34.TabIndex = 54;
             this.label34.Text = "Attack Power:";
             // 
             // udWraith_AP
@@ -3030,7 +3214,7 @@
             0});
             this.udWraith_AP.Name = "udWraith_AP";
             this.udWraith_AP.Size = new System.Drawing.Size(53, 20);
-            this.udWraith_AP.TabIndex = 62;
+            this.udWraith_AP.TabIndex = 55;
             // 
             // label35
             // 
@@ -3038,7 +3222,7 @@
             this.label35.Location = new System.Drawing.Point(51, 411);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(55, 13);
-            this.label35.TabIndex = 61;
+            this.label35.TabIndex = 52;
             this.label35.Text = "Hit Points:";
             // 
             // udWraith_HP
@@ -3051,7 +3235,7 @@
             0});
             this.udWraith_HP.Name = "udWraith_HP";
             this.udWraith_HP.Size = new System.Drawing.Size(53, 20);
-            this.udWraith_HP.TabIndex = 60;
+            this.udWraith_HP.TabIndex = 53;
             // 
             // label26
             // 
@@ -3061,7 +3245,7 @@
             this.label26.Location = new System.Drawing.Point(697, 136);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(130, 17);
-            this.label26.TabIndex = 59;
+            this.label26.TabIndex = 41;
             this.label26.Text = " Rat";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -3071,7 +3255,7 @@
             this.label27.Location = new System.Drawing.Point(695, 230);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(57, 13);
-            this.label27.TabIndex = 58;
+            this.label27.TabIndex = 48;
             this.label27.Text = "Stationary:";
             // 
             // chkRat_MV
@@ -3080,7 +3264,7 @@
             this.chkRat_MV.Location = new System.Drawing.Point(774, 230);
             this.chkRat_MV.Name = "chkRat_MV";
             this.chkRat_MV.Size = new System.Drawing.Size(15, 14);
-            this.chkRat_MV.TabIndex = 57;
+            this.chkRat_MV.TabIndex = 49;
             this.chkRat_MV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkRat_MV.UseVisualStyleBackColor = true;
             // 
@@ -3090,7 +3274,7 @@
             this.label28.Location = new System.Drawing.Point(695, 206);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(63, 13);
-            this.label28.TabIndex = 56;
+            this.label28.TabIndex = 46;
             this.label28.Text = "Experience:";
             // 
             // udRat_XP
@@ -3103,7 +3287,7 @@
             0});
             this.udRat_XP.Name = "udRat_XP";
             this.udRat_XP.Size = new System.Drawing.Size(53, 20);
-            this.udRat_XP.TabIndex = 55;
+            this.udRat_XP.TabIndex = 47;
             // 
             // label29
             // 
@@ -3111,7 +3295,7 @@
             this.label29.Location = new System.Drawing.Point(695, 183);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(74, 13);
-            this.label29.TabIndex = 54;
+            this.label29.TabIndex = 44;
             this.label29.Text = "Attack Power:";
             // 
             // udRat_AP
@@ -3124,7 +3308,7 @@
             0});
             this.udRat_AP.Name = "udRat_AP";
             this.udRat_AP.Size = new System.Drawing.Size(53, 20);
-            this.udRat_AP.TabIndex = 53;
+            this.udRat_AP.TabIndex = 45;
             // 
             // label30
             // 
@@ -3132,7 +3316,7 @@
             this.label30.Location = new System.Drawing.Point(695, 161);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(55, 13);
-            this.label30.TabIndex = 52;
+            this.label30.TabIndex = 42;
             this.label30.Text = "Hit Points:";
             // 
             // udRat_HP
@@ -3145,7 +3329,7 @@
             0});
             this.udRat_HP.Name = "udRat_HP";
             this.udRat_HP.Size = new System.Drawing.Size(53, 20);
-            this.udRat_HP.TabIndex = 51;
+            this.udRat_HP.TabIndex = 43;
             // 
             // label21
             // 
@@ -3155,7 +3339,7 @@
             this.label21.Location = new System.Drawing.Point(536, 136);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(130, 17);
-            this.label21.TabIndex = 50;
+            this.label21.TabIndex = 31;
             this.label21.Text = " Beholder";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -3165,7 +3349,7 @@
             this.label22.Location = new System.Drawing.Point(534, 230);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(57, 13);
-            this.label22.TabIndex = 49;
+            this.label22.TabIndex = 38;
             this.label22.Text = "Stationary:";
             // 
             // chkBeholder_MV
@@ -3174,7 +3358,7 @@
             this.chkBeholder_MV.Location = new System.Drawing.Point(613, 230);
             this.chkBeholder_MV.Name = "chkBeholder_MV";
             this.chkBeholder_MV.Size = new System.Drawing.Size(15, 14);
-            this.chkBeholder_MV.TabIndex = 48;
+            this.chkBeholder_MV.TabIndex = 39;
             this.chkBeholder_MV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkBeholder_MV.UseVisualStyleBackColor = true;
             // 
@@ -3184,7 +3368,7 @@
             this.label23.Location = new System.Drawing.Point(534, 206);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(63, 13);
-            this.label23.TabIndex = 47;
+            this.label23.TabIndex = 36;
             this.label23.Text = "Experience:";
             // 
             // udBeholder_XP
@@ -3197,7 +3381,7 @@
             0});
             this.udBeholder_XP.Name = "udBeholder_XP";
             this.udBeholder_XP.Size = new System.Drawing.Size(53, 20);
-            this.udBeholder_XP.TabIndex = 46;
+            this.udBeholder_XP.TabIndex = 37;
             // 
             // label24
             // 
@@ -3205,7 +3389,7 @@
             this.label24.Location = new System.Drawing.Point(534, 183);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(74, 13);
-            this.label24.TabIndex = 45;
+            this.label24.TabIndex = 34;
             this.label24.Text = "Attack Power:";
             // 
             // udBeholder_AP
@@ -3218,7 +3402,7 @@
             0});
             this.udBeholder_AP.Name = "udBeholder_AP";
             this.udBeholder_AP.Size = new System.Drawing.Size(53, 20);
-            this.udBeholder_AP.TabIndex = 44;
+            this.udBeholder_AP.TabIndex = 35;
             // 
             // label25
             // 
@@ -3226,7 +3410,7 @@
             this.label25.Location = new System.Drawing.Point(534, 161);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(55, 13);
-            this.label25.TabIndex = 43;
+            this.label25.TabIndex = 32;
             this.label25.Text = "Hit Points:";
             // 
             // udBeholder_HP
@@ -3239,7 +3423,7 @@
             0});
             this.udBeholder_HP.Name = "udBeholder_HP";
             this.udBeholder_HP.Size = new System.Drawing.Size(53, 20);
-            this.udBeholder_HP.TabIndex = 42;
+            this.udBeholder_HP.TabIndex = 33;
             // 
             // label16
             // 
@@ -3249,7 +3433,7 @@
             this.label16.Location = new System.Drawing.Point(375, 136);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(130, 17);
-            this.label16.TabIndex = 41;
+            this.label16.TabIndex = 21;
             this.label16.Text = " Slime";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -3259,7 +3443,7 @@
             this.label17.Location = new System.Drawing.Point(373, 230);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(57, 13);
-            this.label17.TabIndex = 40;
+            this.label17.TabIndex = 28;
             this.label17.Text = "Stationary:";
             // 
             // chkSlime_MV
@@ -3268,7 +3452,7 @@
             this.chkSlime_MV.Location = new System.Drawing.Point(452, 230);
             this.chkSlime_MV.Name = "chkSlime_MV";
             this.chkSlime_MV.Size = new System.Drawing.Size(15, 14);
-            this.chkSlime_MV.TabIndex = 39;
+            this.chkSlime_MV.TabIndex = 29;
             this.chkSlime_MV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkSlime_MV.UseVisualStyleBackColor = true;
             // 
@@ -3278,7 +3462,7 @@
             this.label18.Location = new System.Drawing.Point(373, 206);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(63, 13);
-            this.label18.TabIndex = 38;
+            this.label18.TabIndex = 26;
             this.label18.Text = "Experience:";
             // 
             // udSlime_XP
@@ -3291,7 +3475,7 @@
             0});
             this.udSlime_XP.Name = "udSlime_XP";
             this.udSlime_XP.Size = new System.Drawing.Size(53, 20);
-            this.udSlime_XP.TabIndex = 37;
+            this.udSlime_XP.TabIndex = 27;
             // 
             // label19
             // 
@@ -3299,7 +3483,7 @@
             this.label19.Location = new System.Drawing.Point(373, 183);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(74, 13);
-            this.label19.TabIndex = 36;
+            this.label19.TabIndex = 24;
             this.label19.Text = "Attack Power:";
             // 
             // udSlime_AP
@@ -3312,7 +3496,7 @@
             0});
             this.udSlime_AP.Name = "udSlime_AP";
             this.udSlime_AP.Size = new System.Drawing.Size(53, 20);
-            this.udSlime_AP.TabIndex = 35;
+            this.udSlime_AP.TabIndex = 25;
             // 
             // label20
             // 
@@ -3320,7 +3504,7 @@
             this.label20.Location = new System.Drawing.Point(373, 161);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(55, 13);
-            this.label20.TabIndex = 34;
+            this.label20.TabIndex = 22;
             this.label20.Text = "Hit Points:";
             // 
             // udSlime_HP
@@ -3333,7 +3517,7 @@
             0});
             this.udSlime_HP.Name = "udSlime_HP";
             this.udSlime_HP.Size = new System.Drawing.Size(53, 20);
-            this.udSlime_HP.TabIndex = 33;
+            this.udSlime_HP.TabIndex = 23;
             // 
             // label11
             // 
@@ -3343,7 +3527,7 @@
             this.label11.Location = new System.Drawing.Point(214, 136);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(130, 17);
-            this.label11.TabIndex = 32;
+            this.label11.TabIndex = 11;
             this.label11.Text = " Dragon";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -3353,7 +3537,7 @@
             this.label12.Location = new System.Drawing.Point(212, 230);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(57, 13);
-            this.label12.TabIndex = 31;
+            this.label12.TabIndex = 18;
             this.label12.Text = "Stationary:";
             // 
             // chkDragon_MV
@@ -3362,7 +3546,7 @@
             this.chkDragon_MV.Location = new System.Drawing.Point(291, 230);
             this.chkDragon_MV.Name = "chkDragon_MV";
             this.chkDragon_MV.Size = new System.Drawing.Size(15, 14);
-            this.chkDragon_MV.TabIndex = 30;
+            this.chkDragon_MV.TabIndex = 19;
             this.chkDragon_MV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkDragon_MV.UseVisualStyleBackColor = true;
             // 
@@ -3372,7 +3556,7 @@
             this.label13.Location = new System.Drawing.Point(212, 206);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(63, 13);
-            this.label13.TabIndex = 29;
+            this.label13.TabIndex = 16;
             this.label13.Text = "Experience:";
             // 
             // udDragon_XP
@@ -3385,7 +3569,7 @@
             0});
             this.udDragon_XP.Name = "udDragon_XP";
             this.udDragon_XP.Size = new System.Drawing.Size(53, 20);
-            this.udDragon_XP.TabIndex = 28;
+            this.udDragon_XP.TabIndex = 17;
             // 
             // label14
             // 
@@ -3393,7 +3577,7 @@
             this.label14.Location = new System.Drawing.Point(212, 183);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(74, 13);
-            this.label14.TabIndex = 27;
+            this.label14.TabIndex = 14;
             this.label14.Text = "Attack Power:";
             // 
             // udDragon_AP
@@ -3406,7 +3590,7 @@
             0});
             this.udDragon_AP.Name = "udDragon_AP";
             this.udDragon_AP.Size = new System.Drawing.Size(53, 20);
-            this.udDragon_AP.TabIndex = 26;
+            this.udDragon_AP.TabIndex = 15;
             // 
             // label15
             // 
@@ -3414,7 +3598,7 @@
             this.label15.Location = new System.Drawing.Point(212, 161);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(55, 13);
-            this.label15.TabIndex = 25;
+            this.label15.TabIndex = 12;
             this.label15.Text = "Hit Points:";
             // 
             // udDragon_HP
@@ -3427,7 +3611,7 @@
             0});
             this.udDragon_HP.Name = "udDragon_HP";
             this.udDragon_HP.Size = new System.Drawing.Size(53, 20);
-            this.udDragon_HP.TabIndex = 24;
+            this.udDragon_HP.TabIndex = 13;
             // 
             // label10
             // 
@@ -3437,7 +3621,7 @@
             this.label10.Location = new System.Drawing.Point(53, 136);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(130, 17);
-            this.label10.TabIndex = 23;
+            this.label10.TabIndex = 1;
             this.label10.Text = " Displacer";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -3447,7 +3631,7 @@
             this.label9.Location = new System.Drawing.Point(51, 230);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 13);
-            this.label9.TabIndex = 22;
+            this.label9.TabIndex = 8;
             this.label9.Text = "Stationary:";
             // 
             // chkDisplacer_MV
@@ -3456,7 +3640,7 @@
             this.chkDisplacer_MV.Location = new System.Drawing.Point(130, 230);
             this.chkDisplacer_MV.Name = "chkDisplacer_MV";
             this.chkDisplacer_MV.Size = new System.Drawing.Size(15, 14);
-            this.chkDisplacer_MV.TabIndex = 21;
+            this.chkDisplacer_MV.TabIndex = 9;
             this.chkDisplacer_MV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkDisplacer_MV.UseVisualStyleBackColor = true;
             // 
@@ -3466,7 +3650,7 @@
             this.label8.Location = new System.Drawing.Point(51, 206);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 13);
-            this.label8.TabIndex = 20;
+            this.label8.TabIndex = 6;
             this.label8.Text = "Experience:";
             // 
             // udDisplacer_XP
@@ -3479,7 +3663,7 @@
             0});
             this.udDisplacer_XP.Name = "udDisplacer_XP";
             this.udDisplacer_XP.Size = new System.Drawing.Size(53, 20);
-            this.udDisplacer_XP.TabIndex = 19;
+            this.udDisplacer_XP.TabIndex = 7;
             // 
             // label5
             // 
@@ -3487,7 +3671,7 @@
             this.label5.Location = new System.Drawing.Point(51, 183);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(74, 13);
-            this.label5.TabIndex = 18;
+            this.label5.TabIndex = 4;
             this.label5.Text = "Attack Power:";
             // 
             // udDisplacer_AP
@@ -3500,7 +3684,7 @@
             0});
             this.udDisplacer_AP.Name = "udDisplacer_AP";
             this.udDisplacer_AP.Size = new System.Drawing.Size(53, 20);
-            this.udDisplacer_AP.TabIndex = 17;
+            this.udDisplacer_AP.TabIndex = 5;
             // 
             // label4
             // 
@@ -3508,7 +3692,7 @@
             this.label4.Location = new System.Drawing.Point(51, 161);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 16;
+            this.label4.TabIndex = 2;
             this.label4.Text = "Hit Points:";
             // 
             // udDisplacer_HP
@@ -3521,7 +3705,7 @@
             0});
             this.udDisplacer_HP.Name = "udDisplacer_HP";
             this.udDisplacer_HP.Size = new System.Drawing.Size(53, 20);
-            this.udDisplacer_HP.TabIndex = 15;
+            this.udDisplacer_HP.TabIndex = 3;
             // 
             // panel10
             // 
@@ -3530,7 +3714,7 @@
             this.panel10.Location = new System.Drawing.Point(214, 266);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(130, 120);
-            this.panel10.TabIndex = 14;
+            this.panel10.TabIndex = 60;
             // 
             // pictureBox5
             // 
@@ -3550,7 +3734,7 @@
             this.panel9.Location = new System.Drawing.Point(53, 266);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(130, 120);
-            this.panel9.TabIndex = 13;
+            this.panel9.TabIndex = 50;
             // 
             // pictureBox7
             // 
@@ -3570,7 +3754,7 @@
             this.panel8.Location = new System.Drawing.Point(214, 16);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(130, 120);
-            this.panel8.TabIndex = 12;
+            this.panel8.TabIndex = 10;
             // 
             // pictureBox3
             // 
@@ -3590,7 +3774,7 @@
             this.panel7.Location = new System.Drawing.Point(53, 16);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(130, 120);
-            this.panel7.TabIndex = 11;
+            this.panel7.TabIndex = 0;
             // 
             // pictureBox2
             // 
@@ -3610,7 +3794,7 @@
             this.panel6.Location = new System.Drawing.Point(697, 16);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(130, 120);
-            this.panel6.TabIndex = 9;
+            this.panel6.TabIndex = 40;
             // 
             // pictureBox4
             // 
@@ -3630,7 +3814,7 @@
             this.panel5.Location = new System.Drawing.Point(375, 16);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(130, 120);
-            this.panel5.TabIndex = 8;
+            this.panel5.TabIndex = 20;
             // 
             // pictureBox6
             // 
@@ -3650,7 +3834,7 @@
             this.panel2.Location = new System.Drawing.Point(536, 16);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(130, 120);
-            this.panel2.TabIndex = 7;
+            this.panel2.TabIndex = 30;
             // 
             // pictureBox1
             // 
@@ -3834,6 +4018,20 @@
             this.mnuItemAddScroll.Size = new System.Drawing.Size(134, 22);
             this.mnuItemAddScroll.Text = "Add &Scroll";
             this.mnuItemAddScroll.Click += new System.EventHandler(this.mnuItemAddScroll_Click);
+            // 
+            // mnuItemAddSword
+            // 
+            this.mnuItemAddSword.Name = "mnuItemAddSword";
+            this.mnuItemAddSword.Size = new System.Drawing.Size(134, 22);
+            this.mnuItemAddSword.Text = "Add Swo&rd";
+            this.mnuItemAddSword.Click += new System.EventHandler(this.mnuItemAddSword_Click);
+            // 
+            // mnuItemAddShield
+            // 
+            this.mnuItemAddShield.Name = "mnuItemAddShield";
+            this.mnuItemAddShield.Size = new System.Drawing.Size(134, 22);
+            this.mnuItemAddShield.Text = "Add Shie&ld";
+            this.mnuItemAddShield.Click += new System.EventHandler(this.mnuItemAddShield_Click);
             // 
             // mnuItemDelete
             // 
@@ -4036,200 +4234,6 @@
             this.mnuTreeViewDeleteDoor.Text = "Delete &Door";
             this.mnuTreeViewDeleteDoor.Click += new System.EventHandler(this.mnuTreeViewDeleteDoor_Click);
             // 
-            // mnuItemAddSword
-            // 
-            this.mnuItemAddSword.Name = "mnuItemAddSword";
-            this.mnuItemAddSword.Size = new System.Drawing.Size(152, 22);
-            this.mnuItemAddSword.Text = "Add Swo&rd";
-            this.mnuItemAddSword.Click += new System.EventHandler(this.mnuItemAddSword_Click);
-            // 
-            // mnuItemAddShield
-            // 
-            this.mnuItemAddShield.Name = "mnuItemAddShield";
-            this.mnuItemAddShield.Size = new System.Drawing.Size(152, 22);
-            this.mnuItemAddShield.Text = "Add Shie&ld";
-            this.mnuItemAddShield.Click += new System.EventHandler(this.mnuItemAddShield_Click);
-// 
-            // chkAllowSaveGame
-            // 
-            this.chkAllowSaveGame.AutoSize = true;
-            this.chkAllowSaveGame.Location = new System.Drawing.Point(819, 427);
-            this.chkAllowSaveGame.Name = "chkAllowSaveGame";
-            this.chkAllowSaveGame.Size = new System.Drawing.Size(15, 14);
-            this.chkAllowSaveGame.TabIndex = 78;
-            this.chkAllowSaveGame.UseVisualStyleBackColor = true;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(538, 317);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(55, 13);
-            this.label45.TabIndex = 80;
-            this.label45.Text = "Hit Points:";
-            // 
-            // udStarting_HP
-            // 
-            this.udStarting_HP.Location = new System.Drawing.Point(636, 314);
-            this.udStarting_HP.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.udStarting_HP.Name = "udStarting_HP";
-            this.udStarting_HP.Size = new System.Drawing.Size(53, 20);
-            this.udStarting_HP.TabIndex = 79;
-            this.udStarting_HP.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(538, 343);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(74, 13);
-            this.label46.TabIndex = 82;
-            this.label46.Text = "Attack Power:";
-            // 
-            // udStarting_AP
-            // 
-            this.udStarting_AP.Location = new System.Drawing.Point(636, 340);
-            this.udStarting_AP.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.udStarting_AP.Name = "udStarting_AP";
-            this.udStarting_AP.Size = new System.Drawing.Size(53, 20);
-            this.udStarting_AP.TabIndex = 81;
-            this.udStarting_AP.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(538, 369);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(51, 13);
-            this.label47.TabIndex = 84;
-            this.label47.Text = "Defence:";
-            // 
-            // udStarting_DF
-            // 
-            this.udStarting_DF.Location = new System.Drawing.Point(636, 366);
-            this.udStarting_DF.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.udStarting_DF.Name = "udStarting_DF";
-            this.udStarting_DF.Size = new System.Drawing.Size(53, 20);
-            this.udStarting_DF.TabIndex = 83;
-            this.udStarting_DF.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(720, 427);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(91, 13);
-            this.label48.TabIndex = 85;
-            this.label48.Text = "Allow Save Game";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(538, 427);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(63, 13);
-            this.label49.TabIndex = 87;
-            this.label49.Text = "Level up at:";
-            // 
-            // udLevelUpLimit
-            // 
-            this.udLevelUpLimit.Location = new System.Drawing.Point(636, 424);
-            this.udLevelUpLimit.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.udLevelUpLimit.Name = "udLevelUpLimit";
-            this.udLevelUpLimit.Size = new System.Drawing.Size(53, 20);
-            this.udLevelUpLimit.TabIndex = 86;
-            this.udLevelUpLimit.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
-            // label50
-            // 
-            this.label50.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label50.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label50.Location = new System.Drawing.Point(536, 266);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(291, 17);
-            this.label50.TabIndex = 88;
-            this.label50.Text = " Player Options";
-            this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label51.Location = new System.Drawing.Point(538, 291);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(93, 13);
-            this.label51.TabIndex = 89;
-            this.label51.Text = "Starting Values";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label52.Location = new System.Drawing.Point(538, 404);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(106, 13);
-            this.label52.TabIndex = 90;
-            this.label52.Text = "Game Parameters";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(538, 453);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(72, 13);
-            this.label53.TabIndex = 92;
-            this.label53.Text = "Maximum HP:";
-            // 
-            // udMaximum_HP
-            // 
-            this.udMaximum_HP.Location = new System.Drawing.Point(636, 450);
-            this.udMaximum_HP.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.udMaximum_HP.Name = "udMaximum_HP";
-            this.udMaximum_HP.Size = new System.Drawing.Size(53, 20);
-            this.udMaximum_HP.TabIndex = 91;
-            this.udMaximum_HP.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
             // frmDarkUnder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4265,6 +4269,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.levelEditor)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.udMaximum_HP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udLevelUpLimit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udStarting_DF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udStarting_AP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udStarting_HP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udSkeleton_XP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udSkeleton_AP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udSkeleton_HP)).EndInit();
@@ -4307,11 +4316,6 @@
             this.sbStatus.ResumeLayout(false);
             this.sbStatus.PerformLayout();
             this.mnuTreeViewContext.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.udStarting_HP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udStarting_AP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udStarting_DF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udLevelUpLimit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udMaximum_HP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
