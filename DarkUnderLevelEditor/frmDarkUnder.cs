@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -14,7 +16,7 @@ namespace DarkUnderLevelEditor {
 
         private const int NUMBER_OF_ENEMIES = 30;
         private const int NUMBER_OF_ITEMS = 30;
-        private const int NUMBER_OF_DOORS = 30;
+        private const int NUMBER_OF_DOORS = 8;
         private const int NUMBER_OF_LEVELS = 10;
         private const int NUMBER_OF_TILES = 20;
 
@@ -52,8 +54,21 @@ namespace DarkUnderLevelEditor {
                 levelEditor.Rows.Add("");
             }
 
-            dgOpenMapData.InitialDirectory = Environment.CurrentDirectory;
-            dgSaveMapData.InitialDirectory = Environment.CurrentDirectory;
+
+            const string userRoot = "HKEY_CURRENT_USER";
+            const string subkey = "DarkUnder";
+            const string keyName = userRoot + "\\" + subkey;
+            String pathName = (String)Registry.GetValue(keyName, "PathName", "");
+
+            if (pathName == null) {
+                dgOpenMapData.InitialDirectory = Environment.CurrentDirectory;
+                dgSaveMapData.InitialDirectory = Environment.CurrentDirectory;
+            }
+            else {
+                dgOpenMapData.InitialDirectory = pathName;
+                dgSaveMapData.InitialDirectory = pathName;
+
+            }
 
             //toolTipBR1.Text = "Click Add Tile to start the tile design process.";
 
@@ -398,7 +413,7 @@ namespace DarkUnderLevelEditor {
             TreeNode treeNodeItems = null;
             TreeNode treeNodeDoors = null;
 
-            udStarting_HP.Value = 15;
+            udStarting_HP.Value = 20;
             udStarting_AP.Value = 2;
             udStarting_DF.Value = 2;
             udLevelUpLimit.Value = 50;
@@ -411,6 +426,11 @@ namespace DarkUnderLevelEditor {
                 dgSaveMapData.FileName = dgOpenMapData.FileName;
                 lblFileName.Text = dgOpenMapData.FileName;
                 lblFileName.Visible = true;
+
+                const string userRoot = "HKEY_CURRENT_USER";
+                const string subkey = "DarkUnder";
+                const string keyName = userRoot + "\\" + subkey;
+                Registry.SetValue(keyName, "PathName", Path.GetDirectoryName(dgOpenMapData.FileName));
 
                 String[] lines = System.IO.File.ReadAllLines(dgOpenMapData.FileName);
 
@@ -833,8 +853,8 @@ namespace DarkUnderLevelEditor {
                 pnlItemDetails.Enabled = false;
                 pnlBlank.Visible = false;
 
-                txtLevelHeading1.Text = level.line1.Trim();
-                txtLevelHeading2.Text = level.line2.Trim();
+                txtLevelHeading1.Text = level.line1;
+                txtLevelHeading2.Text = level.line2;
                 cboLevelDirection.SelectedIndex = level.direction;
                 txtLevelPositionX.Text = (level.startPosX >= 0 ? level.startPosX.ToString() : "");
                 txtLevelPositionY.Text = (level.startPosY >= 0 ? level.startPosY.ToString() : "");
@@ -1878,7 +1898,7 @@ namespace DarkUnderLevelEditor {
         }
 
         private void txtLevelHeading1_Leave(object sender, EventArgs e) {
-            txtLevelHeading1.Text = txtLevelHeading1.Text.Trim();
+//            txtLevelHeading1.Text = txtLevelHeading1.Text.Trim();
         }
 
         private void txtLevelHeading2_Enter(object sender, EventArgs e) {
@@ -1889,7 +1909,7 @@ namespace DarkUnderLevelEditor {
         }
 
         private void txtLevelHeading2_Leave(object sender, EventArgs e) {
-            txtLevelHeading2.Text = txtLevelHeading2.Text.Trim();
+ //           txtLevelHeading2.Text = txtLevelHeading2.Text.Trim();
         }
 
         private void frmDarkUnder_Resize(object sender, EventArgs e) {
