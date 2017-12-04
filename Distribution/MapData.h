@@ -1,7 +1,7 @@
 #pragma once
 
 #define MAX_LEVEL_COUNT 3
-#define START_HP 20
+#define START_HP 15
 #define START_AP 2
 #define START_DF 2
 #define MAX_HP 50
@@ -91,7 +91,7 @@ const uint8_t PROGMEM tile_17[] = {};
 const uint8_t PROGMEM tile_18[] = {};
 const uint8_t PROGMEM tile_19[] = {};
 
-const uint8_t PROGMEM level_00[] = {
+const uint8_t PROGMEM level_02[] = {
 72, 65, 76, 76, 87, 65, 89, 83, 32, 79, 70, 
 84, 72, 69, 32, 68, 69, 65, 68, 32, 32, 32, 
 7, 58,
@@ -210,10 +210,10 @@ const uint8_t PROGMEM level_01[] = {
 100, 22, 15,
 100, 37, 15,
 100, 22, 40,
-11, 8, 10, 5, 3, 1, 4, 8, 9, 
+11, 5, 4, 8, 3, 8, 10, 1, 9, 
 };
 
-const uint8_t PROGMEM level_02[] = {
+const uint8_t PROGMEM level_00[] = {
 68, 82, 65, 71, 79, 78, 32, 32, 32, 32, 32, 
 76, 65, 73, 82, 32, 32, 32, 32, 32, 32, 32, 
 37, 58,
@@ -290,7 +290,7 @@ const uint8_t PROGMEM level_02[] = {
 100, 7, 30,
 100, 52, 30,
 100, 67, 30,
-0, 8, 11, 10, 4, 3, 1, 13, 7, 2, 13, 5, 0, 2, 9, 12, 4, 3, 2, 9, 
+0, 4, 7, 0, 4, 8, 3, 2, 2, 3, 11, 1, 13, 9, 2, 10, 13, 5, 12, 9, 
 };
 
 const uint8_t PROGMEM level_03[] = {};
@@ -306,3 +306,4 @@ const uint8_t PROGMEM level_07[] = {};
 const uint8_t PROGMEM level_08[] = {};
 
 const uint8_t PROGMEM level_09[] = {};
+

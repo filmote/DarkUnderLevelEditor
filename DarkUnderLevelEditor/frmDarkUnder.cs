@@ -36,6 +36,12 @@ namespace DarkUnderLevelEditor {
 
         private void Form_Load(object sender, EventArgs e) {
 
+            this.Tag = this.Size;
+            tabs.Tag = tabs.Size;
+            levelEditor.Tag = levelEditor.Size;
+            tvwLevels.Tag = tvwLevels.Size;
+            tvwErrors.Tag = tvwErrors.Size;
+
             for (int i = 0; i < 15; i++) {
                 tileEditor.Rows.Add("");
             }
@@ -418,9 +424,9 @@ namespace DarkUnderLevelEditor {
 
                         int i = 0;
 
-                        for (int x = 0; x < newLevel.levelDimensionX; x++)
+                        for (int y = 0; y < newLevel.levelDimensionY; y++) 
                         {
-                            for (int y = 0; y < newLevel.levelDimensionY; y++)
+                            for (int x = 0; x < newLevel.levelDimensionX; x++)
                             {
                                 tileDataSet[y, x] = Byte.Parse(data[i]);
                                 ++i;
@@ -1666,13 +1672,16 @@ namespace DarkUnderLevelEditor {
 
 
                         // Tile info ..
-                        
-                        for (int x = 0; x < level.levelDimensionX; x++)
+
+                        for (int y = 0; y < level.levelDimensionY; y++) 
                         {
-                            for (int y = 0; y < level.levelDimensionY; y++)
+                            for (int x = 0; x < level.levelDimensionX; x++)
                             {
                                 file.Write("{0}, ", level.tileData[y, x]);
+                                System.Console.Write(level.tileData[y, x]);
+                                System.Console.Write(", ");
                             }
+                            System.Console.WriteLine("");
                         }
 
                         file.WriteLine("\n};");
@@ -1745,7 +1754,7 @@ namespace DarkUnderLevelEditor {
 
             if (e.Node.Tag != null) {
 
-                tabs.SelectedTab = tabLevelEdito;
+                tabs.SelectedTab = tabLevelEditor;
 
                 LevelError levelError = (LevelError)e.Node.Tag;
 
@@ -1881,6 +1890,45 @@ namespace DarkUnderLevelEditor {
 
         private void txtLevelHeading2_Leave(object sender, EventArgs e) {
             txtLevelHeading2.Text = txtLevelHeading2.Text.Trim();
+        }
+
+        private void frmDarkUnder_Resize(object sender, EventArgs e) {
+
+            tabs.Height = this.Height - (((Size)this.Tag).Height - ((Size)tabs.Tag).Height);
+            tabs.Width = this.Width - (((Size)this.Tag).Width - ((Size)tabs.Tag).Width);
+
+            levelEditor.Height = this.Height - (((Size)this.Tag).Height - ((Size)levelEditor.Tag).Height);
+            levelEditor.Width = this.Width - (((Size)this.Tag).Width - ((Size)levelEditor.Tag).Width);
+
+            tvwErrors.Height = this.Height - (((Size)this.Tag).Height - ((Size)tvwErrors.Tag).Height);
+            tvwErrors.Width = this.Width - (((Size)this.Tag).Width - ((Size)tvwErrors.Tag).Width);
+
+            tvwLevels.Left = this.Width - (((Size)this.Tag).Width - ((Size)levelEditor.Tag).Width) + 12;
+            cmdLevelUp.Left = this.Width - (((Size)this.Tag).Width - ((Size)levelEditor.Tag).Width) + 12;
+            cmdLevelDown.Left = this.Width - (((Size)this.Tag).Width - ((Size)levelEditor.Tag).Width) + 30;
+            cmdLevelAdd.Left = this.Width - (((Size)this.Tag).Width - ((Size)levelEditor.Tag).Width) + 56;
+            cmdLevelDelete.Left = this.Width - (((Size)this.Tag).Width - ((Size)levelEditor.Tag).Width) + 122;
+
+            pnlLevelDetails.Left = this.Width - (((Size)this.Tag).Width - ((Size)levelEditor.Tag).Width) + 12;
+            pnlItemDetails.Left = this.Width - (((Size)this.Tag).Width - ((Size)levelEditor.Tag).Width) + 12;
+            pnlBlank.Left = this.Width - (((Size)this.Tag).Width - ((Size)levelEditor.Tag).Width) + 12;
+            panel1.Left = this.Width - (((Size)this.Tag).Width - ((Size)levelEditor.Tag).Width) + 12;
+            panel3.Left = this.Width - (((Size)this.Tag).Width - ((Size)levelEditor.Tag).Width) + 12;
+            panel4.Left = this.Width - (((Size)this.Tag).Width - ((Size)levelEditor.Tag).Width) + 12;
+
+            tvwLevels.Height = this.Height - (((Size)this.Tag).Height - ((Size)levelEditor.Tag).Height) - 203;
+            cmdLevelUp.Top = tvwLevels.Height + 12;
+            cmdLevelDown.Top = tvwLevels.Height + 12;
+            cmdLevelAdd.Top = tvwLevels.Height + 12;
+            cmdLevelDelete.Top = tvwLevels.Height + 12;
+
+            pnlLevelDetails.Top = cmdLevelUp.Top + 28;
+            pnlItemDetails.Top = cmdLevelUp.Top + 28;
+            pnlBlank.Top = cmdLevelUp.Top + 28;
+            panel1.Top = cmdLevelUp.Top + 28;
+            panel3.Top = cmdLevelUp.Top + 28;
+            panel4.Top = cmdLevelUp.Top + 28;
+
         }
 
     }
