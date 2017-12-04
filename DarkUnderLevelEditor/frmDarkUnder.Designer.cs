@@ -24,13 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDarkUnder));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabPageTileEditor = new System.Windows.Forms.TabPage();
             this.tileEditor = new System.Windows.Forms.DataGridView();
@@ -389,13 +389,13 @@
             this.udRat_HP = new System.Windows.Forms.NumericUpDown();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.chkBeholder_MV = new System.Windows.Forms.CheckBox();
+            this.chkOccular_MV = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.udBeholder_XP = new System.Windows.Forms.NumericUpDown();
+            this.udOccular_XP = new System.Windows.Forms.NumericUpDown();
             this.label24 = new System.Windows.Forms.Label();
-            this.udBeholder_AP = new System.Windows.Forms.NumericUpDown();
+            this.udOccular_AP = new System.Windows.Forms.NumericUpDown();
             this.label25 = new System.Windows.Forms.Label();
-            this.udBeholder_HP = new System.Windows.Forms.NumericUpDown();
+            this.udOccular_HP = new System.Windows.Forms.NumericUpDown();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.chkSlime_MV = new System.Windows.Forms.CheckBox();
@@ -416,13 +416,13 @@
             this.udDragon_HP = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.chkDisplacer_MV = new System.Windows.Forms.CheckBox();
+            this.chkSparkat_MV = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.udDisplacer_XP = new System.Windows.Forms.NumericUpDown();
+            this.udSparkat_XP = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.udDisplacer_AP = new System.Windows.Forms.NumericUpDown();
+            this.udSparkat_AP = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.udDisplacer_HP = new System.Windows.Forms.NumericUpDown();
+            this.udSparkat_HP = new System.Windows.Forms.NumericUpDown();
             this.panel10 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -445,9 +445,9 @@
             this.mnuPlacePlayer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuEnemyAddBase = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEnemyAddBeholder = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEnemyAddOccular = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEnemyAddSkeleton = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEnemyAddDisplacer = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEnemyAddSparkat = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEnemyAddWraith = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEnemyAddDragon = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEnemyAddRat = new System.Windows.Forms.ToolStripMenuItem();
@@ -513,18 +513,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.udRat_XP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udRat_AP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udRat_HP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udBeholder_XP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udBeholder_AP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udBeholder_HP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udOccular_XP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udOccular_AP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udOccular_HP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udSlime_XP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udSlime_AP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udSlime_HP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udDragon_XP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udDragon_AP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udDragon_HP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udDisplacer_XP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udDisplacer_AP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udDisplacer_HP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udSparkat_XP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udSparkat_AP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udSparkat_HP)).BeginInit();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel9.SuspendLayout();
@@ -585,14 +585,14 @@
             this.tileEditor.AllowUserToDeleteRows = false;
             this.tileEditor.AllowUserToResizeColumns = false;
             this.tileEditor.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tileEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tileEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.tileEditor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tileEditor.ColumnHeadersVisible = false;
             this.tileEditor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -611,27 +611,27 @@
             this.Column13,
             this.Column14,
             this.Column15});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tileEditor.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tileEditor.DefaultCellStyle = dataGridViewCellStyle8;
             this.tileEditor.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.tileEditor.Enabled = false;
             this.tileEditor.Location = new System.Drawing.Point(15, 29);
             this.tileEditor.MultiSelect = false;
             this.tileEditor.Name = "tileEditor";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tileEditor.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tileEditor.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.tileEditor.RowHeadersVisible = false;
             this.tileEditor.RowTemplate.Height = 25;
             this.tileEditor.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -1190,14 +1190,14 @@
             this.levelEditor.AllowUserToDeleteRows = false;
             this.levelEditor.AllowUserToResizeColumns = false;
             this.levelEditor.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.levelEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.levelEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.levelEditor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.levelEditor.ColumnHeadersVisible = false;
             this.levelEditor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1456,26 +1456,26 @@
             this.Column253,
             this.Column254,
             this.Column255});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.levelEditor.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.levelEditor.DefaultCellStyle = dataGridViewCellStyle11;
             this.levelEditor.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.levelEditor.Enabled = false;
             this.levelEditor.Location = new System.Drawing.Point(6, 6);
             this.levelEditor.Name = "levelEditor";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.levelEditor.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.levelEditor.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.levelEditor.RowHeadersVisible = false;
             this.levelEditor.RowTemplate.Height = 12;
             this.levelEditor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -2820,13 +2820,13 @@
             this.tabPage3.Controls.Add(this.udRat_HP);
             this.tabPage3.Controls.Add(this.label21);
             this.tabPage3.Controls.Add(this.label22);
-            this.tabPage3.Controls.Add(this.chkBeholder_MV);
+            this.tabPage3.Controls.Add(this.chkOccular_MV);
             this.tabPage3.Controls.Add(this.label23);
-            this.tabPage3.Controls.Add(this.udBeholder_XP);
+            this.tabPage3.Controls.Add(this.udOccular_XP);
             this.tabPage3.Controls.Add(this.label24);
-            this.tabPage3.Controls.Add(this.udBeholder_AP);
+            this.tabPage3.Controls.Add(this.udOccular_AP);
             this.tabPage3.Controls.Add(this.label25);
-            this.tabPage3.Controls.Add(this.udBeholder_HP);
+            this.tabPage3.Controls.Add(this.udOccular_HP);
             this.tabPage3.Controls.Add(this.label16);
             this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Controls.Add(this.chkSlime_MV);
@@ -2847,13 +2847,13 @@
             this.tabPage3.Controls.Add(this.udDragon_HP);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.label9);
-            this.tabPage3.Controls.Add(this.chkDisplacer_MV);
+            this.tabPage3.Controls.Add(this.chkSparkat_MV);
             this.tabPage3.Controls.Add(this.label8);
-            this.tabPage3.Controls.Add(this.udDisplacer_XP);
+            this.tabPage3.Controls.Add(this.udSparkat_XP);
             this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Controls.Add(this.udDisplacer_AP);
+            this.tabPage3.Controls.Add(this.udSparkat_AP);
             this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Controls.Add(this.udDisplacer_HP);
+            this.tabPage3.Controls.Add(this.udSparkat_HP);
             this.tabPage3.Controls.Add(this.panel10);
             this.tabPage3.Controls.Add(this.panel9);
             this.tabPage3.Controls.Add(this.panel8);
@@ -3340,7 +3340,7 @@
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(130, 17);
             this.label21.TabIndex = 31;
-            this.label21.Text = " Beholder";
+            this.label21.Text = " Occular";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label22
@@ -3352,15 +3352,15 @@
             this.label22.TabIndex = 38;
             this.label22.Text = "Stationary:";
             // 
-            // chkBeholder_MV
+            // chkOccular_MV
             // 
-            this.chkBeholder_MV.AutoSize = true;
-            this.chkBeholder_MV.Location = new System.Drawing.Point(613, 230);
-            this.chkBeholder_MV.Name = "chkBeholder_MV";
-            this.chkBeholder_MV.Size = new System.Drawing.Size(15, 14);
-            this.chkBeholder_MV.TabIndex = 39;
-            this.chkBeholder_MV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkBeholder_MV.UseVisualStyleBackColor = true;
+            this.chkOccular_MV.AutoSize = true;
+            this.chkOccular_MV.Location = new System.Drawing.Point(613, 230);
+            this.chkOccular_MV.Name = "chkOccular_MV";
+            this.chkOccular_MV.Size = new System.Drawing.Size(15, 14);
+            this.chkOccular_MV.TabIndex = 39;
+            this.chkOccular_MV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkOccular_MV.UseVisualStyleBackColor = true;
             // 
             // label23
             // 
@@ -3371,17 +3371,17 @@
             this.label23.TabIndex = 36;
             this.label23.Text = "Experience:";
             // 
-            // udBeholder_XP
+            // udOccular_XP
             // 
-            this.udBeholder_XP.Location = new System.Drawing.Point(613, 204);
-            this.udBeholder_XP.Maximum = new decimal(new int[] {
+            this.udOccular_XP.Location = new System.Drawing.Point(613, 204);
+            this.udOccular_XP.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
-            this.udBeholder_XP.Name = "udBeholder_XP";
-            this.udBeholder_XP.Size = new System.Drawing.Size(53, 20);
-            this.udBeholder_XP.TabIndex = 37;
+            this.udOccular_XP.Name = "udOccular_XP";
+            this.udOccular_XP.Size = new System.Drawing.Size(53, 20);
+            this.udOccular_XP.TabIndex = 37;
             // 
             // label24
             // 
@@ -3392,17 +3392,17 @@
             this.label24.TabIndex = 34;
             this.label24.Text = "Attack Power:";
             // 
-            // udBeholder_AP
+            // udOccular_AP
             // 
-            this.udBeholder_AP.Location = new System.Drawing.Point(613, 181);
-            this.udBeholder_AP.Maximum = new decimal(new int[] {
+            this.udOccular_AP.Location = new System.Drawing.Point(613, 181);
+            this.udOccular_AP.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
-            this.udBeholder_AP.Name = "udBeholder_AP";
-            this.udBeholder_AP.Size = new System.Drawing.Size(53, 20);
-            this.udBeholder_AP.TabIndex = 35;
+            this.udOccular_AP.Name = "udOccular_AP";
+            this.udOccular_AP.Size = new System.Drawing.Size(53, 20);
+            this.udOccular_AP.TabIndex = 35;
             // 
             // label25
             // 
@@ -3413,17 +3413,17 @@
             this.label25.TabIndex = 32;
             this.label25.Text = "Hit Points:";
             // 
-            // udBeholder_HP
+            // udOccular_HP
             // 
-            this.udBeholder_HP.Location = new System.Drawing.Point(613, 158);
-            this.udBeholder_HP.Maximum = new decimal(new int[] {
+            this.udOccular_HP.Location = new System.Drawing.Point(613, 158);
+            this.udOccular_HP.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
-            this.udBeholder_HP.Name = "udBeholder_HP";
-            this.udBeholder_HP.Size = new System.Drawing.Size(53, 20);
-            this.udBeholder_HP.TabIndex = 33;
+            this.udOccular_HP.Name = "udOccular_HP";
+            this.udOccular_HP.Size = new System.Drawing.Size(53, 20);
+            this.udOccular_HP.TabIndex = 33;
             // 
             // label16
             // 
@@ -3622,7 +3622,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(130, 17);
             this.label10.TabIndex = 1;
-            this.label10.Text = " Displacer";
+            this.label10.Text = " Sparkat";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label9
@@ -3634,15 +3634,15 @@
             this.label9.TabIndex = 8;
             this.label9.Text = "Stationary:";
             // 
-            // chkDisplacer_MV
+            // chkSparkat_MV
             // 
-            this.chkDisplacer_MV.AutoSize = true;
-            this.chkDisplacer_MV.Location = new System.Drawing.Point(130, 230);
-            this.chkDisplacer_MV.Name = "chkDisplacer_MV";
-            this.chkDisplacer_MV.Size = new System.Drawing.Size(15, 14);
-            this.chkDisplacer_MV.TabIndex = 9;
-            this.chkDisplacer_MV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkDisplacer_MV.UseVisualStyleBackColor = true;
+            this.chkSparkat_MV.AutoSize = true;
+            this.chkSparkat_MV.Location = new System.Drawing.Point(130, 230);
+            this.chkSparkat_MV.Name = "chkSparkat_MV";
+            this.chkSparkat_MV.Size = new System.Drawing.Size(15, 14);
+            this.chkSparkat_MV.TabIndex = 9;
+            this.chkSparkat_MV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkSparkat_MV.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -3653,17 +3653,17 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "Experience:";
             // 
-            // udDisplacer_XP
+            // udSparkat_XP
             // 
-            this.udDisplacer_XP.Location = new System.Drawing.Point(130, 204);
-            this.udDisplacer_XP.Maximum = new decimal(new int[] {
+            this.udSparkat_XP.Location = new System.Drawing.Point(130, 204);
+            this.udSparkat_XP.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
-            this.udDisplacer_XP.Name = "udDisplacer_XP";
-            this.udDisplacer_XP.Size = new System.Drawing.Size(53, 20);
-            this.udDisplacer_XP.TabIndex = 7;
+            this.udSparkat_XP.Name = "udSparkat_XP";
+            this.udSparkat_XP.Size = new System.Drawing.Size(53, 20);
+            this.udSparkat_XP.TabIndex = 7;
             // 
             // label5
             // 
@@ -3674,17 +3674,17 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Attack Power:";
             // 
-            // udDisplacer_AP
+            // udSparkat_AP
             // 
-            this.udDisplacer_AP.Location = new System.Drawing.Point(130, 181);
-            this.udDisplacer_AP.Maximum = new decimal(new int[] {
+            this.udSparkat_AP.Location = new System.Drawing.Point(130, 181);
+            this.udSparkat_AP.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
-            this.udDisplacer_AP.Name = "udDisplacer_AP";
-            this.udDisplacer_AP.Size = new System.Drawing.Size(53, 20);
-            this.udDisplacer_AP.TabIndex = 5;
+            this.udSparkat_AP.Name = "udSparkat_AP";
+            this.udSparkat_AP.Size = new System.Drawing.Size(53, 20);
+            this.udSparkat_AP.TabIndex = 5;
             // 
             // label4
             // 
@@ -3695,17 +3695,17 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Hit Points:";
             // 
-            // udDisplacer_HP
+            // udSparkat_HP
             // 
-            this.udDisplacer_HP.Location = new System.Drawing.Point(130, 158);
-            this.udDisplacer_HP.Maximum = new decimal(new int[] {
+            this.udSparkat_HP.Location = new System.Drawing.Point(130, 158);
+            this.udSparkat_HP.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
-            this.udDisplacer_HP.Name = "udDisplacer_HP";
-            this.udDisplacer_HP.Size = new System.Drawing.Size(53, 20);
-            this.udDisplacer_HP.TabIndex = 3;
+            this.udSparkat_HP.Name = "udSparkat_HP";
+            this.udSparkat_HP.Size = new System.Drawing.Size(53, 20);
+            this.udSparkat_HP.TabIndex = 3;
             // 
             // panel10
             // 
@@ -3890,100 +3890,100 @@
             // mnuAddTiles
             // 
             this.mnuAddTiles.Name = "mnuAddTiles";
-            this.mnuAddTiles.Size = new System.Drawing.Size(146, 22);
+            this.mnuAddTiles.Size = new System.Drawing.Size(152, 22);
             this.mnuAddTiles.Text = "Add Tile";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuPlacePlayer
             // 
             this.mnuPlacePlayer.Name = "mnuPlacePlayer";
-            this.mnuPlacePlayer.Size = new System.Drawing.Size(146, 22);
+            this.mnuPlacePlayer.Size = new System.Drawing.Size(152, 22);
             this.mnuPlacePlayer.Text = "&Place Player";
             this.mnuPlacePlayer.Click += new System.EventHandler(this.mnuPlacePlayer_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuEnemyAddBase
             // 
             this.mnuEnemyAddBase.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEnemyAddBeholder,
+            this.mnuEnemyAddOccular,
             this.mnuEnemyAddSkeleton,
-            this.mnuEnemyAddDisplacer,
+            this.mnuEnemyAddSparkat,
             this.mnuEnemyAddWraith,
             this.mnuEnemyAddDragon,
             this.mnuEnemyAddRat,
             this.mnuEnemyAddSlime});
             this.mnuEnemyAddBase.Name = "mnuEnemyAddBase";
-            this.mnuEnemyAddBase.Size = new System.Drawing.Size(146, 22);
+            this.mnuEnemyAddBase.Size = new System.Drawing.Size(152, 22);
             this.mnuEnemyAddBase.Text = "&Add Enemy";
             // 
-            // mnuEnemyAddBeholder
+            // mnuEnemyAddOccular
             // 
-            this.mnuEnemyAddBeholder.Name = "mnuEnemyAddBeholder";
-            this.mnuEnemyAddBeholder.Size = new System.Drawing.Size(147, 22);
-            this.mnuEnemyAddBeholder.Text = "Add &Beholder";
-            this.mnuEnemyAddBeholder.Click += new System.EventHandler(this.mnuEnemyAddBeholder_Click);
+            this.mnuEnemyAddOccular.Name = "mnuEnemyAddOccular";
+            this.mnuEnemyAddOccular.Size = new System.Drawing.Size(152, 22);
+            this.mnuEnemyAddOccular.Text = "Add &Occular";
+            this.mnuEnemyAddOccular.Click += new System.EventHandler(this.mnuEnemyAddOccular_Click);
             // 
             // mnuEnemyAddSkeleton
             // 
             this.mnuEnemyAddSkeleton.Name = "mnuEnemyAddSkeleton";
-            this.mnuEnemyAddSkeleton.Size = new System.Drawing.Size(147, 22);
+            this.mnuEnemyAddSkeleton.Size = new System.Drawing.Size(152, 22);
             this.mnuEnemyAddSkeleton.Text = "Add &Skeleton";
             this.mnuEnemyAddSkeleton.Click += new System.EventHandler(this.mnuEnemyAddSkeleton_Click);
             // 
-            // mnuEnemyAddDisplacer
+            // mnuEnemyAddSparkat
             // 
-            this.mnuEnemyAddDisplacer.Name = "mnuEnemyAddDisplacer";
-            this.mnuEnemyAddDisplacer.Size = new System.Drawing.Size(147, 22);
-            this.mnuEnemyAddDisplacer.Text = "Add &Displacer";
-            this.mnuEnemyAddDisplacer.Click += new System.EventHandler(this.mnuEnemyAddDisplacer_Click);
+            this.mnuEnemyAddSparkat.Name = "mnuEnemyAddSparkat";
+            this.mnuEnemyAddSparkat.Size = new System.Drawing.Size(152, 22);
+            this.mnuEnemyAddSparkat.Text = "Add &Sparkat";
+            this.mnuEnemyAddSparkat.Click += new System.EventHandler(this.mnuEnemyAddSparkat_Click);
             // 
             // mnuEnemyAddWraith
             // 
             this.mnuEnemyAddWraith.Name = "mnuEnemyAddWraith";
-            this.mnuEnemyAddWraith.Size = new System.Drawing.Size(147, 22);
+            this.mnuEnemyAddWraith.Size = new System.Drawing.Size(152, 22);
             this.mnuEnemyAddWraith.Text = "Add &Wraith";
             this.mnuEnemyAddWraith.Click += new System.EventHandler(this.mnuEnemyAddWraith_Click);
             // 
             // mnuEnemyAddDragon
             // 
             this.mnuEnemyAddDragon.Name = "mnuEnemyAddDragon";
-            this.mnuEnemyAddDragon.Size = new System.Drawing.Size(147, 22);
+            this.mnuEnemyAddDragon.Size = new System.Drawing.Size(152, 22);
             this.mnuEnemyAddDragon.Text = "Add D&ragon";
             this.mnuEnemyAddDragon.Click += new System.EventHandler(this.mnuEnemyAddDragon_Click);
             // 
             // mnuEnemyAddRat
             // 
             this.mnuEnemyAddRat.Name = "mnuEnemyAddRat";
-            this.mnuEnemyAddRat.Size = new System.Drawing.Size(147, 22);
+            this.mnuEnemyAddRat.Size = new System.Drawing.Size(152, 22);
             this.mnuEnemyAddRat.Text = "Add &Rat";
             this.mnuEnemyAddRat.Click += new System.EventHandler(this.mnuEnemyAddRat_Click);
             // 
             // mnuEnemyAddSlime
             // 
             this.mnuEnemyAddSlime.Name = "mnuEnemyAddSlime";
-            this.mnuEnemyAddSlime.Size = new System.Drawing.Size(147, 22);
+            this.mnuEnemyAddSlime.Size = new System.Drawing.Size(152, 22);
             this.mnuEnemyAddSlime.Text = "Add S&lime";
             this.mnuEnemyAddSlime.Click += new System.EventHandler(this.mnuEnemyAddSlime_Click);
             // 
             // mnuEnemyDelete
             // 
             this.mnuEnemyDelete.Name = "mnuEnemyDelete";
-            this.mnuEnemyDelete.Size = new System.Drawing.Size(146, 22);
+            this.mnuEnemyDelete.Size = new System.Drawing.Size(152, 22);
             this.mnuEnemyDelete.Text = "&Delete Enemy";
             this.mnuEnemyDelete.Click += new System.EventHandler(this.mnuEnemyDelete_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuItemAddBase
             // 
@@ -3995,7 +3995,7 @@
             this.mnuItemAddShield});
             this.mnuItemAddBase.Enabled = false;
             this.mnuItemAddBase.Name = "mnuItemAddBase";
-            this.mnuItemAddBase.Size = new System.Drawing.Size(146, 22);
+            this.mnuItemAddBase.Size = new System.Drawing.Size(152, 22);
             this.mnuItemAddBase.Text = "&Add Item";
             // 
             // mnuItemAddKey
@@ -4037,14 +4037,14 @@
             // 
             this.mnuItemDelete.Enabled = false;
             this.mnuItemDelete.Name = "mnuItemDelete";
-            this.mnuItemDelete.Size = new System.Drawing.Size(146, 22);
+            this.mnuItemDelete.Size = new System.Drawing.Size(152, 22);
             this.mnuItemDelete.Text = "&Delete Item";
             this.mnuItemDelete.Click += new System.EventHandler(this.mnuItemDelete_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuDoorAddBase
             // 
@@ -4053,7 +4053,7 @@
             this.mnuDoorAddGate});
             this.mnuDoorAddBase.Enabled = false;
             this.mnuDoorAddBase.Name = "mnuDoorAddBase";
-            this.mnuDoorAddBase.Size = new System.Drawing.Size(146, 22);
+            this.mnuDoorAddBase.Size = new System.Drawing.Size(152, 22);
             this.mnuDoorAddBase.Text = "&Add Door";
             // 
             // mnuDoorAddLevel
@@ -4074,7 +4074,7 @@
             // 
             this.mnuDoorDelete.Enabled = false;
             this.mnuDoorDelete.Name = "mnuDoorDelete";
-            this.mnuDoorDelete.Size = new System.Drawing.Size(146, 22);
+            this.mnuDoorDelete.Size = new System.Drawing.Size(152, 22);
             this.mnuDoorDelete.Text = "&Delete Door";
             this.mnuDoorDelete.Click += new System.EventHandler(this.mnuDoorDelete_Click);
             // 
@@ -4283,18 +4283,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.udRat_XP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udRat_AP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udRat_HP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udBeholder_XP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udBeholder_AP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udBeholder_HP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udOccular_XP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udOccular_AP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udOccular_HP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udSlime_XP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udSlime_AP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udSlime_HP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udDragon_XP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udDragon_AP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udDragon_HP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udDisplacer_XP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udDisplacer_AP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udDisplacer_HP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udSparkat_XP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udSparkat_AP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udSparkat_HP)).EndInit();
             this.panel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel9.ResumeLayout(false);
@@ -4614,9 +4614,9 @@
         private System.Windows.Forms.TreeView tvwLevels;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddBase;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddBeholder;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddOccular;
         private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddSkeleton;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddDisplacer;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddSparkat;
         private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddWraith;
         private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddDragon;
         private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddRat;
@@ -4693,13 +4693,13 @@
         private System.Windows.Forms.NumericUpDown udRat_HP;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.CheckBox chkBeholder_MV;
+        private System.Windows.Forms.CheckBox chkOccular_MV;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.NumericUpDown udBeholder_XP;
+        private System.Windows.Forms.NumericUpDown udOccular_XP;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.NumericUpDown udBeholder_AP;
+        private System.Windows.Forms.NumericUpDown udOccular_AP;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.NumericUpDown udBeholder_HP;
+        private System.Windows.Forms.NumericUpDown udOccular_HP;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox chkSlime_MV;
@@ -4720,13 +4720,13 @@
         private System.Windows.Forms.NumericUpDown udDragon_HP;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.CheckBox chkDisplacer_MV;
+        private System.Windows.Forms.CheckBox chkSparkat_MV;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown udDisplacer_XP;
+        private System.Windows.Forms.NumericUpDown udSparkat_XP;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown udDisplacer_AP;
+        private System.Windows.Forms.NumericUpDown udSparkat_AP;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown udDisplacer_HP;
+        private System.Windows.Forms.NumericUpDown udSparkat_HP;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panel9;

@@ -27,9 +27,9 @@ namespace DarkUnderLevelEditor {
     };
 
     public enum EnemyType {
-        Beholder,
+        Occular,
         Skeleton,
-        Displacer,
+        Sparkat,
         Wraith,
         Dragon,
         Rat,

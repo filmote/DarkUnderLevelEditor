@@ -49,6 +49,9 @@ namespace DarkUnderLevelEditor {
             dgOpenMapData.InitialDirectory = Environment.CurrentDirectory;
             dgSaveMapData.InitialDirectory = Environment.CurrentDirectory;
 
+            //toolTipBR1.Text = "Click Add Tile to start the tile design process.";
+
+
         }
 
         private void clearLevels() {
@@ -686,20 +689,20 @@ namespace DarkUnderLevelEditor {
 
                         String newLine = line.Trim();
 
-                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_HP")) { udBeholder_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_AP")) { udBeholder_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_XP")) { udBeholder_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_MV")) { chkBeholder_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
+                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_HP")) { udOccular_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_AP")) { udOccular_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_XP")) { udOccular_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_BEHOLDER_MV")) { chkOccular_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
 
                         if (newLine.StartsWith("#define ENEMY_SKELETON_HP")) { udSkeleton_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
                         if (newLine.StartsWith("#define ENEMY_SKELETON_AP")) { udSkeleton_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
                         if (newLine.StartsWith("#define ENEMY_SKELETON_XP")) { udSkeleton_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
                         if (newLine.StartsWith("#define ENEMY_SKELETON_MV")) { chkSkeleton_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
 
-                        if (newLine.StartsWith("#define ENEMY_DISPLACER_HP")) { udDisplacer_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_DISPLACER_AP")) { udDisplacer_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_DISPLACER_XP")) { udDisplacer_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
-                        if (newLine.StartsWith("#define ENEMY_DISPLACER_MV")) { chkDisplacer_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
+                        if (newLine.StartsWith("#define ENEMY_DISPLACER_HP")) { udSparkat_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_DISPLACER_AP")) { udSparkat_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_DISPLACER_XP")) { udSparkat_XP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
+                        if (newLine.StartsWith("#define ENEMY_DISPLACER_MV")) { chkSparkat_MV.Checked = (newLine.Substring(newLine.LastIndexOf(" ") + 1) == "false"); }
 
                         if (newLine.StartsWith("#define ENEMY_WRAITH_HP")) { udWraith_HP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
                         if (newLine.StartsWith("#define ENEMY_WRAITH_AP")) { udWraith_AP.Value = int.Parse(newLine.Substring(newLine.LastIndexOf(" ") + 1)); }
@@ -942,16 +945,16 @@ namespace DarkUnderLevelEditor {
             mnuEnemyAdd(EnemyType.Slime);
         }
 
-        private void mnuEnemyAddBeholder_Click(object sender, EventArgs e) {
-            mnuEnemyAdd(EnemyType.Beholder);
+        private void mnuEnemyAddOccular_Click(object sender, EventArgs e) {
+            mnuEnemyAdd(EnemyType.Occular);
         }
 
         private void mnuEnemyAddSkeleton_Click(object sender, EventArgs e) {
             mnuEnemyAdd(EnemyType.Skeleton);
         }
 
-        private void mnuEnemyAddDisplacer_Click(object sender, EventArgs e) {
-            mnuEnemyAdd(EnemyType.Displacer);
+        private void mnuEnemyAddSparkat_Click(object sender, EventArgs e) {
+            mnuEnemyAdd(EnemyType.Sparkat);
         }
 
         private void mnuEnemyAddWraith_Click(object sender, EventArgs e) {
@@ -1538,20 +1541,20 @@ namespace DarkUnderLevelEditor {
                 file.WriteLine("#define MAX_HP {0}", udMaximum_HP.Value);
                 file.WriteLine("#define LEVEL_UP {0}", udLevelUpLimit.Value);
                 file.WriteLine();
-                file.WriteLine("#define ENEMY_BEHOLDER_HP {0}", udBeholder_HP.Value);
-                file.WriteLine("#define ENEMY_BEHOLDER_AP {0}", udBeholder_AP.Value);
-                file.WriteLine("#define ENEMY_BEHOLDER_XP {0}", udBeholder_XP.Value);
-                file.WriteLine("#define ENEMY_BEHOLDER_MV {0}", Utils.ToString(!chkBeholder_MV.Checked));
+                file.WriteLine("#define ENEMY_BEHOLDER_HP {0}", udOccular_HP.Value);
+                file.WriteLine("#define ENEMY_BEHOLDER_AP {0}", udOccular_AP.Value);
+                file.WriteLine("#define ENEMY_BEHOLDER_XP {0}", udOccular_XP.Value);
+                file.WriteLine("#define ENEMY_BEHOLDER_MV {0}", Utils.ToString(!chkOccular_MV.Checked));
                 file.WriteLine();
                 file.WriteLine("#define ENEMY_SKELETON_HP {0}", udSkeleton_HP.Value);
                 file.WriteLine("#define ENEMY_SKELETON_AP {0}", udSkeleton_AP.Value);
                 file.WriteLine("#define ENEMY_SKELETON_XP {0}", udSkeleton_XP.Value);
                 file.WriteLine("#define ENEMY_SKELETON_MV {0}", Utils.ToString(!chkSkeleton_MV.Checked));
                 file.WriteLine();
-                file.WriteLine("#define ENEMY_DISPLACER_HP {0}", udDisplacer_HP.Value);
-                file.WriteLine("#define ENEMY_DISPLACER_AP {0}", udDisplacer_AP.Value);
-                file.WriteLine("#define ENEMY_DISPLACER_XP {0}", udDisplacer_XP.Value);
-                file.WriteLine("#define ENEMY_DISPLACER_MV {0}", Utils.ToString(!chkDisplacer_MV.Checked));
+                file.WriteLine("#define ENEMY_DISPLACER_HP {0}", udSparkat_HP.Value);
+                file.WriteLine("#define ENEMY_DISPLACER_AP {0}", udSparkat_AP.Value);
+                file.WriteLine("#define ENEMY_DISPLACER_XP {0}", udSparkat_XP.Value);
+                file.WriteLine("#define ENEMY_DISPLACER_MV {0}", Utils.ToString(!chkSparkat_MV.Checked));
                 file.WriteLine();
                 file.WriteLine("#define ENEMY_WRAITH_HP {0}", udWraith_HP.Value);
                 file.WriteLine("#define ENEMY_WRAITH_AP {0}", udWraith_AP.Value);
