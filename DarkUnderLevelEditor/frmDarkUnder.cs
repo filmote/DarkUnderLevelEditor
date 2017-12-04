@@ -604,10 +604,10 @@ namespace DarkUnderLevelEditor {
                         }
 
                         if (counter == 2) {
-                            newLevel.line1 = Encoding.ASCII.GetString(caption);
+                            newLevel.line1 = (Encoding.ASCII.GetString(caption)).TrimEnd();
                         }
                         else {
-                            newLevel.line2 = Encoding.ASCII.GetString(caption);
+                            newLevel.line2 = (Encoding.ASCII.GetString(caption)).TrimEnd();
                         }
 
                         counter++;
@@ -853,8 +853,8 @@ namespace DarkUnderLevelEditor {
                 pnlItemDetails.Enabled = false;
                 pnlBlank.Visible = false;
 
-                txtLevelHeading1.Text = level.line1;
-                txtLevelHeading2.Text = level.line2;
+                txtLevelHeading1.Text = level.line1.TrimEnd();
+                txtLevelHeading2.Text = level.line2.TrimEnd();
                 cboLevelDirection.SelectedIndex = level.direction;
                 txtLevelPositionX.Text = (level.startPosX >= 0 ? level.startPosX.ToString() : "");
                 txtLevelPositionY.Text = (level.startPosY >= 0 ? level.startPosY.ToString() : "");
@@ -1898,7 +1898,7 @@ namespace DarkUnderLevelEditor {
         }
 
         private void txtLevelHeading1_Leave(object sender, EventArgs e) {
-//            txtLevelHeading1.Text = txtLevelHeading1.Text.Trim();
+            txtLevelHeading1.Text = txtLevelHeading1.Text.TrimEnd();
         }
 
         private void txtLevelHeading2_Enter(object sender, EventArgs e) {
@@ -1909,7 +1909,7 @@ namespace DarkUnderLevelEditor {
         }
 
         private void txtLevelHeading2_Leave(object sender, EventArgs e) {
- //           txtLevelHeading2.Text = txtLevelHeading2.Text.Trim();
+            txtLevelHeading2.Text = txtLevelHeading2.Text.TrimEnd();
         }
 
         private void frmDarkUnder_Resize(object sender, EventArgs e) {
