@@ -1103,6 +1103,10 @@ namespace DarkUnderLevelEditor {
             mnuDoorAdd(ItemType.LockedGate);
         }
 
+        private void mnuDoorAddSelfLockingGate_Click(object sender, EventArgs e) {
+            mnuDoorAdd(ItemType.SelfLockingDoor);
+        }
+
         private void mnuDoorAdd(ItemType doorType) {
 
             LevelDoor door = new LevelDoor();

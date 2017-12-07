@@ -46,6 +46,7 @@ namespace DarkUnderLevelEditor {
         LockedGate = 100,
         LockedDoor,
         UnlockedDoor,
+        SelfLockingDoor
     };
 
     static class Utils {
