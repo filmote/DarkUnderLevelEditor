@@ -24,13 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDarkUnder));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabPageTileEditor = new System.Windows.Forms.TabPage();
             this.tileEditor = new System.Windows.Forms.DataGridView();
@@ -465,6 +465,7 @@
             this.mnuDoorAddBase = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDoorAddLevel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDoorAddGate = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDoorAddSelfLockingGate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDoorDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -487,7 +488,8 @@
             this.mnuTreeViewDeleteEnemy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTreeViewDeleteItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTreeViewDeleteDoor = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDoorAddSelfLockingGate = new System.Windows.Forms.ToolStripMenuItem();
+            this.label54 = new System.Windows.Forms.Label();
+            this.chkAllowLargeMap = new System.Windows.Forms.CheckBox();
             this.tabs.SuspendLayout();
             this.tabPageTileEditor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tileEditor)).BeginInit();
@@ -586,14 +588,14 @@
             this.tileEditor.AllowUserToDeleteRows = false;
             this.tileEditor.AllowUserToResizeColumns = false;
             this.tileEditor.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tileEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tileEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tileEditor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tileEditor.ColumnHeadersVisible = false;
             this.tileEditor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -612,27 +614,27 @@
             this.Column13,
             this.Column14,
             this.Column15});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tileEditor.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tileEditor.DefaultCellStyle = dataGridViewCellStyle2;
             this.tileEditor.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.tileEditor.Enabled = false;
             this.tileEditor.Location = new System.Drawing.Point(15, 29);
             this.tileEditor.MultiSelect = false;
             this.tileEditor.Name = "tileEditor";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tileEditor.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tileEditor.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.tileEditor.RowHeadersVisible = false;
             this.tileEditor.RowTemplate.Height = 25;
             this.tileEditor.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -818,6 +820,7 @@
             // 
             // cmdSave
             // 
+            this.cmdSave.Enabled = false;
             this.cmdSave.Location = new System.Drawing.Point(315, 451);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(74, 21);
@@ -1193,14 +1196,14 @@
             this.levelEditor.AllowUserToDeleteRows = false;
             this.levelEditor.AllowUserToResizeColumns = false;
             this.levelEditor.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.levelEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.levelEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.levelEditor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.levelEditor.ColumnHeadersVisible = false;
             this.levelEditor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1459,30 +1462,30 @@
             this.Column253,
             this.Column254,
             this.Column255});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.levelEditor.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.levelEditor.DefaultCellStyle = dataGridViewCellStyle5;
             this.levelEditor.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.levelEditor.Enabled = false;
-            this.levelEditor.Location = new System.Drawing.Point(6, 6);
+            this.levelEditor.Location = new System.Drawing.Point(7, 6);
             this.levelEditor.Name = "levelEditor";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.levelEditor.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.levelEditor.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.levelEditor.RowHeadersVisible = false;
             this.levelEditor.RowTemplate.Height = 12;
             this.levelEditor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.levelEditor.Size = new System.Drawing.Size(698, 490);
+            this.levelEditor.Size = new System.Drawing.Size(698, 489);
             this.levelEditor.TabIndex = 0;
             this.levelEditor.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.levelEditor_CellPainting);
             this.levelEditor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.levelEditor_MouseClick);
@@ -2779,6 +2782,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label54);
+            this.tabPage3.Controls.Add(this.chkAllowLargeMap);
             this.tabPage3.Controls.Add(this.label53);
             this.tabPage3.Controls.Add(this.udMaximum_HP);
             this.tabPage3.Controls.Add(this.label52);
@@ -3888,30 +3893,30 @@
             this.mnuDoorAddBase,
             this.mnuDoorDelete});
             this.mnuContext.Name = "mnuContext";
-            this.mnuContext.Size = new System.Drawing.Size(153, 226);
+            this.mnuContext.Size = new System.Drawing.Size(147, 204);
             // 
             // mnuAddTiles
             // 
             this.mnuAddTiles.Name = "mnuAddTiles";
-            this.mnuAddTiles.Size = new System.Drawing.Size(152, 22);
+            this.mnuAddTiles.Size = new System.Drawing.Size(146, 22);
             this.mnuAddTiles.Text = "Add Tile";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
             // 
             // mnuPlacePlayer
             // 
             this.mnuPlacePlayer.Name = "mnuPlacePlayer";
-            this.mnuPlacePlayer.Size = new System.Drawing.Size(152, 22);
+            this.mnuPlacePlayer.Size = new System.Drawing.Size(146, 22);
             this.mnuPlacePlayer.Text = "&Place Player";
             this.mnuPlacePlayer.Click += new System.EventHandler(this.mnuPlacePlayer_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(143, 6);
             // 
             // mnuEnemyAddBase
             // 
@@ -3924,7 +3929,7 @@
             this.mnuEnemyAddRat,
             this.mnuEnemyAddSlime});
             this.mnuEnemyAddBase.Name = "mnuEnemyAddBase";
-            this.mnuEnemyAddBase.Size = new System.Drawing.Size(152, 22);
+            this.mnuEnemyAddBase.Size = new System.Drawing.Size(146, 22);
             this.mnuEnemyAddBase.Text = "&Add Enemy";
             // 
             // mnuEnemyAddOccular
@@ -3979,14 +3984,14 @@
             // mnuEnemyDelete
             // 
             this.mnuEnemyDelete.Name = "mnuEnemyDelete";
-            this.mnuEnemyDelete.Size = new System.Drawing.Size(152, 22);
+            this.mnuEnemyDelete.Size = new System.Drawing.Size(146, 22);
             this.mnuEnemyDelete.Text = "&Delete Enemy";
             this.mnuEnemyDelete.Click += new System.EventHandler(this.mnuEnemyDelete_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(143, 6);
             // 
             // mnuItemAddBase
             // 
@@ -3998,7 +4003,7 @@
             this.mnuItemAddShield});
             this.mnuItemAddBase.Enabled = false;
             this.mnuItemAddBase.Name = "mnuItemAddBase";
-            this.mnuItemAddBase.Size = new System.Drawing.Size(152, 22);
+            this.mnuItemAddBase.Size = new System.Drawing.Size(146, 22);
             this.mnuItemAddBase.Text = "&Add Item";
             // 
             // mnuItemAddKey
@@ -4040,14 +4045,14 @@
             // 
             this.mnuItemDelete.Enabled = false;
             this.mnuItemDelete.Name = "mnuItemDelete";
-            this.mnuItemDelete.Size = new System.Drawing.Size(152, 22);
+            this.mnuItemDelete.Size = new System.Drawing.Size(146, 22);
             this.mnuItemDelete.Text = "&Delete Item";
             this.mnuItemDelete.Click += new System.EventHandler(this.mnuItemDelete_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
             // 
             // mnuDoorAddBase
             // 
@@ -4057,7 +4062,7 @@
             this.mnuDoorAddSelfLockingGate});
             this.mnuDoorAddBase.Enabled = false;
             this.mnuDoorAddBase.Name = "mnuDoorAddBase";
-            this.mnuDoorAddBase.Size = new System.Drawing.Size(152, 22);
+            this.mnuDoorAddBase.Size = new System.Drawing.Size(146, 22);
             this.mnuDoorAddBase.Text = "&Add Door";
             // 
             // mnuDoorAddLevel
@@ -4074,11 +4079,18 @@
             this.mnuDoorAddGate.Text = "Add &Gate";
             this.mnuDoorAddGate.Click += new System.EventHandler(this.mnuDoorAddGate_Click);
             // 
+            // mnuDoorAddSelfLockingGate
+            // 
+            this.mnuDoorAddSelfLockingGate.Name = "mnuDoorAddSelfLockingGate";
+            this.mnuDoorAddSelfLockingGate.Size = new System.Drawing.Size(190, 22);
+            this.mnuDoorAddSelfLockingGate.Text = "Add &Self Locking Gate";
+            this.mnuDoorAddSelfLockingGate.Click += new System.EventHandler(this.mnuDoorAddSelfLockingGate_Click);
+            // 
             // mnuDoorDelete
             // 
             this.mnuDoorDelete.Enabled = false;
             this.mnuDoorDelete.Name = "mnuDoorDelete";
-            this.mnuDoorDelete.Size = new System.Drawing.Size(152, 22);
+            this.mnuDoorDelete.Size = new System.Drawing.Size(146, 22);
             this.mnuDoorDelete.Text = "&Delete Door";
             this.mnuDoorDelete.Click += new System.EventHandler(this.mnuDoorDelete_Click);
             // 
@@ -4238,12 +4250,23 @@
             this.mnuTreeViewDeleteDoor.Text = "Delete &Door";
             this.mnuTreeViewDeleteDoor.Click += new System.EventHandler(this.mnuTreeViewDeleteDoor_Click);
             // 
-            // mnuDoorAddSelfLockingGate
+            // label54
             // 
-            this.mnuDoorAddSelfLockingGate.Name = "mnuDoorAddSelfLockingGate";
-            this.mnuDoorAddSelfLockingGate.Size = new System.Drawing.Size(190, 22);
-            this.mnuDoorAddSelfLockingGate.Text = "Add &Self Locking Gate";
-            this.mnuDoorAddSelfLockingGate.Click += new System.EventHandler(this.mnuDoorAddSelfLockingGate_Click);
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(720, 452);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(86, 13);
+            this.label54.TabIndex = 85;
+            this.label54.Text = "Allow Large Map";
+            // 
+            // chkAllowLargeMap
+            // 
+            this.chkAllowLargeMap.AutoSize = true;
+            this.chkAllowLargeMap.Location = new System.Drawing.Point(819, 452);
+            this.chkAllowLargeMap.Name = "chkAllowLargeMap";
+            this.chkAllowLargeMap.Size = new System.Drawing.Size(15, 14);
+            this.chkAllowLargeMap.TabIndex = 86;
+            this.chkAllowLargeMap.UseVisualStyleBackColor = true;
             // 
             // frmDarkUnder
             // 
@@ -4352,6 +4375,188 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.Button cmdReset;
+        private System.Windows.Forms.Button cmdSave;
+        private System.Windows.Forms.Button cmdClear;
+        private System.Windows.Forms.Button cmdTileAdd;
+        private System.Windows.Forms.Button cmdTileDelete;
+        private System.Windows.Forms.ContextMenuStrip mnuContext;
+        private System.Windows.Forms.ToolStripMenuItem mnuAddTiles;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuOpenMapData;
+        private System.Windows.Forms.ToolStripMenuItem mnuSaveMapData;
+        private System.Windows.Forms.ToolStripMenuItem mnuAbout;
+        private System.Windows.Forms.OpenFileDialog dgOpenMapData;
+        private System.Windows.Forms.TreeView tvwLevels;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddBase;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddOccular;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddSkeleton;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddSparkat;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddWraith;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddDragon;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddRat;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddSlime;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnemyDelete;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem mnuItemAddBase;
+        private System.Windows.Forms.ImageList imgList;
+        private System.Windows.Forms.ToolStripMenuItem mnuItemAddKey;
+        private System.Windows.Forms.ToolStripMenuItem mnuItemAddPotion;
+        private System.Windows.Forms.ToolStripMenuItem mnuItemAddScroll;
+        private System.Windows.Forms.ToolStripMenuItem mnuItemDelete;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem mnuDoorAddBase;
+        private System.Windows.Forms.ToolStripMenuItem mnuDoorAddLevel;
+        private System.Windows.Forms.ToolStripMenuItem mnuDoorAddGate;
+        private System.Windows.Forms.ToolStripMenuItem mnuDoorDelete;
+        private System.Windows.Forms.Panel pnlLevelDetails;
+        private System.Windows.Forms.Button cmdLevelDelete;
+        private System.Windows.Forms.Button cmdLevelAdd;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlItemDetails;
+        private System.Windows.Forms.TextBox txtItemDetails;
+        private System.Windows.Forms.TextBox txtItemDetailsPositionY;
+        private System.Windows.Forms.TextBox txtItemDetailsPositionX;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lblItemDetails_Caption;
+        private System.Windows.Forms.TextBox txtLevelPositionY;
+        private System.Windows.Forms.TextBox txtLevelPositionX;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblDirection;
+        private System.Windows.Forms.Label lblLevelPlayer;
+        private System.Windows.Forms.Label lblLevelDesc;
+        private System.Windows.Forms.ComboBox cboLevelDirection;
+        private System.Windows.Forms.TextBox txtLevelHeading2;
+        private System.Windows.Forms.TextBox txtLevelHeading1;
+        private System.Windows.Forms.Panel pnlBlank;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem mnuPlacePlayer;
+        private System.Windows.Forms.Button cmdLevelDown;
+        private System.Windows.Forms.Button cmdLevelUp;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.CheckBox chkSkeleton_MV;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.NumericUpDown udSkeleton_XP;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.NumericUpDown udSkeleton_AP;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.NumericUpDown udSkeleton_HP;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.CheckBox chkWraith_MV;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.NumericUpDown udWraith_XP;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.NumericUpDown udWraith_AP;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.NumericUpDown udWraith_HP;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.CheckBox chkRat_MV;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.NumericUpDown udRat_XP;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.NumericUpDown udRat_AP;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.NumericUpDown udRat_HP;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.CheckBox chkOccular_MV;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.NumericUpDown udOccular_XP;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.NumericUpDown udOccular_AP;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.NumericUpDown udOccular_HP;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox chkSlime_MV;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.NumericUpDown udSlime_XP;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.NumericUpDown udSlime_AP;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.NumericUpDown udSlime_HP;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox chkDragon_MV;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown udDragon_XP;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown udDragon_AP;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.NumericUpDown udDragon_HP;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox chkSparkat_MV;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown udSparkat_XP;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown udSparkat_AP;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown udSparkat_HP;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem mnuSaveMapDataAs;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
+        private System.Windows.Forms.SaveFileDialog dgSaveMapData;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        private System.Windows.Forms.TabPage tabErrors;
+        private System.Windows.Forms.TreeView tvwErrors;
+        private System.Windows.Forms.StatusStrip sbStatus;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatusError;
+        private System.Windows.Forms.ContextMenuStrip mnuTreeViewContext;
+        private System.Windows.Forms.ToolStripMenuItem mnuTreeViewDeleteEnemy;
+        private System.Windows.Forms.ToolStripMenuItem mnuTreeViewDeleteItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuTreeViewDeleteDoor;
+        private System.Windows.Forms.ToolStripMenuItem mnuClearMapData;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripStatusLabel lblFileName;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.ToolStripMenuItem mnuValidate;
+        private System.Windows.Forms.ToolStripMenuItem mnuItemAddSword;
+        private System.Windows.Forms.ToolStripMenuItem mnuItemAddShield;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.NumericUpDown udMaximum_HP;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.NumericUpDown udLevelUpLimit;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.NumericUpDown udStarting_DF;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.NumericUpDown udStarting_AP;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.NumericUpDown udStarting_HP;
+        private System.Windows.Forms.CheckBox chkAllowSaveGame;
+        private System.Windows.Forms.ToolStripMenuItem mnuDoorAddSelfLockingGate;
         private System.Windows.Forms.DataGridView levelEditor;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -4368,11 +4573,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.Button cmdReset;
-        private System.Windows.Forms.Button cmdSave;
-        private System.Windows.Forms.Button cmdClear;
-        private System.Windows.Forms.Button cmdTileAdd;
-        private System.Windows.Forms.Button cmdTileDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
@@ -4613,183 +4813,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column253;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column254;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column255;
-        private System.Windows.Forms.ContextMenuStrip mnuContext;
-        private System.Windows.Forms.ToolStripMenuItem mnuAddTiles;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuOpenMapData;
-        private System.Windows.Forms.ToolStripMenuItem mnuSaveMapData;
-        private System.Windows.Forms.ToolStripMenuItem mnuAbout;
-        private System.Windows.Forms.OpenFileDialog dgOpenMapData;
-        private System.Windows.Forms.TreeView tvwLevels;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddBase;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddOccular;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddSkeleton;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddSparkat;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddWraith;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddDragon;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddRat;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnemyAddSlime;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnemyDelete;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem mnuItemAddBase;
-        private System.Windows.Forms.ImageList imgList;
-        private System.Windows.Forms.ToolStripMenuItem mnuItemAddKey;
-        private System.Windows.Forms.ToolStripMenuItem mnuItemAddPotion;
-        private System.Windows.Forms.ToolStripMenuItem mnuItemAddScroll;
-        private System.Windows.Forms.ToolStripMenuItem mnuItemDelete;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem mnuDoorAddBase;
-        private System.Windows.Forms.ToolStripMenuItem mnuDoorAddLevel;
-        private System.Windows.Forms.ToolStripMenuItem mnuDoorAddGate;
-        private System.Windows.Forms.ToolStripMenuItem mnuDoorDelete;
-        private System.Windows.Forms.Panel pnlLevelDetails;
-        private System.Windows.Forms.Button cmdLevelDelete;
-        private System.Windows.Forms.Button cmdLevelAdd;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel pnlItemDetails;
-        private System.Windows.Forms.TextBox txtItemDetails;
-        private System.Windows.Forms.TextBox txtItemDetailsPositionY;
-        private System.Windows.Forms.TextBox txtItemDetailsPositionX;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label lblItemDetails_Caption;
-        private System.Windows.Forms.TextBox txtLevelPositionY;
-        private System.Windows.Forms.TextBox txtLevelPositionX;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblDirection;
-        private System.Windows.Forms.Label lblLevelPlayer;
-        private System.Windows.Forms.Label lblLevelDesc;
-        private System.Windows.Forms.ComboBox cboLevelDirection;
-        private System.Windows.Forms.TextBox txtLevelHeading2;
-        private System.Windows.Forms.TextBox txtLevelHeading1;
-        private System.Windows.Forms.Panel pnlBlank;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem mnuPlacePlayer;
-        private System.Windows.Forms.Button cmdLevelDown;
-        private System.Windows.Forms.Button cmdLevelUp;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.CheckBox chkSkeleton_MV;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.NumericUpDown udSkeleton_XP;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.NumericUpDown udSkeleton_AP;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.NumericUpDown udSkeleton_HP;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.CheckBox chkWraith_MV;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.NumericUpDown udWraith_XP;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.NumericUpDown udWraith_AP;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.NumericUpDown udWraith_HP;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.CheckBox chkRat_MV;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.NumericUpDown udRat_XP;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.NumericUpDown udRat_AP;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.NumericUpDown udRat_HP;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.CheckBox chkOccular_MV;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.NumericUpDown udOccular_XP;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.NumericUpDown udOccular_AP;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.NumericUpDown udOccular_HP;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.CheckBox chkSlime_MV;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.NumericUpDown udSlime_XP;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown udSlime_AP;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.NumericUpDown udSlime_HP;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.CheckBox chkDragon_MV;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown udDragon_XP;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.NumericUpDown udDragon_AP;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.NumericUpDown udDragon_HP;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.CheckBox chkSparkat_MV;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown udSparkat_XP;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown udSparkat_AP;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown udSparkat_HP;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem mnuSaveMapDataAs;
-        private System.Windows.Forms.ToolStripMenuItem mnuExit;
-        private System.Windows.Forms.SaveFileDialog dgSaveMapData;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
-        private System.Windows.Forms.TabPage tabErrors;
-        private System.Windows.Forms.TreeView tvwErrors;
-        private System.Windows.Forms.StatusStrip sbStatus;
-        private System.Windows.Forms.ToolStripStatusLabel lblStatusError;
-        private System.Windows.Forms.ContextMenuStrip mnuTreeViewContext;
-        private System.Windows.Forms.ToolStripMenuItem mnuTreeViewDeleteEnemy;
-        private System.Windows.Forms.ToolStripMenuItem mnuTreeViewDeleteItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuTreeViewDeleteDoor;
-        private System.Windows.Forms.ToolStripMenuItem mnuClearMapData;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
-        private System.Windows.Forms.ToolStripStatusLabel lblFileName;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.ToolStripMenuItem mnuValidate;
-        private System.Windows.Forms.ToolStripMenuItem mnuItemAddSword;
-        private System.Windows.Forms.ToolStripMenuItem mnuItemAddShield;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.NumericUpDown udMaximum_HP;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.NumericUpDown udLevelUpLimit;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.NumericUpDown udStarting_DF;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.NumericUpDown udStarting_AP;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.NumericUpDown udStarting_HP;
-        private System.Windows.Forms.CheckBox chkAllowSaveGame;
-        private System.Windows.Forms.ToolStripMenuItem mnuDoorAddSelfLockingGate;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.CheckBox chkAllowLargeMap;
     }
 }
 

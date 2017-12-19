@@ -81,6 +81,32 @@ namespace DarkUnderLevelEditor {
 
         }
 
+        public Bitmap GetImage() {
+
+            Bitmap b = new Bitmap(32, 32);
+            Graphics g = Graphics.FromImage(b);
+
+            g.FillRectangle(Brushes.White, 0, 0, 30, 30);
+
+            for (Byte y = 0; y < 15; y++) {
+
+                for (Byte x = 0; x < 15; x++) {
+
+                    if ((data[((y / 8) * 15) + x] & (1 << (y % 8))) > 0) {
+
+                        g.FillRectangle(Brushes.Black, x * 2, y * 2, 2, 2);
+
+                    }
+                    
+                }
+
+            }
+
+
+            return b;
+
+        }
+
     }
     
 }

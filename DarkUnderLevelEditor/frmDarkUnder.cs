@@ -124,6 +124,7 @@ namespace DarkUnderLevelEditor {
             }
 
             validateDungeons();
+            mnuAddTiles.DropDownItems[selectedTile.Index].Image = selectedTile.GetImage(); 
 
         }
 
@@ -194,6 +195,8 @@ namespace DarkUnderLevelEditor {
             tileEditor.Enabled = true;
 
             cmdTileDelete.Enabled = true;
+            cmdSave.Enabled = true;
+
             foreach (Level level in levels) {
 
                 foreach (Byte tileIndex in level.tileData) {
@@ -329,7 +332,7 @@ namespace DarkUnderLevelEditor {
 
                 if (e.Button == MouseButtons.Right) {
 
-                    mnuAddTiles.Enabled = (selectedCol % 15 == 0 && selectedRow % 15 == 0);
+                    mnuAddTiles.Enabled = true; // (selectedCol % 15 == 0 && selectedRow % 15 == 0);
 
                     if (selectedLevel != null) {
 
@@ -367,10 +370,13 @@ namespace DarkUnderLevelEditor {
             Tile tile = (Tile)((ToolStripMenuItem)sender).Tag;
             mapTileToLevel(tile.Data, selectedCol, selectedRow);
 
-            selectedLevel.tileData[selectedRow / 15, selectedCol / 15] = (byte)tile.Index;
+            int col = (int)Math.Floor((decimal)selectedCol / 15);
+            int row = (int)Math.Floor((decimal)selectedRow / 15);
 
-            if ((selectedCol / 15) + 1 > selectedLevel.levelDimensionX) { selectedLevel.levelDimensionX = selectedLevel.levelDimensionX + 1; }
-            if ((selectedRow / 15) + 1 > selectedLevel.levelDimensionY) { selectedLevel.levelDimensionY = selectedLevel.levelDimensionY + 1; }
+            selectedLevel.tileData[row, col] = (byte)tile.Index;
+
+            if (col + 1 > selectedLevel.levelDimensionX) { selectedLevel.levelDimensionX = selectedLevel.levelDimensionX + 1; }
+            if (row + 1 > selectedLevel.levelDimensionY) { selectedLevel.levelDimensionY = selectedLevel.levelDimensionY + 1; }
 
             if (tile == selectedTile) cmdTileDelete.Enabled = false;
             validateDungeons();
@@ -626,6 +632,7 @@ namespace DarkUnderLevelEditor {
 
                         newTile.Data = tileData;
                         counter = 0;
+                        mnuAddTiles.DropDownItems[newTile.Index].Image = newTile.GetImage();
 
                     }
 
@@ -686,6 +693,7 @@ namespace DarkUnderLevelEditor {
                     */
 
                     if (line.Equals("#define SAVE_GAME")) { chkAllowSaveGame.Checked = true; }
+                    if (line.Equals("#define USE_LARGE_MAP")) { chkAllowLargeMap.Checked = true; }
 
                     if (line.StartsWith("#define START_")) {
 
@@ -835,11 +843,11 @@ namespace DarkUnderLevelEditor {
                     }
                 }
 
-                if (level.startPosX > 0 && level.startPosY > 0) {
+                //if (level.startPosX > 0 && level.startPosY > 0) {
 
-                    levelEditor.Rows[level.startPosY].Cells[level.startPosX].Style.BackColor = Color.Turquoise;
+                //    levelEditor.Rows[level.startPosY].Cells[level.startPosX].Style.BackColor = Color.Turquoise;
 
-                }
+                //}
 
                 levelNode.Expand();
 
@@ -863,6 +871,13 @@ namespace DarkUnderLevelEditor {
 
                 cmdLevelDown.Enabled = (tvwLevels.Nodes.Count > 1 && levelNode != tvwLevels.Nodes[tvwLevels.Nodes.Count - 1]);
                 cmdLevelUp.Enabled = (tvwLevels.Nodes.Count > 1 && levelNode != tvwLevels.Nodes[0]);
+
+
+                if (level.startPosX > 0 && level.startPosY > 0) {
+
+                    levelEditor.Rows[level.startPosY].Cells[level.startPosX].Style.BackColor = Color.Turquoise;
+
+                }
 
                 levelEditor.ResumeLayout();
 
@@ -1496,6 +1511,7 @@ namespace DarkUnderLevelEditor {
 
             cmdTileAdd.Enabled = true;
             cmdTileDelete.Enabled = false;
+            cmdSave.Enabled = false;
             clearTile();
             tileEditor.Enabled = false;
 
@@ -1563,6 +1579,10 @@ namespace DarkUnderLevelEditor {
 
                 if (chkAllowSaveGame.Checked) {
                     file.WriteLine("#define SAVE_GAME");
+                }
+
+                if (chkAllowLargeMap.Checked) {
+                    file.WriteLine("#define USE_LARGE_MAP");
                 }
 
                 file.WriteLine("#define START_HP {0}", udStarting_HP.Value);
