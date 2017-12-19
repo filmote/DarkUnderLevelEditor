@@ -405,6 +405,9 @@ namespace DarkUnderLevelEditor {
 
         private void mnuOpenMapData_Click(object sender, EventArgs e) {
 
+            chkAllowSaveGame.Checked = false;
+            chkAllowLargeMap.Checked = false;
+
             Tile newTile = null;
             Level newLevel = null;
 
@@ -691,6 +694,7 @@ namespace DarkUnderLevelEditor {
                     #define MAX_HP   50
                     #define LEVEL_UP  50
                     */
+
 
                     if (line.Equals("#define SAVE_GAME")) { chkAllowSaveGame.Checked = true; }
                     if (line.Equals("#define USE_LARGE_MAP")) { chkAllowLargeMap.Checked = true; }
